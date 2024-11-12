@@ -10,7 +10,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@apollo/client": "^3.11.10",
     "@apollo/server": "^4.11.2",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "graphql": "^16.9.0"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
   }
 }
