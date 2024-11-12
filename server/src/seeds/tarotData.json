@@ -1,0 +1,110 @@
+[
+{
+        "name": "The Fool",
+        "description": "The Fool is the first card in the tarot deck. He is a free spirit, unburdened by the past and unanxious about the future. The Fool is a card of new beginnings, opportunity, and potential. He is a symbol of the journey ahead, and the adventures that await.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Beginnings, innocence, spontaneity, a free spirit",
+        "reversedMeaning": "Naivety, foolishness, recklessness, risk-taking, holding-back, inconsideration",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/90/RWS_Tarot_00_Fool.jpg",
+        "_id": "1"
+    },
+    {
+        "name": "The Magician",
+        "description": "The Magician is the second card in the tarot deck. He is a master of the elements, and a symbol of power, creativity, and manifestation. The Magician is a card of action, and a reminder that we have the power to create our own reality.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Manifestation, resourcefulness, power, inspired action",
+        "reversedMeaning": "Manipulation, poor planning, untapped talents, lack of direction",
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_01_Magician.jpg",
+        "_id": "2"
+    },
+    {
+        "name": "The High Priestess",
+        "description": "The High Priestess is the third card in the tarot deck. She is a symbol of intuition, mystery, and the subconscious mind. The High Priestess is a card of wisdom, and a reminder to trust our inner voice and intuition.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Intuition, mystery, subconscious mind, wisdom, spirituality",
+        "reversedMeaning": "Secrets, disconnected from intuition, withdrawal and silence, lack of understanding",
+        "image": "https://upload.wikimedia.org/wikipedia/en/8/88/RWS_Tarot_02_High_Priestess.jpg",
+        "_id": "3"
+    },
+    {
+        "name": "The Empress",
+        "description": "The Empress is the fourth card in the tarot deck. She is a symbol of fertility, creativity, and abundance. The Empress is a card of nurturing, and a reminder to take care of ourselves and those around us.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Fertility, creativity, abundance, nurturing, motherhood",
+        "reversedMeaning": "Creative block, dependence on others, neglect, smothering",
+        "image": "https://upload.wikimedia.org/wikipedia/en/8/84/RWS_Tarot_03_Empress.jpg",
+        "_id": "4"
+    },
+    {
+        "name": "The Emperor",
+        "description": "The Emperor is the fifth card in the tarot deck. He is a symbol of authority, structure, and control. The Emperor is a card of leadership, and a reminder to take charge of our lives and make decisions with confidence.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Authority, structure, control, fatherhood, stability",
+        "reversedMeaning": "Domination, excessive control, lack of discipline, inflexibility",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/50/RWS_Tarot_04_Emperor.jpg",
+        "_id": "5"
+    },
+    {
+        "name": "The Hierophant",
+        "description": "The Hierophant is the sixth card in the tarot deck. He is a symbol of tradition, conformity, and spirituality. The Hierophant is a card of guidance, and a reminder to seek wisdom and knowledge from those who have come before us.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Tradition, conformity, spirituality, guidance, education",
+        "reversedMeaning": "Rebellion, subversiveness, unconventional behavior, unorthodox beliefs",
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/RWS_Tarot_05_Hierophant.jpg",
+        "_id": "6"
+    },
+    {
+        "name": "The Lovers",
+        "description": "The Lovers is the seventh card in the tarot deck. It is a symbol of love, relationships, and choices. The Lovers is a card of harmony, and a reminder to follow our hearts and make decisions with love and compassion.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Love, relationships, harmony, choices, alignment",
+        "reversedMeaning": "Self-love, disharmony, imbalance, misalignment of values",
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/db/RWS_Tarot_06_Lovers.jpg",
+        "_id": "7"
+    },
+    {
+        "name": "The Chariot",
+        "description": "The Chariot is the eighth card in the tarot deck. It is a symbol of victory, willpower, and determination. The Chariot is a card of progress, and a reminder to stay focused and move forward with confidence.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Victory, willpower, determination, progress, self-control",
+        "reversedMeaning": "Self-discipline, lack of direction, aggression, defeat, failure",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/9b/RWS_Tarot_07_Chariot.jpg",
+        "_id": "8"
+    },
+    {
+        "name": "Strength",
+        "description": "Strength is the ninth card in the tarot deck. It is a symbol of courage, inner strength, and self-control. Strength is a card of resilience, and a reminder to stay strong and face our fears with confidence.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Courage, inner strength, self-control, compassion, resilience",
+        "reversedMeaning": "Weakness, self-doubt, lack of self-discipline, insecurity",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/54/RWS_Tarot_08_Strength.jpg",
+        "_id": "9"
+    },
+    {
+        "name": "The Hermit",
+        "description": "The Hermit is the tenth card in the tarot deck. He is a symbol of introspection, solitude, and wisdom. The Hermit is a card of reflection, and a reminder to take time for ourselves and listen to our inner voice.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Introspection, solitude, wisdom, guidance, inner voice",
+        "reversedMeaning": "Isolation, loneliness, withdrawal, self-discovery, inner guidance",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/96/RWS_Tarot_09_Hermit.jpg",
+        "_id": "10"
+    },
+    {
+        "name": "Wheel of Fortune",
+        "description": "The Wheel of Fortune is the eleventh card in the tarot deck. It is a symbol of destiny, change, and luck. The Wheel of Fortune is a card of opportunity, and a reminder to embrace the changes that come our way.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Destiny, change, luck, fortune, cycles",
+        "reversedMeaning": "Bad luck, resistance to change, control, chaos, cycles",
+        "image": "https://upload.wikimedia.org/wikipedia/en/6/6b/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+        "_id": "11"
+    },
+    {
+        "name": "Justice",
+        "description": "Justice is the twelfth card in the tarot deck. It is a symbol of fairness, balance, and truth. Justice is a card of accountability, and a reminder to take responsibility for our actions and decisions.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Fairness, balance, truth, accountability, justice",
+        "reversedMeaning": "Unfairness, dishonesty, lack of accountability, injustice",
+        "image": "https://upload.wikimedia.org/wikipedia/en/8/85/RWS_Tarot_11_Justice.jpg",
+        "_id": "12"
+    }
+]
