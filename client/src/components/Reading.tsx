@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { fetchTarotCards } from '../utils/api';
+import { TarotCard } from '../utils/types';
 
 const TarotReading = () => {
     const [cards, setCards] = useState<TarotCard[]>([]);
