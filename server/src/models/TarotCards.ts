@@ -1,5 +1,3 @@
-// server/models/TarotCard.ts
-// mongoose model for tarot cards
 import { type Document, model, Schema } from 'mongoose';
 
 export interface ITarotCard extends Document {
@@ -21,4 +19,4 @@ const tarotCardSchema: Schema = new Schema({
 });
 
 const TarotCard = model<ITarotCard>('TarotCard', tarotCardSchema);
-export default TarotCard;
+export default TarotCard
