@@ -1,7 +1,7 @@
 // server/src/routes/tarotRoutes.ts
 
 import express from 'express';
-import TarotCard from '../models/TarotCard';
+import TarotCard from '../models/TarotCards';
 
 const router = express.Router();
 
