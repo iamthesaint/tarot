@@ -1,1 +1,0 @@
-// client/src/graphql/queries.ts
