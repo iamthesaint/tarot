@@ -1,5 +1,5 @@
 [
-{
+    {
         "name": "The Fool",
         "description": "The Fool is the first card in the tarot deck. He is a free spirit, unburdened by the past and unanxious about the future. The Fool is a card of new beginnings, opportunity, and potential. He is a symbol of the journey ahead, and the adventures that await.",
         "suit": "Major Arcana",
@@ -10,101 +10,705 @@
     },
     {
         "name": "The Magician",
-        "description": "The Magician is the second card in the tarot deck. He is a master of the elements, and a symbol of power, creativity, and manifestation. The Magician is a card of action, and a reminder that we have the power to create our own reality.",
+        "description": "The Magician is a card of manifestation and personal power. He represents the ability to harness resources and talents to bring your desires into reality.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Manifestation, resourcefulness, power, inspired action",
-        "reversedMeaning": "Manipulation, poor planning, untapped talents, lack of direction",
-        "image": "https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_01_Magician.jpg",
+        "uprightMeaning": "Manifestation, resourcefulness, power, confidence, willpower",
+        "reversedMeaning": "Manipulation, illusion, deception, lack of clarity",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/79/RWS_Tarot_01_Magician.jpg",
         "_id": "2"
     },
     {
         "name": "The High Priestess",
-        "description": "The High Priestess is the third card in the tarot deck. She is a symbol of intuition, mystery, and the subconscious mind. The High Priestess is a card of wisdom, and a reminder to trust our inner voice and intuition.",
+        "description": "The High Priestess represents intuition, mystery, and inner wisdom. She is a symbol of the subconscious mind and the deep connection to spiritual knowledge.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Intuition, mystery, subconscious mind, wisdom, spirituality",
-        "reversedMeaning": "Secrets, disconnected from intuition, withdrawal and silence, lack of understanding",
-        "image": "https://upload.wikimedia.org/wikipedia/en/8/88/RWS_Tarot_02_High_Priestess.jpg",
+        "uprightMeaning": "Intuition, mystery, wisdom, spiritual insight",
+        "reversedMeaning": "Secrets, hidden knowledge, blocked intuition, superficiality",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/RWS_Tarot_02_High_Priestess.jpg",
         "_id": "3"
     },
     {
         "name": "The Empress",
-        "description": "The Empress is the fourth card in the tarot deck. She is a symbol of fertility, creativity, and abundance. The Empress is a card of nurturing, and a reminder to take care of ourselves and those around us.",
+        "description": "The Empress symbolizes fertility, abundance, and nurturing. She represents the creative energy of life and the power of mothering and nurturing growth.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Fertility, creativity, abundance, nurturing, motherhood",
-        "reversedMeaning": "Creative block, dependence on others, neglect, smothering",
-        "image": "https://upload.wikimedia.org/wikipedia/en/8/84/RWS_Tarot_03_Empress.jpg",
+        "uprightMeaning": "Fertility, abundance, nurturing, creativity, motherhood",
+        "reversedMeaning": "Neglect, stifled creativity, overindulgence, dependence",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/9f/RWS_Tarot_03_Empress.jpg",
         "_id": "4"
     },
     {
         "name": "The Emperor",
-        "description": "The Emperor is the fifth card in the tarot deck. He is a symbol of authority, structure, and control. The Emperor is a card of leadership, and a reminder to take charge of our lives and make decisions with confidence.",
+        "description": "The Emperor represents authority, structure, and leadership. He is a symbol of power, control, and the establishment of rules.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Authority, structure, control, fatherhood, stability",
-        "reversedMeaning": "Domination, excessive control, lack of discipline, inflexibility",
-        "image": "https://upload.wikimedia.org/wikipedia/en/5/50/RWS_Tarot_04_Emperor.jpg",
+        "uprightMeaning": "Authority, structure, stability, leadership, discipline",
+        "reversedMeaning": "Tyranny, inflexibility, lack of control, instability",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/aa/RWS_Tarot_04_Emperor.jpg",
         "_id": "5"
     },
     {
         "name": "The Hierophant",
-        "description": "The Hierophant is the sixth card in the tarot deck. He is a symbol of tradition, conformity, and spirituality. The Hierophant is a card of guidance, and a reminder to seek wisdom and knowledge from those who have come before us.",
+        "description": "The Hierophant represents tradition, conformity, and spiritual guidance. He is a symbol of established belief systems and the teachings passed down through generations.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Tradition, conformity, spirituality, guidance, education",
-        "reversedMeaning": "Rebellion, subversiveness, unconventional behavior, unorthodox beliefs",
-        "image": "https://upload.wikimedia.org/wikipedia/en/d/d2/RWS_Tarot_05_Hierophant.jpg",
+        "uprightMeaning": "Tradition, spirituality, conformity, education, religious guidance",
+        "reversedMeaning": "Rebellion, unconventionality, nonconformity, dogma",
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/eb/RWS_Tarot_05_Hierophant.jpg",
         "_id": "6"
     },
     {
         "name": "The Lovers",
-        "description": "The Lovers is the seventh card in the tarot deck. It is a symbol of love, relationships, and choices. The Lovers is a card of harmony, and a reminder to follow our hearts and make decisions with love and compassion.",
+        "description": "The Lovers card is about relationships, love, and harmony. It symbolizes the connection between two people and the choices they make together.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Love, relationships, harmony, choices, alignment",
-        "reversedMeaning": "Self-love, disharmony, imbalance, misalignment of values",
-        "image": "https://upload.wikimedia.org/wikipedia/en/d/db/RWS_Tarot_06_Lovers.jpg",
+        "uprightMeaning": "Love, union, relationships, choice, harmony",
+        "reversedMeaning": "Disharmony, imbalance, disconnection, misalignment",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/42/RWS_Tarot_06_Lovers.jpg",
         "_id": "7"
     },
     {
         "name": "The Chariot",
-        "description": "The Chariot is the eighth card in the tarot deck. It is a symbol of victory, willpower, and determination. The Chariot is a card of progress, and a reminder to stay focused and move forward with confidence.",
+        "description": "The Chariot is a card of determination, willpower, and overcoming obstacles. It represents triumph through hard work and focused direction.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Victory, willpower, determination, progress, self-control",
-        "reversedMeaning": "Self-discipline, lack of direction, aggression, defeat, failure",
-        "image": "https://upload.wikimedia.org/wikipedia/en/9/9b/RWS_Tarot_07_Chariot.jpg",
+        "uprightMeaning": "Victory, determination, control, willpower, action",
+        "reversedMeaning": "Lack of control, aggression, directionlessness, obstacles",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/70/RWS_Tarot_07_Chariot.jpg",
         "_id": "8"
     },
     {
         "name": "Strength",
-        "description": "Strength is the ninth card in the tarot deck. It is a symbol of courage, inner strength, and self-control. Strength is a card of resilience, and a reminder to stay strong and face our fears with confidence.",
+        "description": "Strength represents courage, patience, and inner fortitude. It symbolizes the ability to overcome challenges through resilience and compassion.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Courage, inner strength, self-control, compassion, resilience",
-        "reversedMeaning": "Weakness, self-doubt, lack of self-discipline, insecurity",
-        "image": "https://upload.wikimedia.org/wikipedia/en/5/54/RWS_Tarot_08_Strength.jpg",
+        "uprightMeaning": "Courage, strength, patience, compassion, resilience",
+        "reversedMeaning": "Weakness, insecurity, lack of confidence, self-doubt",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/3f/RWS_Tarot_08_Strength.jpg",
         "_id": "9"
     },
     {
         "name": "The Hermit",
-        "description": "The Hermit is the tenth card in the tarot deck. He is a symbol of introspection, solitude, and wisdom. The Hermit is a card of reflection, and a reminder to take time for ourselves and listen to our inner voice.",
+        "description": "The Hermit symbolizes introspection, solitude, and wisdom gained through quiet reflection. It represents the journey inward to find truth and enlightenment.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Introspection, solitude, wisdom, guidance, inner voice",
-        "reversedMeaning": "Isolation, loneliness, withdrawal, self-discovery, inner guidance",
-        "image": "https://upload.wikimedia.org/wikipedia/en/9/96/RWS_Tarot_09_Hermit.jpg",
+        "uprightMeaning": "Introspection, solitude, wisdom, guidance, spiritual searching",
+        "reversedMeaning": "Isolation, loneliness, withdrawal, lack of direction",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/05/RWS_Tarot_09_Hermit.jpg",
         "_id": "10"
     },
     {
         "name": "Wheel of Fortune",
-        "description": "The Wheel of Fortune is the eleventh card in the tarot deck. It is a symbol of destiny, change, and luck. The Wheel of Fortune is a card of opportunity, and a reminder to embrace the changes that come our way.",
+        "description": "The Wheel of Fortune represents cycles, change, and fate. It symbolizes the turning of a new chapter and the ebb and flow of life's fortune.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Destiny, change, luck, fortune, cycles",
-        "reversedMeaning": "Bad luck, resistance to change, control, chaos, cycles",
-        "image": "https://upload.wikimedia.org/wikipedia/en/6/6b/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+        "uprightMeaning": "Cycles, destiny, change, good luck, fortune",
+        "reversedMeaning": "Bad luck, resistance to change, misfortune, stagnation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/90/RWS_Tarot_10_Wheel_of_Fortune.jpg",
         "_id": "11"
     },
     {
         "name": "Justice",
-        "description": "Justice is the twelfth card in the tarot deck. It is a symbol of fairness, balance, and truth. Justice is a card of accountability, and a reminder to take responsibility for our actions and decisions.",
+        "description": "Justice represents fairness, balance, and law. It symbolizes the need for clear decisions and the consequences of actions.",
         "suit": "Major Arcana",
-        "uprightMeaning": "Fairness, balance, truth, accountability, justice",
-        "reversedMeaning": "Unfairness, dishonesty, lack of accountability, injustice",
-        "image": "https://upload.wikimedia.org/wikipedia/en/8/85/RWS_Tarot_11_Justice.jpg",
+        "uprightMeaning": "Justice, fairness, balance, truth, accountability",
+        "reversedMeaning": "Unfairness, injustice, imbalance, dishonesty, bias",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/RWS_Tarot_11_Justice.jpg",
         "_id": "12"
+    },
+    {
+        "name": "The Hanged Man",
+        "description": "The Hanged Man represents surrender, letting go, and viewing situations from a different perspective. It symbolizes the need for patience and acceptance.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Letting go, surrender, new perspectives, patience",
+        "reversedMeaning": "Resistance, stubbornness, unwillingness to change, being stuck",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/0e/RWS_Tarot_12_Hanged_Man.jpg",
+        "_id": "13"
+    },
+    {
+        "name": "Death",
+        "description": "Death is a card of transformation, endings, and new beginnings. It signifies the end of a cycle and the potential for a rebirth.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Endings, transformation, rebirth, new beginnings",
+        "reversedMeaning": "Resistance to change, stagnation, fear of the unknown, holding on",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/c6/RWS_Tarot_13_Death.jpg",
+        "_id": "14"
+    },
+    {
+        "name": "Temperance",
+        "description": "Temperance represents balance, moderation, and patience. It symbolizes the need for harmony and finding a middle ground between extremes.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Balance, moderation, patience, harmony, purpose",
+        "reversedMeaning": "Imbalance, excess, lack of balance, extremes",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/92/RWS_Tarot_14_Temperance.jpg",
+        "_id": "15"
+    },
+    {
+        "name": "The Devil",
+        "description": "The Devil represents temptation, materialism, and being bound by unhealthy attachments. It symbolizes the need to break free from negative cycles and illusions.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Temptation, addiction, materialism, fear, manipulation",
+        "reversedMeaning": "Liberation, breaking free, overcoming fear, reclaiming power",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/48/RWS_Tarot_15_Devil.jpg",
+        "_id": "16"
+    },
+    {
+        "name": "The Tower",
+        "description": "The Tower represents sudden upheaval, chaos, and destruction. It symbolizes a dramatic shift or revelation that leads to rebuilding and liberation.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Sudden change, upheaval, crisis, revelation, chaos",
+        "reversedMeaning": "Avoiding disaster, fear of change, refusal to face reality",
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/eb/RWS_Tarot_16_Tower.jpg",
+        "_id": "17"
+    },
+    {
+        "name": "The Star",
+        "description": "The Star represents hope, inspiration, and spiritual guidance. It symbolizes a sense of peace and renewal, a reminder that things will get better.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Hope, renewal, inspiration, peace, spiritual guidance",
+        "reversedMeaning": "Hopelessness, despair, disconnection, lack of faith",
+        "image": "https://upload.wikimedia.org/wikipedia/en/f/fd/RWS_Tarot_17_Star.jpg",
+        "_id": "18"
+    },
+    {
+        "name": "The Moon",
+        "description": "The Moon represents illusion, intuition, and the subconscious. It symbolizes the mystery of the unknown and the need to trust one's instincts.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Illusion, intuition, subconscious, mystery, deception",
+        "reversedMeaning": "Revealing the truth, clarity, confusion, repressed feelings",
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/eb/RWS_Tarot_18_Moon.jpg",
+        "_id": "19"
+    },
+    {
+        "name": "The Sun",
+        "description": "The Sun represents success, vitality, and joy. It symbolizes clarity, abundance, and the positive energy of life.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Success, vitality, joy, abundance, positivity",
+        "reversedMeaning": "Lack of clarity, delayed success, unhappiness, insecurity",
+        "image": "https://upload.wikimedia.org/wikipedia/en/8/8e/RWS_Tarot_19_Sun.jpg",
+        "_id": "20"
+    },
+    {
+        "name": "Judgment",
+        "description": "Judgment represents rebirth, inner calling, and self-reflection. It symbolizes the need to evaluate your life and make transformative decisions.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Rebirth, inner calling, transformation, awakening, renewal",
+        "reversedMeaning": "Self-doubt, regret, inner criticism, stagnation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/eb/RWS_Tarot_20_Judgment.jpg",
+        "_id": "21"
+    },
+    {
+        "name": "The World",
+        "description": "The World represents completion, fulfillment, and harmony. It symbolizes the successful conclusion of a journey or cycle and the joy of integration.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Completion, fulfillment, achievement, wholeness, harmony",
+        "reversedMeaning": "Incomplete, stagnation, lack of closure, unfinished business",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2b/RWS_Tarot_21_World.jpg",
+        "_id": "22"
+    }, 
+    {
+        "name": "Ace of Cups",
+        "description": "The Ace of Cups represents new beginnings in emotions, relationships, and intuition. It symbolizes the start of a deep emotional journey or a new phase in love.",
+        "suit": "Cups",
+        "uprightMeaning": "New beginnings, emotional growth, love, compassion",
+        "reversedMeaning": "Blocked emotions, unexpressed feelings, emotional instability",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/0f/RWS_Tarot_01_Ace_of_Cups.jpg",
+        "_id": "23"
+    },
+    {
+        "name": "Two of Cups",
+        "description": "The Two of Cups represents mutual love, partnership, and deep connection. It signifies harmonious relationships and emotional balance between two individuals.",
+        "suit": "Cups",
+        "uprightMeaning": "Partnership, unity, love, mutual respect, connection",
+        "reversedMeaning": "Disharmony, imbalance, broken relationships, miscommunication",
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/e7/RWS_Tarot_02_Two_of_Cups.jpg",
+        "_id": "24"
+    },
+    {
+        "name": "Three of Cups",
+        "description": "The Three of Cups represents celebration, friendship, and community. It symbolizes joy in relationships, social gatherings, and shared achievements.",
+        "suit": "Cups",
+        "uprightMeaning": "Celebration, friendship, community, shared happiness",
+        "reversedMeaning": "Isolation, overindulgence, gossip, strained relationships",
+        "image": "https://upload.wikimedia.org/wikipedia/en/1/17/RWS_Tarot_03_Three_of_Cups.jpg",
+        "_id": "25"
+    },
+    {
+        "name": "Four of Cups",
+        "description": "The Four of Cups represents contemplation, introspection, and dissatisfaction. It symbolizes a need to evaluate your emotions and reassess what truly matters.",
+        "suit": "Cups",
+        "uprightMeaning": "Boredom, introspection, dissatisfaction, missed opportunities",
+        "reversedMeaning": "New perspectives, emotional clarity, reconnection",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/59/RWS_Tarot_04_Four_of_Cups.jpg",
+        "_id": "26"
+    },
+    {
+        "name": "Five of Cups",
+        "description": "The Five of Cups represents loss, regret, and disappointment. It symbolizes the emotional impact of past experiences and the need to focus on the positive.",
+        "suit": "Cups",
+        "uprightMeaning": "Loss, grief, regret, disappointment, mourning",
+        "reversedMeaning": "Healing, acceptance, moving on, finding new hope",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/ca/RWS_Tarot_05_Five_of_Cups.jpg",
+        "_id": "27"
+    },
+    {
+        "name": "Six of Cups",
+        "description": "The Six of Cups represents nostalgia, memories, and reconnection. It symbolizes the return of past relationships or experiences that bring comfort and joy.",
+        "suit": "Cups",
+        "uprightMeaning": "Nostalgia, memories, reunions, innocence, joy",
+        "reversedMeaning": "Living in the past, stuck in nostalgia, inability to move forward",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/a4/RWS_Tarot_06_Six_of_Cups.jpg",
+        "_id": "28"
+    },
+    {
+        "name": "Seven of Cups",
+        "description": "The Seven of Cups represents choices, illusions, and dreams. It symbolizes the need to evaluate your options and be mindful of unrealistic expectations.",
+        "suit": "Cups",
+        "uprightMeaning": "Choices, dreams, illusions, wishful thinking",
+        "reversedMeaning": "Clarity, focus, realistic decisions, avoiding distractions",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/a3/RWS_Tarot_07_Seven_of_Cups.jpg",
+        "_id": "29"
+    },
+    {
+        "name": "Eight of Cups",
+        "description": "The Eight of Cups represents abandonment, seeking meaning, and emotional growth. It symbolizes walking away from something that no longer serves you in order to find deeper fulfillment.",
+        "suit": "Cups",
+        "uprightMeaning": "Letting go, moving on, seeking deeper meaning, emotional growth",
+        "reversedMeaning": "Fear of change, unresolved emotions, staying in unhealthy situations",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/0b/RWS_Tarot_08_Eight_of_Cups.jpg",
+        "_id": "30"
+    },
+    {
+        "name": "Nine of Cups",
+        "description": "The Nine of Cups represents contentment, satisfaction, and emotional fulfillment. It symbolizes the realization of desires and emotional well-being.",
+        "suit": "Cups",
+        "uprightMeaning": "Contentment, satisfaction, emotional fulfillment, wish granted",
+        "reversedMeaning": "Discontent, unfulfilled desires, dissatisfaction",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/73/RWS_Tarot_09_Nine_of_Cups.jpg",
+        "_id": "31"
+    },
+    {
+        "name": "Ten of Cups",
+        "description": "The Ten of Cups represents happiness, harmony, and family. It symbolizes emotional fulfillment through love, relationships, and community.",
+        "suit": "Cups",
+        "uprightMeaning": "Happiness, fulfillment, harmony, emotional bliss, family",
+        "reversedMeaning": "Disharmony, emotional turbulence, lack of fulfillment",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/55/RWS_Tarot_10_Ten_of_Cups.jpg",
+        "_id": "32"
+    },
+    {
+        "name": "Page of Cups",
+        "description": "The Page of Cups represents creativity, intuition, and new emotional experiences. It symbolizes the arrival of new emotional insights or romantic opportunities.",
+        "suit": "Cups",
+        "uprightMeaning": "Creativity, intuition, emotional curiosity, new beginnings",
+        "reversedMeaning": "Emotional immaturity, unrealistic expectations, lack of clarity",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7e/RWS_Tarot_11_Page_of_Cups.jpg",
+        "_id": "33"
+    },
+    {
+        "name": "Knight of Cups",
+        "description": "The Knight of Cups represents idealism, romance, and following one's heart. It symbolizes pursuing emotional fulfillment, creativity, and dreams.",
+        "suit": "Cups",
+        "uprightMeaning": "Romance, idealism, pursuit of dreams, emotional adventure",
+        "reversedMeaning": "Moodiness, lack of follow-through, unrealistic expectations",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/c0/RWS_Tarot_12_Knight_of_Cups.jpg",
+        "_id": "34"
+    },
+    {
+        "name": "Queen of Cups",
+        "description": "The Queen of Cups represents empathy, emotional intelligence, and nurturing. It symbolizes a person who is in touch with their emotions and supports others emotionally.",
+        "suit": "Cups",
+        "uprightMeaning": "Empathy, emotional intelligence, nurturing, intuition",
+        "reversedMeaning": "Emotional imbalance, lack of boundaries, emotional manipulation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2b/RWS_Tarot_13_Queen_of_Cups.jpg",
+        "_id": "35"
+    },
+    {
+        "name": "King of Cups",
+        "description": "The King of Cups represents emotional maturity, balance, and wisdom. It symbolizes someone who has mastery over their emotions and is compassionate and understanding.",
+        "suit": "Cups",
+        "uprightMeaning": "Emotional balance, compassion, wisdom, maturity",
+        "reversedMeaning": "Emotional coldness, manipulation, lack of emotional control",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/46/RWS_Tarot_14_King_of_Cups.jpg",
+        "_id": "36"
+    }, 
+    {
+        "name": "Ace of Pentacles",
+        "description": "The Ace of Pentacles represents new beginnings in material wealth, career, and security. It symbolizes prosperity, opportunities, and the potential for financial gain.",
+        "suit": "Pentacles",
+        "uprightMeaning": "New opportunities, financial gain, prosperity, stability",
+        "reversedMeaning": "Financial setbacks, missed opportunities, instability",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7d/RWS_Tarot_01_Ace_of_Pentacles.jpg",
+        "_id": "37"
+    },
+    {
+        "name": "Two of Pentacles",
+        "description": "The Two of Pentacles represents balance, adaptability, and juggling responsibilities. It symbolizes managing multiple tasks and finding equilibrium in material aspects of life.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Balance, flexibility, time management, adaptability",
+        "reversedMeaning": "Overwhelm, imbalance, lack of control",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/91/RWS_Tarot_02_Two_of_Pentacles.jpg",
+        "_id": "38"
+    },
+    {
+        "name": "Three of Pentacles",
+        "description": "The Three of Pentacles represents teamwork, collaboration, and skill development. It signifies working together to achieve common goals, and mastering a craft or trade.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Teamwork, collaboration, skill development, building a foundation",
+        "reversedMeaning": "Lack of teamwork, poor planning, mistakes in craftsmanship",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/a7/RWS_Tarot_03_Three_of_Pentacles.jpg",
+        "_id": "39"
+    },
+    {
+        "name": "Four of Pentacles",
+        "description": "The Four of Pentacles represents security, stability, and holding on to material wealth. It symbolizes a need for financial control but can also indicate greed or possessiveness.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Security, financial control, stability, possessiveness",
+        "reversedMeaning": "Letting go, insecurity, financial instability",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/5c/RWS_Tarot_04_Four_of_Pentacles.jpg",
+        "_id": "40"
+    },
+    {
+        "name": "Five of Pentacles",
+        "description": "The Five of Pentacles represents financial loss, hardship, and feeling left out in the cold. It symbolizes tough times and the need for support.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Financial loss, poverty, hardship, struggle",
+        "reversedMeaning": "Recovery, renewal, improved financial situation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/0f/RWS_Tarot_05_Five_of_Pentacles.jpg",
+        "_id": "41"
+    },
+    {
+        "name": "Six of Pentacles",
+        "description": "The Six of Pentacles represents generosity, charity, and balance in giving and receiving. It symbolizes fairness in financial transactions and the importance of sharing wealth.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Generosity, charity, balance, financial support",
+        "reversedMeaning": "Selfishness, inequality, financial imbalance",
+        "image": "https://upload.wikimedia.org/wikipedia/en/1/1d/RWS_Tarot_06_Six_of_Pentacles.jpg",
+        "_id": "42"
+    },
+    {
+        "name": "Seven of Pentacles",
+        "description": "The Seven of Pentacles represents patience, perseverance, and long-term investment. It symbolizes waiting for the fruits of your labor and reflecting on progress.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Patience, hard work, investment, progress",
+        "reversedMeaning": "Impatience, lack of progress, poor investments",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7d/RWS_Tarot_07_Seven_of_Pentacles.jpg",
+        "_id": "43"
+    },
+    {
+        "name": "Eight of Pentacles",
+        "description": "The Eight of Pentacles represents hard work, dedication, and mastery. It symbolizes focusing on honing skills and putting in effort to achieve excellence.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Hard work, dedication, focus, mastery, craftsmanship",
+        "reversedMeaning": "Lack of effort, poor workmanship, shortcuts",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/0b/RWS_Tarot_08_Eight_of_Pentacles.jpg",
+        "_id": "44"
+    },
+    {
+        "name": "Nine of Pentacles",
+        "description": "The Nine of Pentacles represents self-sufficiency, luxury, and enjoying the fruits of one's labor. It symbolizes financial independence and personal achievement.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Self-sufficiency, luxury, financial independence, comfort",
+        "reversedMeaning": "Financial dependence, insecurity, lack of fulfillment",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2f/RWS_Tarot_09_Nine_of_Pentacles.jpg",
+        "_id": "45"
+    },
+    {
+        "name": "Ten of Pentacles",
+        "description": "The Ten of Pentacles represents wealth, family legacy, and long-term stability. It symbolizes material success that benefits future generations and the fulfillment of family goals.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Wealth, family legacy, long-term stability, inheritance",
+        "reversedMeaning": "Financial instability, family conflict, lack of security",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/91/RWS_Tarot_10_Ten_of_Pentacles.jpg",
+        "_id": "46"
+    },
+    {
+        "name": "Page of Pentacles",
+        "description": "The Page of Pentacles represents new financial opportunities, learning, and the pursuit of goals. It symbolizes the enthusiasm to start new projects and develop material skills.",
+        "suit": "Pentacles",
+        "uprightMeaning": "New opportunities, learning, practical goals, ambition",
+        "reversedMeaning": "Lack of focus, missed opportunities, procrastination",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/92/RWS_Tarot_11_Page_of_Pentacles.jpg",
+        "_id": "47"
+    },
+    {
+        "name": "Knight of Pentacles",
+        "description": "The Knight of Pentacles represents responsibility, hard work, and diligence. It symbolizes a slow but steady approach to achieving long-term goals.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Hard work, responsibility, diligence, routine",
+        "reversedMeaning": "Stagnation, laziness, lack of progress",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/33/RWS_Tarot_12_Knight_of_Pentacles.jpg",
+        "_id": "48"
+    },
+    {
+        "name": "Queen of Pentacles",
+        "description": "The Queen of Pentacles represents nurturing, practicality, and financial security. She symbolizes the ability to balance material success with caring for others.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Nurturing, financial security, practicality, resourcefulness",
+        "reversedMeaning": "Financial insecurity, neglect, imbalance",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/5e/RWS_Tarot_13_Queen_of_Pentacles.jpg",
+        "_id": "49"
+    },
+    {
+        "name": "King of Pentacles",
+        "description": "The King of Pentacles represents wealth, stability, and leadership. He symbolizes mastery over material resources and the ability to create long-lasting success.",
+        "suit": "Pentacles",
+        "uprightMeaning": "Wealth, stability, leadership, financial security",
+        "reversedMeaning": "Financial recklessness, greed, arrogance",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/a4/RWS_Tarot_14_King_of_Pentacles.jpg",
+        "_id": "50"
+    },
+    {
+        "name": "Ace of Swords",
+        "description": "The Ace of Swords represents new ideas, clarity, and mental breakthroughs. It symbolizes the power of the mind, logic, and communication to overcome obstacles.",
+        "suit": "Swords",
+        "uprightMeaning": "Mental clarity, truth, new ideas, breakthroughs",
+        "reversedMeaning": "Confusion, misinformation, lack of clarity",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/5a/RWS_Tarot_01_Ace_of_Swords.jpg",
+        "_id": "51"
+    },
+    {
+        "name": "Two of Swords",
+        "description": "The Two of Swords represents decisions, indecision, and balancing opposing forces. It symbolizes the need to make a choice or find a way to resolve conflict.",
+        "suit": "Swords",
+        "uprightMeaning": "Indecision, balance, choices, contemplation",
+        "reversedMeaning": "Avoidance, confusion, blocked decisions",
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/db/RWS_Tarot_02_Two_of_Swords.jpg",
+        "_id": "52"
+    },
+    {
+        "name": "Three of Swords",
+        "description": "The Three of Swords represents heartbreak, emotional pain, and sorrow. It symbolizes the experience of loss, betrayal, or hurtful truths.",
+        "suit": "Swords",
+        "uprightMeaning": "Heartbreak, betrayal, emotional pain, sorrow",
+        "reversedMeaning": "Healing, forgiveness, recovery from pain",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/3a/RWS_Tarot_03_Three_of_Swords.jpg",
+        "_id": "53"
+    },
+    {
+        "name": "Four of Swords",
+        "description": "The Four of Swords represents rest, recovery, and contemplation. It symbolizes the need to take a break and allow the mind and body to heal.",
+        "suit": "Swords",
+        "uprightMeaning": "Rest, recovery, contemplation, meditation",
+        "reversedMeaning": "Exhaustion, burnout, lack of mental clarity",
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/da/RWS_Tarot_04_Four_of_Swords.jpg",
+        "_id": "54"
+    },
+    {
+        "name": "Five of Swords",
+        "description": "The Five of Swords represents conflict, tension, and the aftermath of battle. It symbolizes the potential for loss, betrayal, and hollow victories.",
+        "suit": "Swords",
+        "uprightMeaning": "Conflict, tension, betrayal, hollow victory",
+        "reversedMeaning": "Resolution, making amends, learning from conflict",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/c3/RWS_Tarot_05_Five_of_Swords.jpg",
+        "_id": "55"
+    },
+    {
+        "name": "Six of Swords",
+        "description": "The Six of Swords represents transition, moving on, and leaving behind difficulties. It symbolizes a journey towards calmer waters, physically or emotionally.",
+        "suit": "Swords",
+        "uprightMeaning": "Transition, moving on, emotional healing, journey",
+        "reversedMeaning": "Stagnation, resistance to change, unresolved issues",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/c1/RWS_Tarot_06_Six_of_Swords.jpg",
+        "_id": "56"
+    },
+    {
+        "name": "Seven of Swords",
+        "description": "The Seven of Swords represents deception, stealth, and avoiding confrontation. It symbolizes the need to be cautious and aware of dishonesty or hidden agendas.",
+        "suit": "Swords",
+        "uprightMeaning": "Deception, stealth, dishonesty, avoidance",
+        "reversedMeaning": "Honesty, exposure of lies, coming clean",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/02/RWS_Tarot_07_Seven_of_Swords.jpg",
+        "_id": "57"
+    },
+    {
+        "name": "Eight of Swords",
+        "description": "The Eight of Swords represents restriction, fear, and feeling trapped. It symbolizes a sense of being trapped by circumstances, often due to self-imposed limitations.",
+        "suit": "Swords",
+        "uprightMeaning": "Restriction, fear, self-imposed limitations, being trapped",
+        "reversedMeaning": "Liberation, release from limitations, overcoming fear",
+        "image": "https://upload.wikimedia.org/wikipedia/en/1/18/RWS_Tarot_08_Eight_of_Swords.jpg",
+        "_id": "58"
+    },
+    {
+        "name": "Nine of Swords",
+        "description": "The Nine of Swords represents anxiety, worry, and sleepless nights. It symbolizes mental distress and the burden of fears or guilt.",
+        "suit": "Swords",
+        "uprightMeaning": "Anxiety, worry, fear, sleepless nights, nightmares",
+        "reversedMeaning": "Releasing fear, overcoming anxiety, facing reality",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/7c/RWS_Tarot_09_Nine_of_Swords.jpg",
+        "_id": "59"
+    },
+    {
+        "name": "Ten of Swords",
+        "description": "The Ten of Swords represents betrayal, rock bottom, and the end of a painful cycle. It symbolizes the finality of a situation, often accompanied by a sense of loss or devastation.",
+        "suit": "Swords",
+        "uprightMeaning": "Betrayal, rock bottom, painful endings, finality",
+        "reversedMeaning": "Healing from betrayal, new beginnings after loss",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/47/RWS_Tarot_10_Ten_of_Swords.jpg",
+        "_id": "60"
+    },
+    {
+        "name": "Page of Swords",
+        "description": "The Page of Swords represents curiosity, new ideas, and intellectual exploration. It symbolizes a youthful, energetic approach to learning and communication.",
+        "suit": "Swords",
+        "uprightMeaning": "Curiosity, new ideas, intellectual exploration, communication",
+        "reversedMeaning": "Impatience, misinformation, gossip, lack of focus",
+        "image": "https://upload.wikimedia.org/wikipedia/en/e/e9/RWS_Tarot_11_Page_of_Swords.jpg",
+        "_id": "61"
+    },
+    {
+        "name": "Knight of Swords",
+        "description": "The Knight of Swords represents swift action, decisiveness, and assertiveness. It symbolizes a fast-moving pursuit of goals, often driven by passion or logic.",
+        "suit": "Swords",
+        "uprightMeaning": "Swift action, decisiveness, courage, assertiveness",
+        "reversedMeaning": "Impulsiveness, recklessness, haste, lack of thought",
+        "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/RWS_Tarot_12_Knight_of_Swords.jpg",
+        "_id": "62"
+    },
+    {
+        "name": "Queen of Swords",
+        "description": "The Queen of Swords represents intellect, clarity, and independence. She symbolizes the ability to see through illusion, speak with honesty, and make wise decisions.",
+        "suit": "Swords",
+        "uprightMeaning": "Intellect, clarity, independence, honesty, wisdom",
+        "reversedMeaning": "Coldness, bitterness, isolation, harsh judgment",
+        "image": "https://upload.wikimedia.org/wikipedia/en/f/f6/RWS_Tarot_13_Queen_of_Swords.jpg",
+        "_id": "63"
+    },
+    {
+        "name": "King of Swords",
+        "description": "The King of Swords represents authority, intellect, and leadership. He symbolizes a clear mind, fairness, and the ability to make decisions based on logic rather than emotion.",
+        "suit": "Swords",
+        "uprightMeaning": "Authority, intellect, leadership, fairness",
+        "reversedMeaning": "Tyranny, coldness, misuse of power, manipulation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/38/RWS_Tarot_14_King_of_Swords.jpg",
+        "_id": "64"
+    },
+    {
+        "name": "Ace of Wands",
+        "description": "The Ace of Wands represents new beginnings, inspiration, and creative energy. It symbolizes the spark of a new idea, opportunity, or creative project.",
+        "suit": "Wands",
+        "uprightMeaning": "Inspiration, new beginnings, creative energy, potential",
+        "reversedMeaning": "Lack of inspiration, missed opportunities, delayed projects",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/45/RWS_Tarot_01_Ace_of_Wands.jpg",
+        "_id": "65"
+    },
+    {
+        "name": "Two of Wands",
+        "description": "The Two of Wands represents planning, foresight, and looking ahead. It symbolizes the exploration of new possibilities and the courage to take the first step toward growth.",
+        "suit": "Wands",
+        "uprightMeaning": "Planning, foresight, decision-making, exploration",
+        "reversedMeaning": "Uncertainty, lack of direction, missed opportunities",
+        "image": "https://upload.wikimedia.org/wikipedia/en/f/fd/RWS_Tarot_02_Two_of_Wands.jpg",
+        "_id": "66"
+    },
+    {
+        "name": "Three of Wands",
+        "description": "The Three of Wands represents progress, expansion, and the early stages of success. It symbolizes looking ahead with optimism and seeing the fruits of your efforts beginning to materialize.",
+        "suit": "Wands",
+        "uprightMeaning": "Progress, expansion, optimism, early success",
+        "reversedMeaning": "Setbacks, delays, lack of progress, frustration",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/31/RWS_Tarot_03_Three_of_Wands.jpg",
+        "_id": "67"
+    },
+    {
+        "name": "Four of Wands",
+        "description": "The Four of Wands represents celebration, harmony, and stability. It symbolizes moments of joy, homecoming, and the achievement of a solid foundation.",
+        "suit": "Wands",
+        "uprightMeaning": "Celebration, harmony, stability, joy",
+        "reversedMeaning": "Disruptions, lack of stability, conflict, delays in celebration",
+        "image": "https://upload.wikimedia.org/wikipedia/en/a/ab/RWS_Tarot_04_Four_of_Wands.jpg",
+        "_id": "68"
+    },
+    {
+        "name": "Five of Wands",
+        "description": "The Five of Wands represents competition, conflict, and challenges. It symbolizes rivalry, tension, or a situation where multiple forces are vying for attention.",
+        "suit": "Wands",
+        "uprightMeaning": "Conflict, competition, challenges, struggle",
+        "reversedMeaning": "Resolution of conflict, cooperation, compromise",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/3d/RWS_Tarot_05_Five_of_Wands.jpg",
+        "_id": "69"
+    },
+    {
+        "name": "Six of Wands",
+        "description": "The Six of Wands represents victory, recognition, and achievement. It symbolizes public acclaim, personal success, and the pride that comes from accomplishing goals.",
+        "suit": "Wands",
+        "uprightMeaning": "Victory, recognition, achievement, success",
+        "reversedMeaning": "Lack of recognition, failure, loss of confidence",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/9e/RWS_Tarot_06_Six_of_Wands.jpg",
+        "_id": "70"
+    },
+    {
+        "name": "Seven of Wands",
+        "description": "The Seven of Wands represents challenges, competition, and standing your ground. It symbolizes the need to defend your position and overcome obstacles.",
+        "suit": "Wands",
+        "uprightMeaning": "Challenges, competition, standing your ground, perseverance",
+        "reversedMeaning": "Giving up, feeling overwhelmed, lack of courage",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/98/RWS_Tarot_07_Seven_of_Wands.jpg",
+        "_id": "71"
+    },
+    {
+        "name": "Eight of Wands",
+        "description": "The Eight of Wands represents speed, movement, and swift action. It symbolizes things moving quickly, progress, and the need to act without hesitation.",
+        "suit": "Wands",
+        "uprightMeaning": "Speed, swift action, progress, momentum",
+        "reversedMeaning": "Delays, setbacks, lack of movement, stagnation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/29/RWS_Tarot_08_Eight_of_Wands.jpg",
+        "_id": "72"
+    },
+    {
+        "name": "Nine of Wands",
+        "description": "The Nine of Wands represents resilience, endurance, and guarding against adversity. It symbolizes the ability to persevere through challenges and remain determined.",
+        "suit": "Wands",
+        "uprightMeaning": "Resilience, endurance, persistence, defending your position",
+        "reversedMeaning": "Exhaustion, burnout, giving up, lack of preparation",
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/0d/RWS_Tarot_09_Nine_of_Wands.jpg",
+        "_id": "73"
+    },
+    {
+        "name": "Ten of Wands",
+        "description": "The Ten of Wands represents burdens, responsibility, and stress. It symbolizes the weight of too many obligations and the need to delegate or let go.",
+        "suit": "Wands",
+        "uprightMeaning": "Burdens, responsibilities, stress, feeling overwhelmed",
+        "reversedMeaning": "Relief, delegation, lightening your load, letting go",
+        "image": "https://upload.wikimedia.org/wikipedia/en/d/d8/RWS_Tarot_10_Ten_of_Wands.jpg",
+        "_id": "74"
+    },
+    {
+        "name": "Page of Wands",
+        "description": "The Page of Wands represents new beginnings, inspiration, and creative exploration. It symbolizes a youthful energy filled with enthusiasm, curiosity, and potential.",
+        "suit": "Wands",
+        "uprightMeaning": "Inspiration, creative exploration, new beginnings, curiosity",
+        "reversedMeaning": "Lack of direction, impatience, lack of focus",
+        "image": "https://upload.wikimedia.org/wikipedia/en/9/91/RWS_Tarot_11_Page_of_Wands.jpg",
+        "_id": "75"
+    },
+    {
+        "name": "Knight of Wands",
+        "description": "The Knight of Wands represents action, adventure, and boldness. It symbolizes passionate pursuit of goals, often with a sense of urgency and high energy.",
+        "suit": "Wands",
+        "uprightMeaning": "Action, adventure, boldness, enthusiasm, excitement",
+        "reversedMeaning": "Impulsiveness, recklessness, lack of direction, burnout",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2f/RWS_Tarot_12_Knight_of_Wands.jpg",
+        "_id": "76"
+    },
+    {
+        "name": "Queen of Wands",
+        "description": "The Queen of Wands represents confidence, creativity, and leadership. She symbolizes a dynamic and charismatic woman who is passionate, determined, and in touch with her creativity.",
+        "suit": "Wands",
+        "uprightMeaning": "Confidence, creativity, leadership, independence",
+        "reversedMeaning": "Arrogance, lack of confidence, burnout, self-doubt",
+        "image": "https://upload.wikimedia.org/wikipedia/en/3/32/RWS_Tarot_13_Queen_of_Wands.jpg",
+        "_id": "77"
+    },
+    {
+        "name": "King of Wands",
+        "description": "The King of Wands represents authority, vision, and leadership. He symbolizes a strong, visionary leader who is driven, determined, and capable of inspiring others.",
+        "suit": "Wands",
+        "uprightMeaning": "Leadership, vision, inspiration, charisma, determination",
+        "reversedMeaning": "Dictatorship, lack of vision, arrogance, impulsiveness",
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/58/RWS_Tarot_14_King_of_Wands.jpg",
+        "_id": "78"
+    },
+    {
+        "name": "The World",
+        "description": "The World represents completion, fulfillment, and harmony. It symbolizes the successful conclusion of a journey or cycle and the joy of integration. It is a card of achieving a sense of wholeness, peace, and understanding.",
+        "suit": "Major Arcana",
+        "uprightMeaning": "Completion, fulfillment, harmony, integration, achievement",
+        "reversedMeaning": "Incompletion, lack of closure, stagnation, unfinished business",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/4e/RWS_Tarot_21_World.jpg",
+        "_id": "79"
     }
 ]
+
