@@ -1,4 +1,3 @@
-// client/src/utils/api.ts
 
 // client/src/utils/api.ts
 export async function fetchTarotCards() {

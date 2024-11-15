@@ -2,10 +2,14 @@
 
 // server/seed.ts
 import mongoose from 'mongoose';
-import TarotCard from '../models/TarotCard';
+import TarotCard from '../models/TarotCards.js';
 import tarotData from '../seeds/tarotData.json';
-import cleanDB from '../seeds/cleanDb';
 import db from '../config/connection';
+
+// Define the cleanDB function
+const cleanDB = async () => {
+  await mongoose.connection.dropDatabase();
+};
 
 const seedDatabase = async () => {
   try {
