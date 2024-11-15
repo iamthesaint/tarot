@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import TarotReading from "./pages/TarotReading";
+// import TarotDeck from "./components/TarotDeck";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: "/reading",
         element: <TarotReading />,
       },
+      // {
+      //   path: '/deck',
+      //   element: <TarotDeck />,
+      // }
     ],
   },
 ]);
