@@ -1,11 +1,11 @@
 // client/src/main.tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Reading from "./components/Reading";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +25,14 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      {
+        path: "/reading",
+        element: <Reading />,
+      },
     ],
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <RouterProvider router={router} />

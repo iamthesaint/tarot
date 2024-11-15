@@ -38,7 +38,6 @@ const Reading: React.FC = () => {
   }, []);
 
 // 3 card drawing
-
 const drawThreeCardReading = () => {
   const selectedCards: DrawnCard[] = (['past', 'present', 'future'] as ('past' | 'present' | 'future')[]).map((position) => {
     const card = cards[Math.floor(Math.random() * cards.length)];
