@@ -1,6 +1,6 @@
 // server/src/schemas/TypeDefs.ts
 
-import gql from 'graphql-tag';
+import { gql } from 'graphql-tag';
 
 const typeDefs = gql`
   type TarotCard {
@@ -13,9 +13,32 @@ const typeDefs = gql`
     image: String
   }
 
-  type Query {
-    tarotCards: [TarotCard]
+  type Auth {
+    token: ID!
+    user: User
   }
+
+  type User {
+    _id: ID
+    username: String
+    email: String
+    password: String
+    savedCards: [TarotCard]
+  }
+
+#add query
+  type Query {
+    me: User
+  }
+
+# add mutation
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveCard(cardId: ID!): User
+    removeCard(cardId: ID!): User
+  }
+
 `;
 
 export default typeDefs;
