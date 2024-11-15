@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { fetchTarotCards } from "../utils/api";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated } from "@react-spring/web";
 
 interface TarotCard {
   _id: string;
@@ -64,20 +64,22 @@ switch (card.position) {
   }
 }
 
-  // animation settings for each card
-  const springs = useSpring({
-    from: { opacity: 0, transform: "rotateY(90deg)" },
-    to: { opacity: 1, transform: "rotateY(0deg)" },
-    config: { mass: 5, tension: 500, friction: 80 },
-  });
+return (
+  <div className="reading-container">
+    <h1>Three-Card Tarot Reading</h1>
+    <button onClick={drawThreeCardReading}>Draw 3 Cards...</button>
 
-  return (
-    <div className="reading-container">
-      <h1>Three-Card Tarot Reading</h1>
-      <button onClick={drawThreeCardReading}>Draw 3 Cards...</button>
+    <div className="reading-results">
+      {drawnCards.map(({ card, isUpright }, index) => {
+        // Use useSpring for each card
+        const springs = useSpring({
+          from: { opacity: 0, transform: "rotateY(90deg)" },
+          to: { opacity: 1, transform: "rotateY(0deg)" },
+          config: { mass: 5, tension: 500, friction: 80 },
+          delay: index * 200,
+        });
 
-      <div className="reading-results">
-        {drawnCards.map(({ card, isUpright }, index) => (
+        return (
           <animated.div key={index} style={springs} className="card">
             <img
               src={card.image}
@@ -89,10 +91,12 @@ switch (card.position) {
               <strong>{isUpright ? "Upright" : "Reversed"}:</strong>{" "}
               {isUpright ? card.uprightMeaning : card.reversedMeaning}
             </p>
+            <p>{getPositionDescription({ card, isUpright, position: "past" })}</p>
           </animated.div>
-        ))}
-      </div>
+        );
+      })}
     </div>
+  </div>
   );
 };
 
