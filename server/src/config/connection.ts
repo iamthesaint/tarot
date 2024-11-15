@@ -1,10 +1,9 @@
-
 import dotenv from 'dotenv';
 dotenv.config();
 
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || '';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/tarot';
 
 const db = async (): Promise<typeof mongoose.connection> => {
   try {
@@ -13,7 +12,7 @@ const db = async (): Promise<typeof mongoose.connection> => {
     return mongoose.connection;
   } catch (error) {
     console.error('Database connection error:', error);
-    throw new Error('Database connection failed.');
+    throw new Error(`Database connection failed, ${MONGODB_URI}`);
   }
 };
 
