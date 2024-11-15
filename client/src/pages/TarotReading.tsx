@@ -53,12 +53,12 @@ const FlippableCard: React.FC<{
   const bind = useDrag(({ down, movement: [mx, my], memo = [x.get(), y.get()] }) => {
     setDragging(down);
     if (!down) {
-      // check if the card is dropped within the drop area
-      const dropArea = dropAreaRef?.current?.getBoundingClientRect();
+      // check to be sure the card is dropped within the drop area
+      const dropArea = dropAreaRef.current?.getBoundingClientRect();
       const cardArea = {
         left: memo[0] + mx,
         top: memo[1] + my,
-        right: memo[0] + mx + 150, 
+        right: memo[0] + mx + 150,
         bottom: memo[1] + my + 250,
       };
 
@@ -69,8 +69,13 @@ const FlippableCard: React.FC<{
         cardArea.top >= dropArea.top &&
         cardArea.bottom <= dropArea.bottom
       ) {
-        api.start({ x: mx + memo[0], y: my + memo[1] });
+        // if valid drop: snap into place and flip over
+        api.start({ x: dropArea.left - cardArea.left, y: dropArea.top - cardArea.top });
+        setTimeout(() => {
+          onClick();
+        }, 300); // delay set to allow snapping animation to complete
       } else {
+        // snap back to original position if not dropped in a valid area
         api.start({ x: 0, y: 0 });
       }
     } else {
@@ -81,20 +86,20 @@ const FlippableCard: React.FC<{
 
   return (
     <animated.div
-    {...bind()}
-    onClick={onClick}
-    className={`tarot-card ${selected ? "selected" : ""}`}
-    style={{
-      x,
-      y,
-      transform: `rotate(${index * 8 - 100}deg)`, // fan cards
-      position: "absolute",
-      left: "65%",
-      top: "100px",
-      transformOrigin: "bottom center",
-      touchAction: "none",
-    }}
-  >
+      {...bind()}
+      onClick={onClick}
+      className={`tarot-card ${selected ? "selected" : ""}`}
+      style={{
+        x,
+        y,
+        transform: `rotate(${index * 8 - 100}deg)`, // fan cards
+        position: "absolute",
+        left: "65%",
+        top: "100px",
+        transformOrigin: "bottom center",
+        touchAction: "none",
+      }}
+    >
       <animated.div
         style={{
           opacity: opacity.to((o) => 1 - o),
@@ -105,8 +110,7 @@ const FlippableCard: React.FC<{
           backfaceVisibility: "hidden",
         }}
       >
-        <div className="card-back">✨
-        </div>
+        <div className="card-back">✨</div>
       </animated.div>
       <animated.div
         style={{
@@ -197,21 +201,23 @@ const TarotReading: React.FC = () => {
   return (
     <div className="reading-container">
       <h1>Unveil Your Path</h1>
-      <div className="tarot-board">
-        {deck.map((card, index) => (
-          <FlippableCard
-            key={card._id}
-            card={card}
-            index={index}
-            onClick={() => handleCardClick(card)}
-            selected={selectedCards.some((c) => c.card._id === card._id)}
-            flipped={flippedCards[card._id] || false}
-            dropAreaRef={dropAreaRef}
-          />
-        ))}
-      </div>
-      <div className="drop-area" ref={dropAreaRef}>
-        <h2>Draw Three Cards and Drop Here:</h2>
+      <div className="layout">
+        <div className="drop-area" ref={dropAreaRef}>
+          <h2>Draw Three Cards and Drop Here:</h2>
+        </div>
+        <div className="tarot-board">
+          {deck.map((card, index) => (
+            <FlippableCard
+              key={card._id}
+              card={card}
+              index={index}
+              onClick={() => handleCardClick(card)}
+              selected={selectedCards.some((c) => c.card._id === card._id)}
+              flipped={flippedCards[card._id] || false}
+              dropAreaRef={dropAreaRef}
+            />
+          ))}
+        </div>
       </div>
       {selectedCards.length === 3 && (
         <div className="reading-results">
@@ -228,5 +234,4 @@ const TarotReading: React.FC = () => {
     </div>
   );
 };
-
 export default TarotReading;

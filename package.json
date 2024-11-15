@@ -8,7 +8,7 @@
     "line-21": "The concurrently npm tool allows us to execute two CLI processes... concurrently!"
   },
   "scripts": {
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start": "concurrently \"npm run start:server\" \"wait-on tcp:3001 && npm run start:client\"",
     "start:server": "cd server && npm run start",
     "start:client": "cd client && npm run dev",
     "start:dev": "concurrently \"cd server && npm run watch\" \"wait-on tcp:3001 && cd client && npm run dev\"",
