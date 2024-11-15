@@ -1,12 +1,13 @@
 import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
-import tarotCardSchema from './TarotCard';
+import tarotCardSchema from './TarotCards';
 
 export interface IUser extends Document {
     _id: string;
     username: string;
     email: string;
     password: string;
+    isCorrectPassword: (password: string) => Promise<boolean>;
     savedCards: string[];
 }
 
