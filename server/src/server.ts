@@ -5,6 +5,7 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 
 import { typeDefs, resolvers } from './schemas/index.js';
+import tarotRoutes from './routes/tarotRoutes.js'
 
 const server = new ApolloServer({
   typeDefs,
@@ -23,6 +24,8 @@ const startApolloServer = async () => {
   app.use(express.json());
 
   app.use('/graphql', expressMiddleware(server));
+
+  app.use('/api', tarotRoutes);
 
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
