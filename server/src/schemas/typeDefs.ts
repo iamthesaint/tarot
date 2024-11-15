@@ -29,6 +29,8 @@ const typeDefs = gql`
 #add query
   type Query {
     me: User
+    tarotCards: [TarotCard] # steph added this
+    user(userId: ID!): User
   }
 
 # add mutation

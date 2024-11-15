@@ -7,7 +7,7 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Reading from "./components/Reading";
+import TarotReading from "./pages/TarotReading";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/reading",
-        element: <Reading />,
+        element: <TarotReading />,
       },
     ],
   },
