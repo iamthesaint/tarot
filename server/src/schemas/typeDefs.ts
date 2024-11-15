@@ -13,6 +13,9 @@ const typeDefs = gql`
     image: String
   }
 
-# add query
-# add mutation
+  type Query {
+    tarotCards: [TarotCard]
+  }
+`;
 
+export default typeDefs;
