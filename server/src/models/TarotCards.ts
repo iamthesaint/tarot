@@ -1,6 +1,6 @@
 import { type Document, model, Schema } from 'mongoose';
 
-export interface ITarotCard extends Document {
+interface ITarotCard extends Document {
   name: string;
   description: string;
   suit: string;
@@ -19,4 +19,6 @@ const tarotCardSchema: Schema = new Schema({
 });
 
 const TarotCard = model<ITarotCard>('TarotCard', tarotCardSchema);
-export default TarotCard
+
+export {type ITarotCard, tarotCardSchema};
+export default TarotCard;

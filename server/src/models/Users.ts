@@ -1,6 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
-import tarotCardSchema from './TarotCards';
 import tarotCardSchema from './TarotCards.js';
 
 export interface IUser extends Document {
