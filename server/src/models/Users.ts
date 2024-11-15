@@ -7,6 +7,7 @@ export interface IUser extends Document {
     username: string;
     email: string;
     password: string;
+    isCorrectPassword: (password: string) => Promise<boolean>;
     savedCards: string[];
 }
 
