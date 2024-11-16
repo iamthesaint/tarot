@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { useSpring, animated } from "react-spring";
 import { useDrag } from "@use-gesture/react";
 import "./TarotReading.css";
 
+// tarot card type
 export interface TarotCard {
   _id: string;
   name: string;
@@ -13,12 +14,14 @@ export interface TarotCard {
   reversedMeaning: string;
 }
 
+// drawn card type
 export interface DrawnCard {
   card: TarotCard;
   isUpright: boolean;
   position: "past" | "present" | "future";
 }
 
+// get tarot cards query
 export const GET_TAROT_CARDS = gql`
   query GetTarotCards {
     tarotCards {
@@ -32,57 +35,37 @@ export const GET_TAROT_CARDS = gql`
   }
 `;
 
+// flippable card component
 const FlippableCard: React.FC<{
   card: TarotCard;
   index: number;
   onClick: () => void;
   selected: boolean;
   flipped: boolean;
-  dropAreaRef: React.RefObject<HTMLDivElement>;
-}> = ({ card, index, onClick, selected, flipped, dropAreaRef }) => {
-  const [dragging, setDragging] = useState(false);
-
+  canFlip: boolean;
+}> = ({ card, index, onClick, selected, flipped, canFlip }) => {
   const [{ x, y, transform, opacity }, api] = useSpring(() => ({
     x: 0,
     y: 0,
-    opacity: flipped ? 1 : 0,
-    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    opacity: flipped && canFlip ? 1 : 0,
+    transform: `perspective(600px) rotateX(${flipped && canFlip ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 },
   }));
 
-  const bind = useDrag(({ down, movement: [mx, my], memo = [x.get(), y.get()] }) => {
-    setDragging(down);
-    if (!down) {
-      // check to be sure the card is dropped within the drop area
-      const dropArea = dropAreaRef.current?.getBoundingClientRect();
-      const cardArea = {
-        left: memo[0] + mx,
-        top: memo[1] + my,
-        right: memo[0] + mx + 150,
-        bottom: memo[1] + my + 250,
-      };
-
-      if (
-        dropArea &&
-        cardArea.left >= dropArea.left &&
-        cardArea.right <= dropArea.right &&
-        cardArea.top >= dropArea.top &&
-        cardArea.bottom <= dropArea.bottom
-      ) {
-        // if valid drop: snap into place and flip over
-        api.start({ x: dropArea.left - cardArea.left, y: dropArea.top - cardArea.top });
-        setTimeout(() => {
-          onClick();
-        }, 300); // delay set to allow snapping animation to complete
-      } else {
-        // snap back to original position if not dropped in a valid area
-        api.start({ x: 0, y: 0 });
-      }
-    } else {
-      api.start({ x: mx + memo[0], y: my + memo[1] });
+  const bind = useDrag(
+    ({ down, movement: [mx, my], memo = [x.get(), y.get()] }) => {
+      api.start({ x: mx + memo[0], y: my + memo[1], immediate: down });
+      return memo;
     }
-    return memo;
-  });
+  );
+
+  useEffect(() => {
+    if (canFlip) {
+      api.start({ transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+        opacity: flipped ? 1 : 0,
+      });
+    }
+  }, [flipped, canFlip]);
 
   return (
     <animated.div
@@ -92,9 +75,9 @@ const FlippableCard: React.FC<{
       style={{
         x,
         y,
-        transform: `rotate(${index * 8 - 100}deg)`, // fan cards
+        transform: transform.to((t) => `${t} rotate(${index * 8 - 100}deg)`),
         position: "absolute",
-        left: "65%",
+        left: "50%",
         top: "100px",
         transformOrigin: "bottom center",
         touchAction: "none",
@@ -131,6 +114,7 @@ const FlippableCard: React.FC<{
   );
 };
 
+// tarot reading component
 const TarotReading: React.FC = () => {
   const { loading, error, data } = useQuery(GET_TAROT_CARDS, {
     onCompleted: (data) => {
@@ -143,15 +127,11 @@ const TarotReading: React.FC = () => {
   const [flippedCards, setFlippedCards] = useState<{ [key: string]: boolean }>(
     {}
   );
-  const dropAreaRef = useRef<HTMLDivElement>(null);
+  const [allCardsDrawn, setAllCardsDrawn] = useState(false);
 
   useEffect(() => {
     if (data && data.tarotCards) {
-      // randomly select 50 unique cards from the full deck
-      const shuffledDeck = [...data.tarotCards].sort(() => 0.5 - Math.random());
-      const selectedDeck = shuffledDeck.slice(0, 50);
-      setDeck(selectedDeck);
-      setFlippedCards({});
+      setDeck([...data.tarotCards].sort(() => Math.random() - 0.5));
     }
   }, [data]);
 
@@ -170,10 +150,13 @@ const TarotReading: React.FC = () => {
         | "future";
       setSelectedCards([...selectedCards, { card, isUpright, position }]);
       setFlippedCards({ ...flippedCards, [card._id]: true });
-    } else if (selectedCards.some((c) => c.card._id === card._id)) {
-      setSelectedCards(selectedCards.filter((c) => c.card._id !== card._id));
-      setFlippedCards({ ...flippedCards, [card._id]: false });
     }
+  };
+  const resetReading = () => {
+    setSelectedCards([]);
+    setFlippedCards({});
+    setDeck([...deck].sort(() => Math.random() - 0.5));
+    setAllCardsDrawn(false);
   };
 
   const getPositionDescription = (card: DrawnCard): string => {
@@ -193,37 +176,27 @@ const TarotReading: React.FC = () => {
     }
   };
 
-  const resetReading = () => {
-    setSelectedCards([]);
-    setFlippedCards({});
-  };
-
   return (
     <div className="reading-container">
       <h1>Unveil Your Path</h1>
-      <div className="layout">
-        <div className="drop-area" ref={dropAreaRef}>
-          <h2>Draw Three Cards and Drop Here:</h2>
-        </div>
-        <div className="tarot-board">
-          {deck.map((card, index) => (
-            <FlippableCard
-              key={card._id}
-              card={card}
-              index={index}
-              onClick={() => handleCardClick(card)}
-              selected={selectedCards.some((c) => c.card._id === card._id)}
-              flipped={flippedCards[card._id] || false}
-              dropAreaRef={dropAreaRef}
-            />
-          ))}
-        </div>
+      <div className="tarot-board">
+        {deck.map((card, index) => (
+          <FlippableCard
+            key={card._id}
+            card={card}
+            index={index}
+            onClick={() => handleCardClick(card)}
+            selected={selectedCards.some((c) => c.card._id === card._id)}
+            flipped={flippedCards[card._id] || false}
+            canFlip={allCardsDrawn}
+          />
+        ))}
       </div>
       {selectedCards.length === 3 && (
         <div className="reading-results">
           {selectedCards.map((drawnCard, index) => (
             <div key={index} className="drawn-card">
-              <h2>{drawnCard.position}</h2>
+              <h2>{drawnCard.position.toUpperCase()}</h2>
               <h3>{drawnCard.card.name}</h3>
               <p>{getPositionDescription(drawnCard)}</p>
             </div>
@@ -234,4 +207,5 @@ const TarotReading: React.FC = () => {
     </div>
   );
 };
+
 export default TarotReading;

@@ -8,6 +8,7 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import cleanDb from './cleanDB.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,7 +22,7 @@ console.log('tarotData:', tarotData);
 const seedDatabase = async () => {
   try {
     await db();
-    // await cleanDB();
+    await cleanDb();
 
     await TarotCard.insertMany(tarotData);
     console.log('Successfully seeded tarot cards! 🌙 🪐');
