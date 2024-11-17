@@ -1,12 +1,12 @@
-import express from 'express';
-import db from './config/connection.js';
-import cors from 'cors';
+import express from "express";
+import db from "./config/connection.js";
+import cors from "cors";
 
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
 
-import typeDefs from './schemas/typeDefs.js';
-import resolvers from './schemas/resolvers.js';
+import typeDefs from "./schemas/typeDefs.js";
+import resolvers from "./schemas/resolvers.js";
 
 const server = new ApolloServer({
   typeDefs,
@@ -24,9 +24,9 @@ const startApolloServer = async () => {
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
 
-    app.use(cors({ origin: 'http://localhost:3000' }));
+    app.use(cors({ origin: "http://localhost:3000" }));
 
-    app.use('/graphql', expressMiddleware(server));
+    app.use("/graphql", expressMiddleware(server));
 
     //catch all for any request that doesn't match an existing route
     app.use((_req, res) => {
@@ -38,7 +38,7 @@ const startApolloServer = async () => {
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
     });
   } catch (error) {
-    console.error('Error starting server:', error);
+    console.error("Error starting server:", error);
   }
 };
 

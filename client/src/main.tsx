@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import TarotReading from "./pages/TarotReading";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
