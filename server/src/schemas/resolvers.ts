@@ -1,5 +1,6 @@
 // server/src/schemas/resolvers.ts
 import User from "../models/Users";
+import Reading from "../models/Reading";
 import { signToken } from "../services/auth";
 
 interface addTarotCardArgs {
@@ -53,7 +54,7 @@ const resolvers = {
             throw new Error
         },
 
-        //save card
+        //save card   //todo: do I call the "card" from Reading.ts or TarotCards.ts?
         saveCard: async (_parents: unknown, { cardId }: { cardId: string }, context: any) => {
             if (context.user) {
                 return User.findOneAndUpdate(
@@ -74,8 +75,13 @@ const resolvers = {
                 );
             }
             throw new Error('You need to be logged in!');
-        }
-
+        },
+        // Save Reading
+        saveReading: async (_parent: any, args: any, context: any) => {
+            if (context.user) {
+                return Reading.create({ ...args, user: context.user._id });
+            }
+        },
     }
 };
 

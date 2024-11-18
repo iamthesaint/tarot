@@ -26,6 +26,14 @@ const typeDefs = gql`
     savedCards: [TarotCard]
   }
 
+  type Reading {
+    _id: ID
+    cards: [TarotCard]
+    date: Date
+    reflections: [String]
+    user: User
+  }
+
 #add query
   type Query {
     me: User
@@ -37,6 +45,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveCard(cardId: ID!): User
     removeCard(cardId: ID!): User
+    saveReading(cards: [TarotCard], reflections: [String]): Reading
   }
 
 `;
