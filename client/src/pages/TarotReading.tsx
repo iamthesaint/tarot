@@ -61,7 +61,8 @@ const FlippableCard: React.FC<{
 
   useEffect(() => {
     if (canFlip) {
-      api.start({ transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+      api.start({
+        transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
         opacity: flipped ? 1 : 0,
       });
     }
@@ -86,7 +87,7 @@ const FlippableCard: React.FC<{
       <animated.div
         style={{
           opacity: opacity.to((o) => 1 - o),
-          transform,
+          transform: `perspective(600px) rotateX(0deg)`,
           position: "absolute",
           width: "100%",
           height: "100%",
@@ -95,10 +96,12 @@ const FlippableCard: React.FC<{
       >
         <div className="card-back">✨</div>
       </animated.div>
+
+      {/* Front of the card */}
       <animated.div
         style={{
           opacity,
-          transform: transform.to((t) => `${t} rotateX(180deg)`),
+          transform: `perspective(600px) rotateX(180deg)`,
           position: "absolute",
           width: "100%",
           height: "100%",
@@ -118,10 +121,11 @@ const FlippableCard: React.FC<{
 const TarotReading: React.FC = () => {
   const { loading, error, data } = useQuery(GET_TAROT_CARDS, {
     onCompleted: (data) => {
-      console.log("Fetched tarot cards:", data.tarotCards);
+      if (data && data.tarotCards) {
+        setDeck([...data.tarotCards].sort(() => Math.random() - 0.5));
+      }
     },
   });
-
   const [selectedCards, setSelectedCards] = useState<DrawnCard[]>([]);
   const [deck, setDeck] = useState<TarotCard[]>([]);
   const [flippedCards, setFlippedCards] = useState<{ [key: string]: boolean }>(
@@ -130,13 +134,13 @@ const TarotReading: React.FC = () => {
   const [allCardsDrawn, setAllCardsDrawn] = useState(false);
 
   useEffect(() => {
-    if (data && data.tarotCards) {
-      setDeck([...data.tarotCards].sort(() => Math.random() - 0.5));
+    if (selectedCards.length === 3) {
+      setAllCardsDrawn(true);
     }
-  }, [data]);
+  }, [selectedCards]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching cards</p>;
+  if (loading) return <p>🔮 Loading Your Cards...</p>;
+  if (error) return <p>There Was an Error Reading Your Cards...</p>;
 
   const handleCardClick = (card: TarotCard) => {
     if (
@@ -152,11 +156,19 @@ const TarotReading: React.FC = () => {
       setFlippedCards({ ...flippedCards, [card._id]: true });
     }
   };
+
   const resetReading = () => {
     setSelectedCards([]);
     setFlippedCards({});
-    setDeck([...deck].sort(() => Math.random() - 0.5));
-    setAllCardsDrawn(false);
+    setDeck((prevDeck) => {
+      // re-shuffle the deck and reset state
+      const updatedDeck = [...prevDeck];
+      selectedCards.forEach((drawnCard) => {
+        updatedDeck.push(drawnCard.card); // put drawn cards back in the deck
+      });
+      return updatedDeck.sort(() => Math.random() - 0.5); // re-shuffle
+    });
+    setAllCardsDrawn(false); // make all cards drawn = false again
   };
 
   const getPositionDescription = (card: DrawnCard): string => {
@@ -180,18 +192,45 @@ const TarotReading: React.FC = () => {
     <div className="reading-container">
       <h1>Unveil Your Path</h1>
       <div className="tarot-board">
-        {deck.map((card, index) => (
-          <FlippableCard
-            key={card._id}
-            card={card}
-            index={index}
-            onClick={() => handleCardClick(card)}
-            selected={selectedCards.some((c) => c.card._id === card._id)}
-            flipped={flippedCards[card._id] || false}
-            canFlip={allCardsDrawn}
-          />
-        ))}
+        {/* display the deck of cards */}
+        {deck.map((card, index) => {
+          // render a card if it's not part of the drawn cards (selectedCards)
+          const isDrawn = selectedCards.some(
+            (drawnCard) => drawnCard.card._id === card._id
+          );
+          return (
+            !isDrawn && (
+              <FlippableCard
+                key={card._id}
+                card={card}
+                index={index}
+                onClick={() => handleCardClick(card)}
+                selected={false}
+                flipped={false}
+                canFlip={!allCardsDrawn}
+              />
+            )
+          );
+        })}
       </div>
+
+      {selectedCards.length > 0 && (
+        <div className="drawn-cards">
+          {/* display the drawn cards */}
+          {selectedCards.map((drawnCard, index) => (
+            <FlippableCard
+              key={drawnCard.card._id}
+              card={drawnCard.card}
+              index={index}
+              onClick={() => {}}
+              selected
+              flipped
+              canFlip
+            />
+          ))}
+        </div>
+      )}
+
       {selectedCards.length === 3 && (
         <div className="reading-results">
           {selectedCards.map((drawnCard, index) => (
@@ -207,5 +246,4 @@ const TarotReading: React.FC = () => {
     </div>
   );
 };
-
 export default TarotReading;
