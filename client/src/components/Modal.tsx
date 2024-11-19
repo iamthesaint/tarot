@@ -4,5 +4,3 @@ interface Modal {
     children: React.ReactNode;
     onClose: () => void;
 }
-
-const ``
