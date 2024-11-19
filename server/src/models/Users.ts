@@ -8,7 +8,7 @@ export interface IUser extends Document {
     email: string;
     password: string;
     isCorrectPassword: (password: string) => Promise<boolean>;
-    savedCards: string[];
+    readings: string[];
 }
 
 const userSchema = new Schema<IUser>({
