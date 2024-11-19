@@ -90,11 +90,11 @@ const resolvers = {
     },
 
     //save reading
-    saveReading: async (_parent: any, args: any, context: any) => {
-      if(context.user) {
-        return Reading.create({ ...args, user: context.user._id });
-        }
-    }
+    // saveReading: async (_parent: any, args: any, context: any) => {
+    //   if(context.user) {
+    //     return Reading.create({ ...args, user: context.user._id });
+    //     }
+    // }
     },
 };
 

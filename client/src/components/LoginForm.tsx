@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-
 import Auth from '../utils/auth';
-import type { User } from '../models/User';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+
+type User = {
+  username: string;
+  email: string;
+  password: string;
+  savedBooks: string[];
+};
 
 const LoginForm = ({}: { handleModalClose: () => void }) => {
   const [userFormData, setUserFormData] = useState<User>({ username: '', email: '', password: '', savedBooks: [] });

@@ -1,4 +1,38 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
+
+
+export const SAVE_CARD = gql`
+    mutation saveCard($cardId: ID!) {
+        saveCard(cardId: $cardId) {
+        _id
+        username
+        email
+        savedCards {
+            _id
+            name
+            description
+            suit
+            uprightMeaning
+            reversedMeaning
+            image
+        }
+        }
+    }
+`;
+
+
+export const SAVE_READING = gql`
+    mutation saveReading($cards: [TarotCard] , $reflections: [String]) {
+        saveReading(cards: $cards, reflections: $reflections) {
+            _id
+            reflections
+            user {
+                _id
+                username
+            }
+        }
+    }
+`;
 
 // Mutation for logging in a user
 export const LOGIN_USER = gql`
@@ -26,38 +60,3 @@ export const ADD_USER = gql`
     }
   }
 `;
-
-//mutation for saving a reading
-export const SAVE_READING = gql`
-    mutation saveReading($cards: [TarotCard] , $reflections: [String]) {
-        saveReading(cards: $cards, reflections: $reflections) {
-            _id
-            reflections
-            user {
-                _id
-                username
-            }
-        }
-    }
-`;
-
-// export const SAVE_CARD = gql`
-//     mutation saveCard($cardId: ID!) {
-//         saveCard(cardId: $cardId) {
-//         _id
-//         username
-//         email
-//         savedCards {
-//             _id
-//             name
-//             description
-//             suit
-//             uprightMeaning
-//             reversedMeaning
-//             image
-//         }
-//         }
-//     }
-// `;
-
-

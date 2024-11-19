@@ -10,6 +10,7 @@ export const GET_ME = gql`
     }
   }
 `;
+<<<<<<< HEAD
 
 export const GET_TAROT_CARDS = gql`
     query tarotCards {
@@ -24,3 +25,5 @@ export const GET_TAROT_CARDS = gql`
         }
     }
 `;
+=======
+>>>>>>> 3c0392a9e290c35df51cd6ef293b3776859dd00e
