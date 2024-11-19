@@ -1,11 +1,14 @@
 // client/src/main.tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
+import client from "./apolloClient";
 import App from "./App";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import TarotReading from "./pages/TarotReading";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +28,16 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      {
+        path: "/reading",
+        element: <TarotReading />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <ApolloProvider client={client}>
+    <RouterProvider router={router} />
+  </ApolloProvider>
 );

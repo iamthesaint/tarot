@@ -1,6 +1,6 @@
 import { type Document, model, Schema } from 'mongoose';
-import { type ITarotCard, tarotCardSchema } from './TarotCards';
-import { type IUser } from './Users';
+import { type ITarotCard, tarotCardSchema } from './TarotCards.js';
+import { type IUser } from './Users.js';
 
 export interface DrawnCard {
     card: ITarotCard;
