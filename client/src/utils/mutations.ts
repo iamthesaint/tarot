@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { gql } from '@apollo/client';
 
 
@@ -35,10 +34,6 @@ export const SAVE_READING = gql`
     }
 `;
 
-
-=======
-import { gql } from "@apollo/client";
-
 // Mutation for logging in a user
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -65,42 +60,3 @@ export const ADD_USER = gql`
     }
   }
 `;
-
-// // Mutation for saving a book to the user's savedBooks
-// export const SAVE_BOOK = gql`
-//   mutation saveBook($book: BookInput!) {
-//     saveBook(book: $book) {
-//       _id
-//       username
-//       email
-//       savedBooks {
-//         bookId
-//         title
-//         authors
-//         description
-//         image
-//         link
-//       }
-//     }
-//   }
-// `;
-
-// // Mutation for removing a book from the user's savedBooks
-// export const REMOVE_BOOK = gql`
-//   mutation removeBook($bookId: ID!) {
-//     removeBook(bookId: $bookId) {
-//       _id
-//       username
-//       email
-//       savedBooks {
-//         bookId
-//         title
-//         authors
-//         description
-//         image
-//         link
-//       }
-//     }
-//   }
-// `;
->>>>>>> 708da2e2bdcd3a5b830a6a4a421e58a5b7e5e927
