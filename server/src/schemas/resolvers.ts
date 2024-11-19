@@ -54,7 +54,7 @@ const resolvers = {
             throw new Error
         },
 
-        //save card   //todo: do I call the "card" from Reading.ts or TarotCards.ts?
+        //save card
         saveCard: async (_parents: unknown, { cardId }: { cardId: string }, context: any) => {
             if (context.user) {
                 return User.findOneAndUpdate(
