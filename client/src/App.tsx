@@ -1,17 +1,3 @@
-// // client/src/App.tsx
-// import "./App.css";
-// import { Outlet } from "react-router-dom";
-
-// const App = () => {
-//   return (
-//     <div>
-//       <Outlet />
-//     </div>
-//   );
-// };
-
-// export default App;
-
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,

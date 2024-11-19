@@ -12,11 +12,15 @@
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "@react-spring/web": "^9.7.5",
+    "@use-gesture/react": "^10.3.1",
+    "bootstrap": "^5.3.3",
     "graphql": "^16.6.0",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "react-spring": "^9.7.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
