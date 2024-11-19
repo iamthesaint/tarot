@@ -17,7 +17,7 @@ const __dirname = dirname(__filename);
 const dataPath = path.resolve(__dirname, '../../src/seeds/tarotData.json');
 const tarotData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
-console.log('tarotData:', tarotData);
+// console.log('tarotData:', tarotData);
 
 const seedDatabase = async () => {
   try {
