@@ -10,7 +10,7 @@ const Signup = () => {
       <Row>
         <Col>
           <h1>Signup</h1>
-          <SignupForm />
+          <SignupForm handleModalClose={() => {}} />
           <p>Already have an account? </p>
         </Col>
         <Link to="/login">Login</Link>

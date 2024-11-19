@@ -29,7 +29,7 @@ const typeDefs = gql`
   type Reading {
     _id: ID
     cards: [TarotCard]
-    date: Date
+    date: String
     reflections: [String]
     user: User
   }
