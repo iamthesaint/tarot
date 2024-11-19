@@ -88,7 +88,14 @@ const resolvers = {
       }
       throw new Error("You need to be logged in!");
     },
-  },
+
+    //save reading
+    saveReading: async (_parent: any, args: any, context: any) => {
+      if(context.user) {
+        return Reading.create({ ...args, user: context.user._id });
+        }
+    }
+    },
 };
 
 export default resolvers;
