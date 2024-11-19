@@ -29,7 +29,7 @@ const typeDefs = gql`
   type Reading {
     _id: ID
     cards: [TarotCard]
-    date: Date
+    date: String
     reflections: [String]
     user: User
   }
@@ -47,7 +47,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveCard(cardId: ID!): User
     removeCard(cardId: ID!): User
-    saveReading(cards: [TarotCard], reflections: [String]): Reading
+    # saveReading(cards: [TarotCard], reflections: [String]): Reading
   }
 
 `;

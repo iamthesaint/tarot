@@ -119,7 +119,7 @@ const FlippableCard: React.FC<{
 
 // tarot reading component
 const TarotReading: React.FC = () => {
-  const { loading, error, data } = useQuery(GET_TAROT_CARDS, {
+  const { loading, error } = useQuery(GET_TAROT_CARDS, {
     onCompleted: (data) => {
       if (data && data.tarotCards) {
         setDeck([...data.tarotCards].sort(() => Math.random() - 0.5));
