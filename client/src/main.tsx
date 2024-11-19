@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import TarotReading from "./pages/TarotReading";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Account from "./pages/Account";
+import ProtectedRoute from "./utils/ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -29,9 +31,21 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/reading",
-        element: <TarotReading />,
+        path: "/account",
+        element: <Account />,
       },
+      {
+        path: "/dashboard",
+        element: (
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        ),
+      },
+      // {
+      //   path: "/reading",
+      //   element: <TarotReading />,
+      // },
     ],
   },
 ]);
