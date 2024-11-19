@@ -9,6 +9,8 @@ import { expressMiddleware } from "@apollo/server/express4";
 import typeDefs from './schemas/typeDefs.js';
 import resolvers from './schemas/resolvers.js';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const server = new ApolloServer({
   typeDefs,

@@ -17,12 +17,13 @@ const __dirname = dirname(__filename);
 const dataPath = path.resolve(__dirname, '../../src/seeds/tarotData.json');
 const tarotData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
-console.log('tarotData:', tarotData);
-
 const seedDatabase = async () => {
   try {
     await db();
+    console.log('Successfully connected to the database!');
+
     await cleanDb();
+    console.log('Successfully cleaned the database!');
 
     await TarotCard.insertMany(tarotData);
     console.log('Successfully seeded tarot cards! 🌙 🪐');
