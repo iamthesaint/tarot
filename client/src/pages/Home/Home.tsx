@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import celestial from "../../images/celestial.png";
 import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="home" style={{ backgroundImage: `url(${celestial})` }}>
+    <div className="home" style={ { backgroundColor: "black" } }> 
       <div className="overlay"></div>
       <div className="home-content-wrapper">
         <div className="topbar">
