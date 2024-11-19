@@ -5,6 +5,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="home" style={{ backgroundImage: `url(${celestial})` }}>
+      <div className="overlay"></div>
       <div className="home-content-wrapper">
         <div className="topbar">
           <Link to="/login">Login/Signup</Link>

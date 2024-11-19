@@ -3,8 +3,8 @@ import db from './config/connection.js';
 import cors from 'cors';
 import type { Request, Response } from 'express';
 
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
 
 import typeDefs from './schemas/typeDefs.js';
 import resolvers from './schemas/resolvers.js';
@@ -29,7 +29,7 @@ const startApolloServer = async () => {
 
     await server.start();
 
-    app.use('/graphql', expressMiddleware(server));
+    app.use("/graphql", expressMiddleware(server));
 
   // Serve static files from the client dist folder in production
   if (process.env.NODE_ENV === 'production') {
@@ -45,7 +45,7 @@ const startApolloServer = async () => {
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
     });
   } catch (error) {
-    console.error('Error starting server:', error);
+    console.error("Error starting server:", error);
   }
 };
 
