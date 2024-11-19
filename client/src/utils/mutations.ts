@@ -27,6 +27,20 @@ export const ADD_USER = gql`
   }
 `;
 
+//mutation for saving a reading
+export const SAVE_READING = gql`
+    mutation saveReading($cards: [TarotCard] , $reflections: [String]) {
+        saveReading(cards: $cards, reflections: $reflections) {
+            _id
+            reflections
+            user {
+                _id
+                username
+            }
+        }
+    }
+`;
+
 // export const SAVE_CARD = gql`
 //     mutation saveCard($cardId: ID!) {
 //         saveCard(cardId: $cardId) {
@@ -46,15 +60,4 @@ export const ADD_USER = gql`
 //     }
 // `;
 
-export const SAVE_READING = gql`
-    mutation saveReading($cards: [TarotCard] , $reflections: [String]) {
-        saveReading(cards: $cards, reflections: $reflections) {
-            _id
-            reflections
-            user {
-                _id
-                username
-            }
-        }
-    }
-`;
+
