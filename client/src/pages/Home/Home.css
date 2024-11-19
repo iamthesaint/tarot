@@ -1,0 +1,42 @@
+.home {
+  color: #000;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.topbar a {
+  background-color: aquamarine;
+  padding: 6px 8px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.home-content * {
+  margin-bottom: 20px;
+}
+
+.home-content-wrapper {
+  z-index: 2;
+  position: relative;
+}
