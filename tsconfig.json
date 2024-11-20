@@ -27,14 +27,16 @@
     "noImplicitOverride": true /* Ensure overriding members in derived classes are marked with an override modifier. */,
     "useUnknownInCatchVariables": true /* Ensure 'unknown' is used for catch clause variables. */
   },
-  "files": [],
-  "references": [
-    {
-      "path": "./server"
-    },
-    {
-      "path": "./client"
-    }
-  ]
+    "files": [],
+    "references": [
+      {
+        "path": "./server"
+      },
+      {
+        "path": "./client"
+      },
+      {
+        "path": "./cypress"
+      }],
+    "exclude": ["client/dist", "client/dist/assets"]
 }
-
