@@ -7,7 +7,6 @@
     "install": "cd server && npm install && cd ../client && npm install",
     "build": "npm run build:server && npm run build:client",
     "build:server": "cd server && npm run build && npm run seed",
-    "postinstall": "npm install typescript",
     "build:client": "cd client && npm run build",
     "render-build": "npm install && npm run build",
     "start:server": "cd server && npm start",
