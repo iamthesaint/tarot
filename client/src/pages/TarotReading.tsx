@@ -12,6 +12,7 @@ export interface TarotCard {
   suit: string;
   uprightMeaning: string;
   reversedMeaning: string;
+  image: string;
 }
 
 // drawn card type
@@ -31,6 +32,7 @@ export const GET_TAROT_CARDS = gql`
       suit
       uprightMeaning
       reversedMeaning
+      image
     }
   }
 `;
@@ -43,7 +45,8 @@ const FlippableCard: React.FC<{
   selected: boolean;
   flipped: boolean;
   canFlip: boolean;
-}> = ({ card, index, onClick, selected, flipped, canFlip }) => {
+  isUpright?: boolean;
+}> = ({ card, index, onClick, selected, flipped, canFlip, isUpright }) => {
   const [{ x, y, transform, opacity }, api] = useSpring(() => ({
     x: 0,
     y: 0,
@@ -62,7 +65,7 @@ const FlippableCard: React.FC<{
   useEffect(() => {
     if (canFlip) {
       api.start({
-        transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+        transform: `perspective(600px) rotateY(${flipped && canFlip ? 0 : 0}deg)`,
         opacity: flipped ? 1 : 0,
       });
     }
@@ -70,16 +73,15 @@ const FlippableCard: React.FC<{
 
   return (
     <animated.div
-      {...bind()}
+      {...(!selected ? bind() : {})}
       onClick={onClick}
       className={`tarot-card ${selected ? "selected" : ""}`}
       style={{
-        x,
-        y,
-        transform: transform.to((t) => `${t} rotate(${index * 8 - 100}deg)`),
-        position: "absolute",
+        x: selected ? undefined : x,
+        y: selected ? undefined : y,
+        transform: transform.to((t) => `${t} rotate(${index * 8 - 10}deg)`),
         left: "50%",
-        top: "100px",
+        top: "120px",
         transformOrigin: "bottom center",
         touchAction: "none",
       }}
@@ -97,23 +99,14 @@ const FlippableCard: React.FC<{
         <div className="card-back">✨</div>
       </animated.div>
 
-      {/* Front of the card */}
-      <animated.div
-        style={{
-          opacity,
-          transform: `perspective(600px) rotateX(180deg)`,
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          backfaceVisibility: "hidden",
-        }}
-      >
-        <div className="card-details">
-          <h3>{card.name}</h3>
-          <p>{card.uprightMeaning}</p>
-        </div>
-      </animated.div>
+      <div className="card-front">
+        <img
+          src={card.image}
+          alt={card.name}
+        />
+      </div>
     </animated.div>
+
   );
 };
 
@@ -148,6 +141,8 @@ const TarotReading: React.FC = () => {
       !selectedCards.some((c) => c.card._id === card._id)
     ) {
       const isUpright = Math.random() > 0.5;
+      console.log(`Card: ${card.name}, Is Upright: ${isUpright}`);
+      console.log(`Image URL: ${card.image}`);
       const position = ["past", "present", "future"][selectedCards.length] as
         | "past"
         | "present"
@@ -201,7 +196,7 @@ const TarotReading: React.FC = () => {
           return (
             !isDrawn && (
               <FlippableCard
-                key={card._id}
+                key={`${card._id}-${index}`}
                 card={card}
                 index={index}
                 onClick={() => handleCardClick(card)}
@@ -219,7 +214,7 @@ const TarotReading: React.FC = () => {
           {/* display the drawn cards */}
           {selectedCards.map((drawnCard, index) => (
             <FlippableCard
-              key={drawnCard.card._id}
+              key={`${drawnCard.card._id}-${index}`}
               card={drawnCard.card}
               index={index}
               onClick={() => {}}
@@ -246,4 +241,5 @@ const TarotReading: React.FC = () => {
     </div>
   );
 };
+
 export default TarotReading;
