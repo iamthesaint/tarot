@@ -1,7 +1,24 @@
+
+
 body {
+  background: linear-gradient(to bottom, #05070a, #2a5298);
+  background-size: cover;
   margin: 0;
-  padding: 0;
-  background-color: linear-gradient(135deg, #6c63ff, #b06ab3);
+  font-family:'Times New Roman', Times, serif;
+}
+
+h1 {
+  /* color: lightblue; */
+  text-align: center;
+  margin-top: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .align-center {
@@ -12,7 +29,7 @@ body {
 
 .reading-container {
   text-align: center;
-  padding: 20px;
+  padding: 0px;
 }
 
 .reading-results {

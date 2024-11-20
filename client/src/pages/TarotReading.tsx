@@ -173,7 +173,7 @@ const TarotReading: React.FC = () => {
 
     switch (card.position) {
       case "past":
-        return `Drawn in the past in the ${position} position, the ${name} represents ${meaning}. This drawing suggests that the past has had a significant influence on your current happenings, shaping things yet to come.`;
+        return `Drawn in the ${position} position, ${name} represents ${meaning}. Pulling this card in the past space suggests that the past has had a significant influence on your current happenings, shaping things yet to come.`;
       case "present":
         return `Currently, ${position} ${name} in the present space indicates ${meaning}. It represents the current state of affairs and the energy surrounding current situations.`;
       case "future":
