@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
+import Header from "../../components/Header";
 
 const Home = () => {
   return (
-    <div className="home" style={ { backgroundColor: "black" } }> 
+    <div className="home" style={{ backgroundColor: "black" }}>
       <div className="overlay"></div>
       <div className="home-content-wrapper">
         <div className="topbar">
-          <Link to="/login">Login/Signup</Link>
+          <Header />
         </div>
         <div className="align-center">
           <div className="home-content">
