@@ -92,10 +92,10 @@ const resolvers = {
 
     //save reading
     saveReading: async (_parent: any, args: any, context: any) => {
-      if (context.user) {
+      if(context.user) {
         return Reading.create({ ...args, user: context.user._id });
-      }
-      throw new Error("You need to be logged in!");
+        }
+        throw new Error('You need to be logged in!');
     }
     },
 };
