@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import Auth from '../utils/auth';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
 
-type User = {
+import Auth from '../utils/auth';
+interface User {
   username: string;
   email: string;
   password: string;
   savedBooks: string[];
-};
+}
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
 const LoginForm = ({}: { handleModalClose: () => void }) => {
   const [userFormData, setUserFormData] = useState<User>({ username: '', email: '', password: '', savedBooks: [] });
@@ -33,7 +33,8 @@ const LoginForm = ({}: { handleModalClose: () => void }) => {
     }
     try {
       const { data } = await login({
-        variables: { ...userFormData },
+      //  variables: { ...userFormData },
+        variables: { email: userFormData.email, password: userFormData.password },
       });
 
       if (data && data.login && data.login.token) {

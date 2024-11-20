@@ -1,6 +1,8 @@
-// client/src/components/Modal.tsx
+// // client/src/components/Modal.tsx
 
 // interface Modal {
 //     children: React.ReactNode;
 //     onClose: () => void;
 // }
+
+// const ``
