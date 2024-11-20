@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { useSpring, animated } from "react-spring";
-import { useDrag } from "@use-gesture/react";
+import { useDrag } from "react-use-gesture";
 import "./TarotReading.css";
 
 // tarot card type
@@ -56,7 +56,7 @@ const FlippableCard: React.FC<{
   }));
 
   const bind = useDrag(
-    ({ down, movement: [mx, my], memo = [x.get(), y.get()] }) => {
+    ({ down, movement: [mx, my], memo = [x.get(), y.get()] }: { down: boolean; movement: [number, number]; memo?: [number, number] }) => {
       api.start({ x: mx + memo[0], y: my + memo[1], immediate: down });
       return memo;
     }
