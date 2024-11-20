@@ -35,7 +35,7 @@ const startApolloServer = async () => {
 
   // Serve static files from the client dist folder in production
   if (process.env.NODE_ENV === 'production') {
-    const clientBuildPath = path.join(process.cwd(), 'client', 'dist');
+    const clientBuildPath = path.resolve('../client/dist');
     app.use(express.static(clientBuildPath));
 
     // Fallback route for any request that doesn't match /graphql
