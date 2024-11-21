@@ -16,13 +16,13 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #6c63ff;
   z-index: 1;
 }
 
 .topbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .topbar a {
