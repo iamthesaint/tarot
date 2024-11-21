@@ -3,6 +3,14 @@
   padding: 0;
 }
 
+.btn-primary {
+  background: #ffbe86;
+  padding: 6px 10px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
 .align-center {
   display: flex;
   justify-content: center;

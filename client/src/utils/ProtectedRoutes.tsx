@@ -1,8 +1,12 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import React, { ReactNode } from "react";
+import { Navigate } from "react-router-dom";
 import auth from "./auth"; // Adjust the path to your actual auth module
 
-const ProtectedRoute: React.FC = ({ children }) => {
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const isLoggedIn = auth.loggedIn();
   console.log(isLoggedIn);
 

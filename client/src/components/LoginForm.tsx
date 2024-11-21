@@ -7,7 +7,7 @@ import type { User } from "../models/User";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 
-const LoginForm = ({}: { handleModalClose: () => void }) => {
+const LoginForm = () => {
   const [userFormData, setUserFormData] = useState<User>({
     username: "",
     email: "",
