@@ -10,11 +10,7 @@ const Login = () => {
       <Row>
         <Col>
           <h1>Login</h1>
-<<<<<<< HEAD
-          { /* <LoginForm /> */ }
-=======
           <LoginForm />
->>>>>>> 43a01edab0822946b3993937e88a192d2ef7eb3f
           <p>Don't have an account? </p>
         </Col>
         <Link to="/signup">Signup</Link>

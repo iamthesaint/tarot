@@ -44,6 +44,7 @@ const typeDefs = gql`
     me: User
     tarotCards: [TarotCard] # steph added this
     user(userId: ID!): User
+    readings: [Reading]
   }
 
 # add mutation

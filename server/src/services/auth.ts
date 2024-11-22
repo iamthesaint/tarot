@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from 'express';
+import type { Request } from 'express';
 import jwt from 'jsonwebtoken';
 
 import dotenv from 'dotenv';
@@ -10,25 +10,27 @@ interface JwtPayload {
   email: string,
 }
 
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
+export const authenticateToken = ({req}: {req:Request}) => {
   const authHeader = req.headers.authorization;
-
+  console.log(authHeader);
   if (authHeader) {
     const token = authHeader.split(' ')[1];
+    console.log(token); 
 
     const secretKey = process.env.JWT_SECRET_KEY || '';
 
     jwt.verify(token, secretKey, (err: any, user: any) => {
       if (err) {
-        return res.sendStatus(403); // Forbidden
+        return req; // Forbidden
       }
       //need the index.d.ts file to recognize user
       req.user = user as JwtPayload;
-      return next();
+      return req;
     });
   } else {
-    res.sendStatus(401); // Unauthorized
+    return req; // Unauthorized
   }
+  return req;
 };
 
 export const signToken = (username: string, email: string, _id: unknown) => {
