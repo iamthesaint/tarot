@@ -1,28 +1,20 @@
-// client/src/components/Modal.tsx
+// client/src/components/ReadingModal.tsx
+import "./ReadingModal.css";
 
 interface ReadingModal {
-    children: React.ReactNode;
-    onClose: () => void;
+  children: React.ReactNode;
+  onClose: () => void;
+  isOpen: boolean;
 }
 
 const ReadingModal: React.FC<ReadingModal> = ({ children, onClose }) => {
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div
-        className="modal-content"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal-overlay">
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         {children}
-        <div className="modal-buttons">
-          <button onClick={onClose} className="modal-exit">
-            Exit
-          </button>
         </div>
       </div>
-    </div>
   );
 };
 
 export default ReadingModal;
-
-

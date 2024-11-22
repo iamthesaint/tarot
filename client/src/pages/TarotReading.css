@@ -9,15 +9,7 @@
   height: 400px;
   margin-top: 20px;
   overflow: visible;
-  background-color: transparent;
 }
-
-/* .drawn-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-} */
 
 .tarot-card {
   position: absolute;
@@ -25,7 +17,6 @@
   height: 310px;
   border-radius: 8px;
   border: 1px solid #999;
-  background: linear-gradient(to bottom, #fff, #ddd);
   box-shadow: 0px 4px 10px rgba(111, 110, 110, 0.3);
   z-index: 10;
   cursor: pointer;
@@ -43,13 +34,17 @@
 
 }
 
+.card-image.reversed {
+  transform: rotate(180deg);
+}
+
 .card-back {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #6c63ff, #b06ab3);
+  background: image('../assets/card-back.png');
   color: white;
   font-size: 50px;
   font-weight: bold;
@@ -65,11 +60,6 @@
   height: 100%;
   font-weight: bold;
 }
-
-/* .reading-results {
-  margin-top: 20px;
-  text-align: center;
-} */
 
 .drawn-card {
   margin: 10px 0;

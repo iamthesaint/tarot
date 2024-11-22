@@ -1,24 +1,27 @@
 
 
-body {
-  background: linear-gradient(to bottom, #05070a, #2a5298);
-  background-size: cover;
+body, html {
+  height: 100%;
   margin: 0;
-  font-family:'Times New Roman', Times, serif;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Cinzel Decorative', 'Times New Roman', Times, serif;
 }
 
-h1 {
-  /* color: lightblue; */
-  text-align: center;
-  margin-top: 0;
-}
+body {
+  font-family: 'Cinzel Decorative', 'Times New Roman', Times, serif;
+    background: linear-gradient(to bottom, #111, #514c58);
+    overflow: hidden;
+  }
+  
+
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .align-center {
@@ -27,18 +30,32 @@ h1 {
   align-items: center;
 }
 
-.reading-container {
-  text-align: center;
-  padding: 0px;
-}
-
+.reading-container,
 .reading-results {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+  text-align: center;
 }
 
 .card-image.reversed {
   transform: rotate(180deg);
+}
+
+h1 {
+  text-align: center;
+  margin: 25px auto;
+  text-shadow: 2px 2px 4px rgba(234, 255, 170, 0.5);
+  letter-spacing: 1px;
+  font-size: 2.5rem;
+}
+
+#fogCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  filter: blur(10px);
 }
