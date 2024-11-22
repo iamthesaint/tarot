@@ -1,6 +1,8 @@
 import { gql } from '@apollo/client';
 
 
+
+
 export const SAVE_CARD = gql`
     mutation saveCard($cardId: ID!) {
         saveCard(cardId: $cardId) {
@@ -22,8 +24,8 @@ export const SAVE_CARD = gql`
 
 
 export const SAVE_READING = gql`
-    mutation saveReading($cards: [TarotCard] , $reflections: [String]) {
-        saveReading(cards: $cards, reflections: $reflections) {
+    mutation saveReading($readingdata: ReadingInput!) {
+        saveReading(readingData: $readingData) {
             _id
             reflections
             user {

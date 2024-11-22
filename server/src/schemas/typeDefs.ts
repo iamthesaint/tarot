@@ -34,11 +34,17 @@ const typeDefs = gql`
     user: User
   }
 
+  input ReadingInput {
+    cards: [ID]
+    reflections: [String]
+  }
+
 #add query
   type Query {
     me: User
     tarotCards: [TarotCard] # steph added this
     user(userId: ID!): User
+    readings: [Reading]
   }
 
 # add mutation
@@ -47,7 +53,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveCard(cardId: ID!): User
     removeCard(cardId: ID!): User
-    # saveReading(cards: [TarotCard], reflections: [String]): Reading
+    saveReading(readingData: ReadingInput): Reading
   }
 
 `;

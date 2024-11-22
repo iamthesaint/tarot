@@ -5,11 +5,13 @@ import type { Request, Response } from 'express';
 
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
+import { authenticateToken } from './services/auth.js';
 
 import typeDefs from './schemas/typeDefs.js';
 import resolvers from './schemas/resolvers.js';
 import path from 'path';
 import dotenv from 'dotenv';
+// import { Any } from 'react-spring';
 dotenv.config();
 
 const server = new ApolloServer({
@@ -19,6 +21,8 @@ const server = new ApolloServer({
 
 const startApolloServer = async () => {
   try {
+    await server.start();
+
     await db();
 
     const PORT = process.env.PORT || 3001;
@@ -29,9 +33,9 @@ const startApolloServer = async () => {
 
     app.use(cors({ origin: 'http://localhost:3000' }));
 
-    await server.start();
-
-    app.use("/graphql", expressMiddleware(server));
+    app.use("/graphql", expressMiddleware(server as any, {
+      context: authenticateToken as any
+    }));
 
   // Serve static files from the client dist folder in production
   if (process.env.NODE_ENV === 'production') {
