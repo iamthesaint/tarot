@@ -25,11 +25,12 @@ const ReadingModal: React.FC<ReadingModalProps> = ({ isOpen, children, onClose }
   return ReactDOM.createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="modal-content"
+        className="reading-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         {children}
-        <button onClick={onClose}>Close and Reset Reading</button>
+        <button className="modal-button" onClick={onClose}>Close and Reset Reading</button>
+        <button className="modal-button" onClick={onClose}>Save Reading & Reflection</button>
       </div>
     </div>,
     document.body

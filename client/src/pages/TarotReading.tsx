@@ -47,7 +47,17 @@ const FlippableCard: React.FC<{
   flipped: boolean;
   canFlip: boolean;
   isUpright?: boolean;
-}> = ({ card, index, onClick, selected, flipped, canFlip, isUpright }) => {
+  className?: string;
+}> = ({
+  card,
+  index,
+  onClick,
+  selected,
+  flipped,
+  canFlip,
+  isUpright,
+  className,
+}) => {
   const [{ x, y, transform, opacity }, api] = useSpring(() => ({
     x: 0,
     y: 0,
@@ -86,7 +96,7 @@ const FlippableCard: React.FC<{
     <animated.div
       {...(!selected ? bind() : {})}
       onClick={onClick}
-      className={`tarot-card ${selected ? "selected" : ""}`}
+      className={`tarot-card ${selected ? "selected" : ""} ${className || ""}`}
       style={{
         x: selected ? undefined : x,
         y: selected ? undefined : y,
@@ -107,7 +117,7 @@ const FlippableCard: React.FC<{
           backfaceVisibility: "hidden",
         }}
       >
-        <div className="card-back">✨</div>
+        <div className="card-back"></div>
       </animated.div>
 
       <div className="card-front">
@@ -221,7 +231,6 @@ const TarotReading: React.FC = () => {
 
   return (
     <div className="reading-container">
-      <h1>Unveil Your Path</h1>
       <h2>Click or drag to select three cards and reveal your reading... ✨</h2>
       <div className="tarot-board">
         {deck.map((card, index) => {
@@ -264,8 +273,10 @@ const TarotReading: React.FC = () => {
 
       {selectedCards.length === 3 && (
         <ReadingModal isOpen={isModalOpen} onClose={resetReading}>
+          {/* text reading section */}
           <h2>Your Tarot Reading</h2>
           <div className="reading-results">
+            {/* cards display */}
             <div className="drawn-cards-modal">
               {selectedCards.map((drawnCard, index) => (
                 <FlippableCard
@@ -277,6 +288,7 @@ const TarotReading: React.FC = () => {
                   flipped
                   canFlip
                   isUpright={drawnCard.isUpright}
+                  className="modal-card"
                 />
               ))}
             </div>
@@ -287,6 +299,7 @@ const TarotReading: React.FC = () => {
               </div>
             ))}
           </div>
+          {/* reflection input */}
           <div className="reflection-input">
             <h3>Add a Reflection</h3>
             <textarea
@@ -297,7 +310,6 @@ const TarotReading: React.FC = () => {
               }}
             />
           </div>
-          <button>Save Reading</button>
         </ReadingModal>
       )}
     </div>

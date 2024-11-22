@@ -16,7 +16,8 @@ body.modal-open {
   overflow: hidden;
 }
 
-.modal-content {
+.reading-modal-content {
+  position: relative;
   flex-direction: column;
   color: #333;
   background-color: white;
@@ -27,16 +28,10 @@ body.modal-open {
   border-radius: 8px;
   border: 2px solid #f0df81;
   width: 90%;
-  max-width: 1500px;
+  max-width: 1000px;
   box-shadow: 0 0 15px 3px #f0df81;
   text-align: center;
   isolation: isolate;
-}
-
-.modal-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
 }
 
 .reading-results {
@@ -59,4 +54,41 @@ textarea {
   resize: none;
 }
 
+.modal-button {
+  padding: 10px 20px;
+  background: #aed8c8;
+  color: #292929;
+  border: 2px solid #4b8376;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-family: 'Cinzel Decorative', cursive;
+}
 
+.modal-button:hover {
+  background: #4b8376;
+  color: #fff;
+}
+
+.reflection-input {
+  width: 100%;
+  margin-top: 20px;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 16px;
+}
+
+.drawn-cards-modal {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-card {
+    border: 2px solid gold;
+    box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.5);
+    border-radius: 8px;
+  }
