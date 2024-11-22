@@ -1,6 +1,4 @@
-
-
-body, html {
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -13,8 +11,6 @@ body {
     background: linear-gradient(to bottom, #111, #514c58);
     overflow: hidden;
   }
-  
-
 
 #root {
   min-height: 100vh;
@@ -38,12 +34,14 @@ body {
   align-items: center;
 }
 
-.reading-container,
-.reading-results {
+.reading-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   padding: 0;
   max-width: 100%;
-  text-align: center;
 }
 
 .card-image.reversed {
@@ -67,3 +65,4 @@ h1 {
   z-index: -1;
   filter: blur(10px);
 }
+

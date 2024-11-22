@@ -2,23 +2,35 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  isolation: isolate;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 .modal-content {
+  flex-direction: column;
+  color: #333;
+  background-color: white;
+  padding: 20px;
+  z-index: 1001;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #f0df81;
+  width: 90%;
+  max-width: 1500px;
+  box-shadow: 0 0 15px 3px #f0df81;
   text-align: center;
+  isolation: isolate;
 }
 
 .modal-buttons {
@@ -27,20 +39,24 @@
   justify-content: center;
 }
 
-.modal-exit {
-  background: #ff4d4d;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
+.reading-results {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 16px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
 }
 
-.modal-exit:hover {
-  background: #ff3333;
+h2 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2rem;
 }
 
 textarea {
   width: 100%;
   resize: none;
 }
+
+

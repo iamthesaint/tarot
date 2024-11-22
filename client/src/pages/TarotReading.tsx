@@ -4,7 +4,6 @@ import { useSpring, animated } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import "./TarotReading.css";
 import ReadingModal from "../components/ReadingModal";
-// import { SAVE_READING } from "../utils/mutations";
 
 // tarot card type
 export interface TarotCard {
@@ -160,6 +159,7 @@ const TarotReading: React.FC = () => {
   useEffect(() => {
     if (selectedCards.length === 3) {
       setAllCardsDrawn(true);
+      setIsModalOpen(true);
     }
   }, [selectedCards]);
 
@@ -224,9 +224,7 @@ const TarotReading: React.FC = () => {
       <h1>Unveil Your Path</h1>
       <h2>Click or drag to select three cards and reveal your reading... ✨</h2>
       <div className="tarot-board">
-        {/* display the deck of cards */}
         {deck.map((card, index) => {
-          // render a card if it's not part of the drawn cards (selectedCards)
           const isDrawn = selectedCards.some(
             (drawnCard) => drawnCard.card._id === card._id
           );
@@ -265,26 +263,45 @@ const TarotReading: React.FC = () => {
       )}
 
       {selectedCards.length === 3 && (
-        <>
-          <ReadingModal
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          >
-            <h2>Your Reading Results</h2>
-            {selectedCards.map((card, index) => (
-              <div key={index}>
-                <h3>
-                  {card.position.toUpperCase()}: {card.card.name}
-                </h3>
-                <p>{getPositionDescription(card)}</p>
+        <ReadingModal isOpen={isModalOpen} onClose={resetReading}>
+          <h2>Your Tarot Reading</h2>
+          <div className="reading-results">
+            <div className="drawn-cards-modal">
+              {selectedCards.map((drawnCard, index) => (
+                <FlippableCard
+                  key={`${drawnCard.card._id}-${index}`}
+                  card={drawnCard.card}
+                  index={index}
+                  onClick={() => {}}
+                  selected
+                  flipped
+                  canFlip
+                  isUpright={drawnCard.isUpright}
+                />
+              ))}
+            </div>
+            {selectedCards.map((drawnCard, index) => (
+              <div key={`${drawnCard.card._id}-${index}`}>
+                <h3>{drawnCard.card.name}</h3>
+                <p>{getPositionDescription(drawnCard)}</p>
               </div>
             ))}
-            <button onClick={resetReading}>Reset Reading</button>
-            <button onClick={() => setIsModalOpen(false)}>Close</button>
-          </ReadingModal>
-        </>
+          </div>
+          <div className="reflection-input">
+            <h3>Add a Reflection</h3>
+            <textarea
+              placeholder="What are your thoughts?"
+              value={reflections.join("\n")}
+              onChange={(e) => {
+                _setReflections(e.target.value.split("\n"));
+              }}
+            />
+          </div>
+          <button>Save Reading</button>
+        </ReadingModal>
       )}
     </div>
   );
 };
+
 export default TarotReading;
