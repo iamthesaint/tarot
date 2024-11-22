@@ -8,9 +8,9 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import TarotReading from "./pages/TarotReading";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import Account from "./pages/Account";
-// import ProtectedRoute from "./utils/ProtectedRoutes";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ProtectedRoute from "./utils/ProtectedRoutes";
+import Account from "./pages/Account";
 
 const router = createBrowserRouter([
   {
@@ -30,18 +30,14 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
-      // {
-      //   path: "/account",
-      //   element: <Account />,
-      // },
-      // {
-      //   path: "/dashboard",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <Account />
-      //     </ProtectedRoute>
-      //   ),
-      // },
+      {
+        path: "/account",
+        element: (
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "/reading",
         element: <TarotReading />,
@@ -51,7 +47,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ApolloProvider client={client}>
+ /* <ApolloProvider client={client}> */
     <RouterProvider router={router} />
-  </ApolloProvider>
+ /* </ApolloProvider>  */
 );

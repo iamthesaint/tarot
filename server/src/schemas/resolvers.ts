@@ -2,6 +2,7 @@
 import User from "../models/Users.js";
 import TarotCard from "../models/TarotCards.js";
 import { signToken } from "../services/auth.js";
+import Reading from "../models/Reading.js";
 
 interface addTarotCardArgs {
   _id: string;
@@ -37,6 +38,15 @@ const resolvers = {
     tarotCards: async () => {  // steph added this
       return await TarotCard.find();
     },
+
+    //get all readings
+    readings: async (_parents: any, _args: any, context: any) => {
+      if (context.user) {
+        return Reading.find({ user: context.user._id });
+      }
+      throw new Error("You need to be logged in!");
+    },
+
   },
 
   Mutation: {
@@ -88,7 +98,17 @@ const resolvers = {
       }
       throw new Error("You need to be logged in!");
     },
-  },
+
+    //save reading
+    saveReading: async (_parent: any, args: any, context: any) => {
+      console.log(context);
+      if(context.user) {
+
+        return Reading.create({ ...args, user: context.user._id });
+        }
+        throw new Error('You need to be logged in!');
+    }
+    },
 };
 
 export default resolvers;
