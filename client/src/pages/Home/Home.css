@@ -24,11 +24,16 @@
   justify-content: space-between;
 }
 
-.topbar a {
-  background-color: aquamarine;
+header a,
+header a.nav-link {
   padding: 6px 8px;
-  border-radius: 10px;
   text-decoration: none;
+  color: #fff;
+}
+
+header a:hover,
+header a.nav-link:hover {
+  color: #ff6f61;
 }
 
 .home-content * {
