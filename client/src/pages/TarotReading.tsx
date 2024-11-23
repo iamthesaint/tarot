@@ -234,10 +234,11 @@ const TarotReading: React.FC = () => {
   };
 
   return (
-    <><div className="navbar">
-      <a href="/">Home</a>
+    <><div className="nav-links">
+      <a href="/">Return Home</a>
+      <a href='account'>My Account</a>
     </div><div className="reading-container">
-        <h2>Click or drag to select three cards and reveal your reading... ✨</h2>
+        <h2 className="reading-title">Draw Your Tarot Cards</h2>
         <div className="tarot-board">
           {deck.map((card, index) => {
             const isDrawn = selectedCards.some(
@@ -282,7 +283,7 @@ const TarotReading: React.FC = () => {
             onSave={handleSaveReading}
           >
             {/* text reading section */}
-            <h2>Your Tarot Reading</h2>
+            <h2 className="modal-title">Your Deck's Wisdom</h2>
             <div className="reading-results">
               {/* cards display */}
               <div className="drawn-cards-modal">
