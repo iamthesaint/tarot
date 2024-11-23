@@ -1,8 +1,6 @@
 // client/src/main.tsx
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ApolloProvider } from "@apollo/client";
-import client from "./apolloClient";
 import App from "./App";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login";

@@ -1,40 +1,49 @@
-import { gql } from '@apollo/client';
-
-
-
+import { gql } from "@apollo/client";
 
 export const SAVE_CARD = gql`
-    mutation saveCard($cardId: ID!) {
-        saveCard(cardId: $cardId) {
+  mutation saveCard($cardId: ID!) {
+    saveCard(cardId: $cardId) {
+      _id
+      username
+      email
+      savedCards {
         _id
-        username
-        email
-        savedCards {
-            _id
-            name
-            description
-            suit
-            uprightMeaning
-            reversedMeaning
-            image
-        }
-        }
+        name
+        description
+        suit
+        uprightMeaning
+        reversedMeaning
+        image
+      }
     }
+  }
 `;
 
-
+// save reading mutation
 export const SAVE_READING = gql`
-    mutation saveReading($readingdata: ReadingInput!) {
-        saveReading(readingData: $readingData) {
-            _id
-            reflections
-            user {
-                _id
-                username
-            }
-        }
+mutation SaveReading($readingData: ReadingInput!) {
+  saveReading(readingData: $readingData) {
+    _id
+    reflections {
+      thoughts
     }
+    cards {
+      card {
+        _id
+        name
+      }
+      isUpright
+      position
+    }
+    date
+    user {
+      _id
+      username
+    }
+  }
+}
 `;
+
 
 // Mutation for logging in a user
 export const LOGIN_USER = gql`

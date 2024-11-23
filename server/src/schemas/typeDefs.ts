@@ -1,18 +1,8 @@
-// server/src/schemas/TypeDefs.ts
+// server/src/schemas/typeDefs.ts
 
-import { gql } from 'graphql-tag';
+import { gql } from "graphql-tag";
 
 const typeDefs = gql`
-  type TarotCard {
-    _id: ID
-    name: String
-    description: String
-    suit: String
-    uprightMeaning: String
-    reversedMeaning: String
-    image: String
-  }
-
   type Auth {
     token: ID!
     user: User
@@ -26,36 +16,74 @@ const typeDefs = gql`
     savedCards: [TarotCard]
   }
 
+  type TarotCard {
+    _id: ID
+    name: String
+    description: String
+    suit: String
+    uprightMeaning: String
+    reversedMeaning: String
+    image: String
+  }
+
+  type Reflection {
+    thoughts: String
+  }
+
+  type DrawnCard {
+    card: TarotCard
+    isUpright: Boolean
+    position: String
+  }
+
   type Reading {
     _id: ID
-    cards: [TarotCard]
+    cards: [DrawnCard]
+    reflections: [Reflection]
     date: String
-    reflections: [String]
     user: User
   }
 
-  input ReadingInput {
-    cards: [ID]
-    reflections: [String]
+  input ReflectionInput {
+    thoughts: String
   }
 
-#add query
+  input TarotCardInput {
+    _id: ID
+    name: String
+    description: String
+    suit: String
+    uprightMeaning: String
+    reversedMeaning: String
+    image: String
+  }
+
+  input DrawnCardInput {
+    card: TarotCardInput
+    isUpright: Boolean
+    position: String
+  }
+
+  input ReadingInput {
+    cards: [DrawnCardInput]
+    reflections: [ReflectionInput]
+    date: String
+  }
+
   type Query {
     me: User
-    tarotCards: [TarotCard] # steph added this
+    tarotCards: [TarotCard]
     user(userId: ID!): User
     readings: [Reading]
   }
 
-# add mutation
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveCard(cardId: ID!): User
     removeCard(cardId: ID!): User
-    saveReading(readingData: ReadingInput): Reading
+    saveReading(readingData: ReadingInput!): Reading
   }
-
 `;
 
 export default typeDefs;

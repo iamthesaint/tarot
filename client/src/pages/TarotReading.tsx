@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useSpring, animated } from "react-spring";
-import { useDrag } from "@use-gesture/react";
+import { useDrag } from "react-use-gesture";
+import ReadingModal from "../components/ReadingModal";
+import { SAVE_READING } from "../utils/mutations";
+import { GET_TAROT_CARDS } from "../utils/queries";
 import "./TarotReading.css";
+
 
 // tarot card type
 export interface TarotCard {
@@ -12,6 +16,7 @@ export interface TarotCard {
   suit: string;
   uprightMeaning: string;
   reversedMeaning: string;
+  image: string;
 }
 
 // drawn card type
@@ -21,20 +26,6 @@ export interface DrawnCard {
   position: "past" | "present" | "future";
 }
 
-// get tarot cards query
-export const GET_TAROT_CARDS = gql`
-  query GetTarotCards {
-    tarotCards {
-      _id
-      name
-      description
-      suit
-      uprightMeaning
-      reversedMeaning
-    }
-  }
-`;
-
 // flippable card component
 const FlippableCard: React.FC<{
   card: TarotCard;
@@ -43,7 +34,18 @@ const FlippableCard: React.FC<{
   selected: boolean;
   flipped: boolean;
   canFlip: boolean;
-}> = ({ card, index, onClick, selected, flipped, canFlip }) => {
+  isUpright?: boolean;
+  className?: string;
+}> = ({
+  card,
+  index,
+  onClick,
+  selected,
+  flipped,
+  canFlip,
+  isUpright,
+  className,
+}) => {
   const [{ x, y, transform, opacity }, api] = useSpring(() => ({
     x: 0,
     y: 0,
@@ -53,7 +55,15 @@ const FlippableCard: React.FC<{
   }));
 
   const bind = useDrag(
-    ({ down, movement: [mx, my], memo = [x.get(), y.get()] }) => {
+    ({
+      down,
+      movement: [mx, my],
+      memo = [x.get(), y.get()],
+    }: {
+      down: boolean;
+      movement: [number, number];
+      memo?: [number, number];
+    }) => {
       api.start({ x: mx + memo[0], y: my + memo[1], immediate: down });
       return memo;
     }
@@ -62,7 +72,9 @@ const FlippableCard: React.FC<{
   useEffect(() => {
     if (canFlip) {
       api.start({
-        transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+        transform: `perspective(600px) rotateY(${
+          flipped && canFlip ? 0 : 0
+        }deg)`,
         opacity: flipped ? 1 : 0,
       });
     }
@@ -70,16 +82,15 @@ const FlippableCard: React.FC<{
 
   return (
     <animated.div
-      {...bind()}
+      {...(!selected ? bind() : {})}
       onClick={onClick}
-      className={`tarot-card ${selected ? "selected" : ""}`}
+      className={`tarot-card ${selected ? "selected" : ""} ${className || ""}`}
       style={{
-        x,
-        y,
-        transform: transform.to((t) => `${t} rotate(${index * 8 - 100}deg)`),
-        position: "absolute",
+        x: selected ? undefined : x,
+        y: selected ? undefined : y,
+        transform: transform.to((t) => `${t} rotate(${index * 8 - 10}deg)`),
         left: "50%",
-        top: "100px",
+        top: "120px",
         transformOrigin: "bottom center",
         touchAction: "none",
       }}
@@ -94,25 +105,12 @@ const FlippableCard: React.FC<{
           backfaceVisibility: "hidden",
         }}
       >
-        <div className="card-back">✨</div>
+        <div className="card-back"></div>
       </animated.div>
 
-      {/* Front of the card */}
-      <animated.div
-        style={{
-          opacity,
-          transform: `perspective(600px) rotateX(180deg)`,
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          backfaceVisibility: "hidden",
-        }}
-      >
-        <div className="card-details">
-          <h3>{card.name}</h3>
-          <p>{card.uprightMeaning}</p>
-        </div>
-      </animated.div>
+      <div className="card-front">
+        <img src={card.image} alt={card.name} />
+      </div>
     </animated.div>
   );
 };
@@ -132,10 +130,50 @@ const TarotReading: React.FC = () => {
     {}
   );
   const [allCardsDrawn, setAllCardsDrawn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [reflections, setReflections] = useState<string[]>([]);
 
+  // save reading mutation
+  const [saveReading] = useMutation(SAVE_READING);
+
+  const handleSaveReading = () => {
+    const readingData = {
+      cards: selectedCards.map((drawnCard) => ({
+        card: {
+          _id: drawnCard.card._id,
+          name: drawnCard.card.name,
+          description: drawnCard.card.description,
+          suit: drawnCard.card.suit,
+          uprightMeaning: drawnCard.card.uprightMeaning,
+          reversedMeaning: drawnCard.card.reversedMeaning,
+          image: drawnCard.card.image,
+        },
+        isUpright: drawnCard.isUpright,
+        position: drawnCard.position,
+      })),
+      reflections: reflections.map((thought) => ({
+        thoughts: thought,
+      })),
+      date: new Date().toISOString(),
+    };
+    
+    saveReading({ variables: { readingData } })
+      .then((response) => {
+        console.log("Saved reading:", response.data.saveReading);
+      })
+      .catch((err) => {
+        console.error("Error saving reading:", err);
+      });
+
+    resetReading();
+    // clear reflections
+    setReflections([]);
+  };
+  
   useEffect(() => {
     if (selectedCards.length === 3) {
       setAllCardsDrawn(true);
+      setIsModalOpen(true);
     }
   }, [selectedCards]);
 
@@ -148,17 +186,24 @@ const TarotReading: React.FC = () => {
       !selectedCards.some((c) => c.card._id === card._id)
     ) {
       const isUpright = Math.random() > 0.5;
+      console.log(`Card: ${card.name}, Is Upright: ${isUpright}`);
+      console.log(`Image URL: ${card.image}`);
       const position = ["past", "present", "future"][selectedCards.length] as
         | "past"
         | "present"
         | "future";
       setSelectedCards([...selectedCards, { card, isUpright, position }]);
       setFlippedCards({ ...flippedCards, [card._id]: true });
+      if (selectedCards.length === 3) {
+        setAllCardsDrawn(true);
+        setIsModalOpen(true);
+      }
     }
   };
 
   const resetReading = () => {
     setSelectedCards([]);
+    setIsModalOpen(false);
     setFlippedCards({});
     setDeck((prevDeck) => {
       // re-shuffle the deck and reset state
@@ -178,7 +223,7 @@ const TarotReading: React.FC = () => {
 
     switch (card.position) {
       case "past":
-        return `Drawn in the past in the ${position} position, the ${name} represents ${meaning}. This drawing suggests that the past has had a significant influence on your current happenings, shaping things yet to come.`;
+        return `Drawn in the ${position} position, ${name} represents ${meaning}. Pulling this card in the past space suggests that the past has had a significant influence on your current happenings, shaping things yet to come.`;
       case "present":
         return `Currently, ${position} ${name} in the present space indicates ${meaning}. It represents the current state of affairs and the energy surrounding current situations.`;
       case "future":
@@ -190,18 +235,16 @@ const TarotReading: React.FC = () => {
 
   return (
     <div className="reading-container">
-      <h1>Unveil Your Path</h1>
+      <h2>Click or drag to select three cards and reveal your reading... ✨</h2>
       <div className="tarot-board">
-        {/* display the deck of cards */}
         {deck.map((card, index) => {
-          // render a card if it's not part of the drawn cards (selectedCards)
           const isDrawn = selectedCards.some(
             (drawnCard) => drawnCard.card._id === card._id
           );
           return (
             !isDrawn && (
               <FlippableCard
-                key={card._id}
+                key={`${card._id}-${index}`}
                 card={card}
                 index={index}
                 onClick={() => handleCardClick(card)}
@@ -219,31 +262,66 @@ const TarotReading: React.FC = () => {
           {/* display the drawn cards */}
           {selectedCards.map((drawnCard, index) => (
             <FlippableCard
-              key={drawnCard.card._id}
+              key={`${drawnCard.card._id}-${index}`}
               card={drawnCard.card}
               index={index}
               onClick={() => {}}
               selected
               flipped
               canFlip
+              isUpright={drawnCard.isUpright}
             />
           ))}
         </div>
       )}
 
       {selectedCards.length === 3 && (
-        <div className="reading-results">
-          {selectedCards.map((drawnCard, index) => (
-            <div key={index} className="drawn-card">
-              <h2>{drawnCard.position.toUpperCase()}</h2>
-              <h3>{drawnCard.card.name}</h3>
-              <p>{getPositionDescription(drawnCard)}</p>
+        <ReadingModal
+          isOpen={isModalOpen}
+          onClose={resetReading}
+          onSave={handleSaveReading}
+        >
+          {/* text reading section */}
+          <h2>Your Tarot Reading</h2>
+          <div className="reading-results">
+            {/* cards display */}
+            <div className="drawn-cards-modal">
+              {selectedCards.map((drawnCard, index) => (
+                <FlippableCard
+                  key={`${drawnCard.card._id}-${index}`}
+                  card={drawnCard.card}
+                  index={index}
+                  onClick={() => {}}
+                  selected
+                  flipped
+                  canFlip
+                  isUpright={drawnCard.isUpright}
+                  className="modal-card"
+                />
+              ))}
             </div>
-          ))}
-          <button onClick={resetReading}>Reset Reading</button>
-        </div>
+            {selectedCards.map((drawnCard, index) => (
+              <div key={`${drawnCard.card._id}-${index}`}>
+                <h3>{drawnCard.card.name}</h3>
+                <p>{getPositionDescription(drawnCard)}</p>
+              </div>
+            ))}
+          </div>
+          {/* reflection input */}
+          <div className="reflection-input">
+            <h3>Add a Reflection</h3>
+            <textarea
+              placeholder="What are your thoughts?"
+              value={reflections.join("\n")}
+              onChange={(e) => {
+                setReflections(e.target.value.split("\n"));
+              }}
+            />
+          </div>
+        </ReadingModal>
       )}
     </div>
   );
 };
+
 export default TarotReading;

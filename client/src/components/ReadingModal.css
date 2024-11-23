@@ -2,41 +2,93 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 1000;
+  isolation: isolate;
 }
 
-.modal-content {
+body.modal-open {
+  overflow: hidden;
+}
+
+.reading-modal-content {
+  position: relative;
+  flex-direction: column;
+  color: #333;
+  background-color: white;
+  padding: 20px;
+  z-index: 1001;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #f0df81;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 0 15px 3px #f0df81;
   text-align: center;
+  isolation: isolate;
 }
 
-.modal-buttons {
+.reading-results {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 16px;
   margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  padding: 10px;
 }
 
-.modal-exit {
-  background: #ff4d4d;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
+h2 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2rem;
 }
 
 textarea {
   width: 100%;
   resize: none;
 }
+
+.modal-button {
+  padding: 10px 20px;
+  background: #aed8c8;
+  color: #292929;
+  border: 2px solid #4b8376;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-family: 'Cinzel Decorative', cursive;
+}
+
+.modal-button:hover {
+  background: #4b8376;
+  color: #fff;
+}
+
+.reflection-input {
+  width: 100%;
+  margin-top: 20px;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 16px;
+}
+
+.drawn-cards-modal {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-card {
+    border: 2px solid f0df81;
+    box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.5);
+    border-radius: 8px;
+  }
