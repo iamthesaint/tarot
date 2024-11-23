@@ -10,3 +10,19 @@ export const GET_ME = gql`
     }
   }
 `;
+
+// get tarot cards query
+export const GET_TAROT_CARDS = gql`
+  query GetTarotCards {
+    tarotCards {
+      _id
+      name
+      description
+      suit
+      uprightMeaning
+      reversedMeaning
+      image
+    }
+  }
+`;
+

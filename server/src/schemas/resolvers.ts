@@ -35,7 +35,8 @@ const resolvers = {
       throw new Error("You need to be logged in!");
     },
     //get all tarot cards
-    tarotCards: async () => {  // steph added this
+    tarotCards: async () => {
+      // steph added this
       return await TarotCard.find();
     },
 
@@ -46,7 +47,6 @@ const resolvers = {
       }
       throw new Error("You need to be logged in!");
     },
-
   },
 
   Mutation: {
@@ -83,6 +83,7 @@ const resolvers = {
       }
       throw new Error("You need to be logged in!");
     },
+
     //remove card
     removeCard: async (
       _parent: any,
@@ -99,16 +100,34 @@ const resolvers = {
       throw new Error("You need to be logged in!");
     },
 
-    //save reading
-    saveReading: async (_parent: any, args: any, context: any) => {
-      console.log(context);
-      if(context.user) {
-
-        return Reading.create({ ...args, user: context.user._id });
-        }
-        throw new Error('You need to be logged in!');
+    // save reading
+    saveReading: async (_parent: any, { readingData }: { readingData: any }, context: any) => {
+      if (!context.user) {
+        throw new Error("You need to be logged in!");
+      }
+    
+      try {
+        const newReading = await Reading.create({
+          cards: readingData.cards.map((drawnCard: any) => ({
+            card: drawnCard.card,
+            isUpright: drawnCard.isUpright,
+            position: drawnCard.position,
+          })),
+          reflections: readingData.reflections.map((reflection: any) => ({
+            thoughts: reflection.thoughts,
+          })),
+          date: readingData.date || new Date(),
+          user: context.user._id,
+        });
+    
+        return newReading.populate("user");
+      } catch (err) {
+        console.error(err);
+        throw new Error("Failed to save reading");
+      }
     }
-    },
+  },
 };
+
 
 export default resolvers;

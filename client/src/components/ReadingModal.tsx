@@ -6,9 +6,10 @@ interface ReadingModalProps {
   isOpen: boolean;
   children: React.ReactNode;
   onClose: () => void;
+  onSave: () => void; 
 }
 
-const ReadingModal: React.FC<ReadingModalProps> = ({ isOpen, children, onClose }) => {
+const ReadingModal: React.FC<ReadingModalProps> = ({ isOpen, children, onClose, onSave }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -29,8 +30,12 @@ const ReadingModal: React.FC<ReadingModalProps> = ({ isOpen, children, onClose }
         onClick={(e) => e.stopPropagation()}
       >
         {children}
-        <button className="modal-button" onClick={onClose}>Close and Reset Reading</button>
-        <button className="modal-button" onClick={onClose}>Save Reading & Reflection</button>
+        <button className="modal-button" onClick={onClose}>
+          Close and Reset Reading
+        </button>
+        <button className="modal-button" onClick={onSave}>
+          Save Reading & Reflection
+        </button>
       </div>
     </div>,
     document.body

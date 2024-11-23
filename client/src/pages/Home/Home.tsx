@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import { Container } from "react-bootstrap";
-import backgroundImage from "../../images/tarot-background.jpg";
 import "./Home.css";
 
 const Home = () => {
   return (
     <div
       className="home"
-      style={{ backgroundImage: `url(${backgroundImage});` }}
     >
       <div className="overlay"></div>
       <div className="home-content-wrapper">

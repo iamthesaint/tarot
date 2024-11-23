@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useSpring, animated } from "react-spring";
 import { useDrag } from "react-use-gesture";
-import "./TarotReading.css";
 import ReadingModal from "../components/ReadingModal";
+import { SAVE_READING } from "../utils/mutations";
+import { GET_TAROT_CARDS } from "../utils/queries";
+import "./TarotReading.css";
+
 
 // tarot card type
 export interface TarotCard {
@@ -22,21 +25,6 @@ export interface DrawnCard {
   isUpright: boolean;
   position: "past" | "present" | "future";
 }
-
-// get tarot cards query
-export const GET_TAROT_CARDS = gql`
-  query GetTarotCards {
-    tarotCards {
-      _id
-      name
-      description
-      suit
-      uprightMeaning
-      reversedMeaning
-      image
-    }
-  }
-`;
 
 // flippable card component
 const FlippableCard: React.FC<{
@@ -143,29 +131,45 @@ const TarotReading: React.FC = () => {
   );
   const [allCardsDrawn, setAllCardsDrawn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [reflections, _setReflections] = useState<string[]>([]);
-  // const [saveReading] = useMutation(SAVE_READING, {
-  //   onCompleted: (data) => {
-  //     console.log("Reading saved successfully:", data);
-  //     alert("Your reading has been saved!");
-  //   },
-  //   onError: (error) => {
-  //     console.error("Error saving reading:", error);
-  //     alert("Failed to save your reading. Please try again.");
-  //   },
-  // });
+  const [reflections, setReflections] = useState<string[]>([]);
 
-  // const handleSaveReading = () => {
-  //   const cards = selectedCards.map((card) => ({
-  //     name: card.card.name,
-  //     position: card.position,
-  //     orientation: card.isUpright,
-  //     image: card.card.image,
-  //   }));
+  // save reading mutation
+  const [saveReading] = useMutation(SAVE_READING);
 
-  //   saveReading({ variables: { cards, reflections } });
-  // };
+  const handleSaveReading = () => {
+    const readingData = {
+      cards: selectedCards.map((drawnCard) => ({
+        card: {
+          _id: drawnCard.card._id,
+          name: drawnCard.card.name,
+          description: drawnCard.card.description,
+          suit: drawnCard.card.suit,
+          uprightMeaning: drawnCard.card.uprightMeaning,
+          reversedMeaning: drawnCard.card.reversedMeaning,
+          image: drawnCard.card.image,
+        },
+        isUpright: drawnCard.isUpright,
+        position: drawnCard.position,
+      })),
+      reflections: reflections.map((thought) => ({
+        thoughts: thought,
+      })),
+      date: new Date().toISOString(),
+    };
+    
+    saveReading({ variables: { readingData } })
+      .then((response) => {
+        console.log("Saved reading:", response.data.saveReading);
+      })
+      .catch((err) => {
+        console.error("Error saving reading:", err);
+      });
 
+    resetReading();
+    // clear reflections
+    setReflections([]);
+  };
+  
   useEffect(() => {
     if (selectedCards.length === 3) {
       setAllCardsDrawn(true);
@@ -272,7 +276,11 @@ const TarotReading: React.FC = () => {
       )}
 
       {selectedCards.length === 3 && (
-        <ReadingModal isOpen={isModalOpen} onClose={resetReading}>
+        <ReadingModal
+          isOpen={isModalOpen}
+          onClose={resetReading}
+          onSave={handleSaveReading}
+        >
           {/* text reading section */}
           <h2>Your Tarot Reading</h2>
           <div className="reading-results">
@@ -306,7 +314,7 @@ const TarotReading: React.FC = () => {
               placeholder="What are your thoughts?"
               value={reflections.join("\n")}
               onChange={(e) => {
-                _setReflections(e.target.value.split("\n"));
+                setReflections(e.target.value.split("\n"));
               }}
             />
           </div>
