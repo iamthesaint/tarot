@@ -234,93 +234,91 @@ const TarotReading: React.FC = () => {
   };
 
   return (
-    <div className="reading-container">
-      <h2>Click or drag to select three cards and reveal your reading... ✨</h2>
-      <div className="tarot-board">
-        {deck.map((card, index) => {
-          const isDrawn = selectedCards.some(
-            (drawnCard) => drawnCard.card._id === card._id
-          );
-          return (
-            !isDrawn && (
-              <FlippableCard
-                key={`${card._id}-${index}`}
-                card={card}
-                index={index}
-                onClick={() => handleCardClick(card)}
-                selected={false}
-                flipped={false}
-                canFlip={!allCardsDrawn}
-              />
-            )
-          );
-        })}
-      </div>
-
-      {selectedCards.length > 0 && (
-        <div className="drawn-cards">
-          {/* display the drawn cards */}
-          {selectedCards.map((drawnCard, index) => (
-            <FlippableCard
-              key={`${drawnCard.card._id}-${index}`}
-              card={drawnCard.card}
-              index={index}
-              onClick={() => {}}
-              selected
-              flipped
-              canFlip
-              isUpright={drawnCard.isUpright}
-            />
-          ))}
-        </div>
-      )}
-
-      {selectedCards.length === 3 && (
-        <ReadingModal
-          isOpen={isModalOpen}
-          onClose={resetReading}
-          onSave={handleSaveReading}
-        >
-          {/* text reading section */}
-          <h2>Your Tarot Reading</h2>
-          <div className="reading-results">
-            {/* cards display */}
-            <div className="drawn-cards-modal">
-              {selectedCards.map((drawnCard, index) => (
+    <><div className="navbar">
+      <a href="/">Home</a>
+    </div><div className="reading-container">
+        <h2>Click or drag to select three cards and reveal your reading... ✨</h2>
+        <div className="tarot-board">
+          {deck.map((card, index) => {
+            const isDrawn = selectedCards.some(
+              (drawnCard) => drawnCard.card._id === card._id
+            );
+            return (
+              !isDrawn && (
                 <FlippableCard
-                  key={`${drawnCard.card._id}-${index}`}
-                  card={drawnCard.card}
+                  key={`${card._id}-${index}`}
+                  card={card}
                   index={index}
-                  onClick={() => {}}
-                  selected
-                  flipped
-                  canFlip
-                  isUpright={drawnCard.isUpright}
-                  className="modal-card"
-                />
-              ))}
-            </div>
+                  onClick={() => handleCardClick(card)}
+                  selected={false}
+                  flipped={false}
+                  canFlip={!allCardsDrawn} />
+              )
+            );
+          })}
+        </div>
+
+        {selectedCards.length > 0 && (
+          <div className="drawn-cards">
+            {/* display the drawn cards */}
             {selectedCards.map((drawnCard, index) => (
-              <div key={`${drawnCard.card._id}-${index}`}>
-                <h3>{drawnCard.card.name}</h3>
-                <p>{getPositionDescription(drawnCard)}</p>
-              </div>
+              <FlippableCard
+                key={`${drawnCard.card._id}-${index}`}
+                card={drawnCard.card}
+                index={index}
+                onClick={() => { } }
+                selected
+                flipped
+                canFlip
+                isUpright={drawnCard.isUpright} />
             ))}
           </div>
-          {/* reflection input */}
-          <div className="reflection-input">
-            <h3>Add a Reflection</h3>
-            <textarea
-              placeholder="What are your thoughts?"
-              value={reflections.join("\n")}
-              onChange={(e) => {
-                setReflections(e.target.value.split("\n"));
-              }}
-            />
-          </div>
-        </ReadingModal>
-      )}
-    </div>
+        )}
+
+        {selectedCards.length === 3 && (
+          <ReadingModal
+            isOpen={isModalOpen}
+            onClose={resetReading}
+            onSave={handleSaveReading}
+          >
+            {/* text reading section */}
+            <h2>Your Tarot Reading</h2>
+            <div className="reading-results">
+              {/* cards display */}
+              <div className="drawn-cards-modal">
+                {selectedCards.map((drawnCard, index) => (
+                  <FlippableCard
+                    key={`${drawnCard.card._id}-${index}`}
+                    card={drawnCard.card}
+                    index={index}
+                    onClick={() => { } }
+                    selected
+                    flipped
+                    canFlip
+                    isUpright={drawnCard.isUpright}
+                    className="modal-card" />
+                ))}
+              </div>
+              {selectedCards.map((drawnCard, index) => (
+                <div key={`${drawnCard.card._id}-${index}`}>
+                  <h3>{drawnCard.card.name}</h3>
+                  <p>{getPositionDescription(drawnCard)}</p>
+                </div>
+              ))}
+            </div>
+            {/* reflection input */}
+            <div className="reflection-input">
+              <h3>Add a Reflection</h3>
+              <textarea
+                placeholder="What are your thoughts?"
+                value={reflections.join("\n")}
+                onChange={(e) => {
+                  setReflections(e.target.value.split("\n"));
+                } } />
+            </div>
+          </ReadingModal>
+        )}
+      </div></>
   );
 };
 
