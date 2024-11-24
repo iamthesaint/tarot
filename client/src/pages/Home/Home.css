@@ -19,22 +19,21 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   padding: 10px;
   font-size: 14px;
   font-family: 'Cinzel Decorative', serif;
-  color: #c81b1bcf;
+  color: #cc1010;
   background: rgba(255, 255, 255, 0); /* Semi-transparent background */
   border: 1px solid #cccccc00;
   border-radius: 5px;
-  resize: none; /* Prevent resizing */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0);
+
 }
 
 /* Style for the image above the title */
 .logo {
-  max-width: 150px; /* Limit size of the image */
+  width: 300px;
   height: auto;
 }
 
@@ -55,7 +54,7 @@
   background-repeat: no-repeat; /* Prevent tiling */
 
   /* Other styles */
-  color: white; /* Ensure text is readable on the background */
+  color: #AED8C8; /* Ensure text is readable on the background */
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px); /* Mystical blur effect */
 }
