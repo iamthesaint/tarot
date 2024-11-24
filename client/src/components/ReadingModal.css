@@ -123,6 +123,7 @@ textarea {
 
   .modal-title {
     color: #203657 !important;
+    font-family: 'Cinzel Decorative', cursive;
     display: flex;
     font-size: 2rem;
     justify-content: center;
