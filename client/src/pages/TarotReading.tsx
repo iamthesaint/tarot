@@ -5,25 +5,26 @@ import { useDrag } from "react-use-gesture";
 import ReadingModal from "../components/ReadingModal";
 import { SAVE_READING } from "../utils/mutations";
 import { GET_TAROT_CARDS } from "../utils/queries";
+import { DrawnCard, TarotCard } from "../utils/types";
 import "./TarotReading.css";
 
 // tarot card type
-export interface TarotCard {
-  _id: string;
-  name: string;
-  description: string;
-  suit: string;
-  uprightMeaning: string;
-  reversedMeaning: string;
-  image: string;
-}
+// export interface TarotCard {
+//   _id: string;
+//   name: string;
+//   description: string;
+//   suit: string;
+//   uprightMeaning: string;
+//   reversedMeaning: string;
+//   image: string;
+// }
 
 // drawn card type
-export interface DrawnCard {
-  card: TarotCard;
-  isUpright: boolean;
-  position: "past" | "present" | "future";
-}
+// export interface DrawnCard {
+//   card: TarotCard;
+//   isUpright: boolean;
+//   position: "past" | "present" | "future";
+// }
 
 // flippable card component
 const FlippableCard: React.FC<{

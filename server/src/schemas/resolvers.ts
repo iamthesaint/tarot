@@ -21,6 +21,32 @@ interface UserArgs {
   password: string;
 }
 
+interface ReadingArgs {
+  readingData: {
+    cards: Array<{
+      card: {
+        _id: string;
+        name: string;
+        description: string;
+        suit: string;
+        uprightMeaning: string;
+        reversedMeaning: string;
+        image: string;
+      };
+      isUpright: boolean;
+      position: string;
+    }>;
+    reflections: Array<{
+      thoughts: string;
+    }>;
+    date: string;
+  };
+}
+
+interface GetReadingArgs {
+  userId?: string;
+}
+
 const resolvers = {
   Query: {
     //get user
@@ -46,6 +72,24 @@ const resolvers = {
         return Reading.find({ user: context.user._id });
       }
       throw new Error("You need to be logged in!");
+    },
+
+    //get saved readings
+    getSavedReadings: async (
+      _parent: any,
+      _args: GetReadingArgs,
+      context: any
+    ) => {
+      if (!context.user) {
+        throw new Error("You must be logged in to view saved readings.");
+      }
+      return await Reading.find({ user: context.user._id })
+        .populate({
+          path: "cards.card",
+          select:
+            "_id name description suit uprightMeaning reversedMeaning image",
+        })
+        .populate("user", "_id username");
     },
   },
 
@@ -100,34 +144,39 @@ const resolvers = {
       throw new Error("You need to be logged in!");
     },
 
-    // save reading
-    saveReading: async (_parent: any, { readingData }: { readingData: any }, context: any) => {
+    //save reading
+    saveReading: async (_parent: any, args: ReadingArgs, context: any) => {
       if (!context.user) {
         throw new Error("You need to be logged in!");
       }
-    
+
+      const { readingData } = args;
+
       try {
         const newReading = await Reading.create({
-          cards: readingData.cards.map((drawnCard: any) => ({
-            card: drawnCard.card,
-            isUpright: drawnCard.isUpright,
-            position: drawnCard.position,
+          cards: readingData.cards.map((card) => ({
+            card: card.card._id,
+            isUpright: card.isUpright,
+            position: card.position,
           })),
-          reflections: readingData.reflections.map((reflection: any) => ({
+          reflections: readingData.reflections.map((reflection) => ({
             thoughts: reflection.thoughts,
           })),
-          date: readingData.date || new Date(),
+          date: readingData.date || new Date().toISOString(),
           user: context.user._id,
         });
-    
-        return newReading.populate("user");
+
+        return (await newReading.populate("user")).populate({
+          path: "cards.card",
+          select:
+            "_id name description suit uprightMeaning reversedMeaning image",
+        });
       } catch (err) {
         console.error(err);
         throw new Error("Failed to save reading");
       }
-    }
+    },
   },
 };
-
 
 export default resolvers;
