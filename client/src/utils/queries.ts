@@ -27,15 +27,11 @@ export const GET_TAROT_CARDS = gql`
 `;
 
 // get saved readings query
-
 export const GET_SAVED_READINGS = gql`
   query GetSavedReadings {
     getSavedReadings {
       _id
       date
-      reflections {
-        thoughts
-      }
       cards {
         isUpright
         position
@@ -49,6 +45,9 @@ export const GET_SAVED_READINGS = gql`
           image
         }
       }
+      reflections {
+        thoughts
+      }
       user {
         _id
         username
@@ -56,5 +55,3 @@ export const GET_SAVED_READINGS = gql`
     }
   }
 `;
-
-

@@ -13,7 +13,6 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    savedCards: [TarotCard]
   }
 
   type TarotCard {
@@ -49,7 +48,7 @@ const typeDefs = gql`
     getSavedReadings: [Reading]
     tarotCards: [TarotCard]
     user(userId: ID!): User
-    readings: [Reading]
+    # readings: [Reading]
   }
 
   type Mutation {
@@ -84,6 +83,7 @@ const typeDefs = gql`
     cards: [DrawnCardInput]
     reflections: [ReflectionInput]
     date: String
+    userId: ID
   }
 `;
 

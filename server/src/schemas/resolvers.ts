@@ -23,6 +23,7 @@ interface UserArgs {
 
 interface ReadingArgs {
   readingData: {
+    date: string;
     cards: Array<{
       card: {
         _id: string;
@@ -39,8 +40,8 @@ interface ReadingArgs {
     reflections: Array<{
       thoughts: string;
     }>;
-    date: string;
   };
+  userId: string;
 }
 
 interface GetReadingArgs {
@@ -66,13 +67,13 @@ const resolvers = {
       return await TarotCard.find();
     },
 
-    //get all readings
-    readings: async (_parents: any, _args: any, context: any) => {
-      if (context.user) {
-        return Reading.find({ user: context.user._id });
-      }
-      throw new Error("You need to be logged in!");
-    },
+    // get all readings
+    // readings: async (_parents: any, _args: any, context: any) => {
+    //   if (context.user) {
+    //     return Reading.find({ user: context.user._id });
+    //   }
+    //   throw new Error("You need to be logged in!");
+    // },
 
     //get saved readings
     getSavedReadings: async (
@@ -154,6 +155,7 @@ const resolvers = {
 
       try {
         const newReading = await Reading.create({
+          date: readingData.date || new Date().toISOString(),
           cards: readingData.cards.map((card) => ({
             card: card.card._id,
             isUpright: card.isUpright,
@@ -162,7 +164,6 @@ const resolvers = {
           reflections: readingData.reflections.map((reflection) => ({
             thoughts: reflection.thoughts,
           })),
-          date: readingData.date || new Date().toISOString(),
           user: context.user._id,
         });
 

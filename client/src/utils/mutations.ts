@@ -24,6 +24,7 @@ export const SAVE_READING = gql`
 mutation SaveReading($readingData: ReadingInput!) {
   saveReading(readingData: $readingData) {
     _id
+    date
     reflections {
       thoughts
     }
@@ -35,7 +36,6 @@ mutation SaveReading($readingData: ReadingInput!) {
       isUpright
       position
     }
-    date
     user {
       _id
       username
