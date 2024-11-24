@@ -1,6 +1,5 @@
 
 .tarot-board {
-  /* position: relative; */
   width: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -97,19 +96,28 @@ img {
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #8ed8c8;
   text-decoration: none;
-  margin: 0 10px;
 }
-
 .nav-links a:hover {
   color: #ffbe86;
 }
 
-h2 {
+.reading-title {
   display: flex;
-  color: #ffbe86 !important;
-  font-size: 1.3rem;
+  font-size: 3rem;
+  justify-content: center;
+  color: #bddeee !important;
   text-shadow: 2px 2px 4px rgba(234, 255, 170, 0.5);
   font-family: 'Cinzel Decorative', serif;
 }
+
+.reading-instructions {
+  display: flex;
+  font-size: 1.5rem;
+  color: #ffbe86 !important;
+  text-shadow: 1px 1px 4px rgba(234, 255, 170, 0.5);
+  font-family:'Unna', serif;
+  font-style: italic;
+}
+
