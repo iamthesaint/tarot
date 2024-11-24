@@ -3,14 +3,10 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: 'Cinzel Decorative', 'Times New Roman', Times, serif;
+  font-family: "Cinzel Decorative", "Times New Roman", Times, serif;
+  background: linear-gradient(to bottom, #111, #514c58);
+  overflow: hidden;
 }
-
-body {
-  font-family: 'Cinzel Decorative', 'Times New Roman', Times, serif;
-    background: linear-gradient(to bottom, #111, #514c58);
-    overflow: hidden;
-  }
 
 #root {
   min-height: 100vh;
@@ -65,4 +61,3 @@ h1 {
   z-index: -1;
   filter: blur(10px);
 }
-

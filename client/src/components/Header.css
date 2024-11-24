@@ -1,0 +1,33 @@
+.topbar {
+    display: flex;
+    align-items: space-between;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    list-style: none;
+    justify-content: space-between;
+  }
+  
+  .nav-item {
+    margin: 0 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2rem;
+    font-family: 'Cinzel Decorative', serif;
+    text-shadow: 2px 2px 4px rgba(234, 255, 170, 0.5);
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-item:hover {
+    color: #ffbe86;
+  }
+  
+  .nav-item:active {
+    color: #f0df81;
+  }
+  
+  .nav-item.active {
+    color: #f0df81;
+    text-decoration: underline;
+  }
+  

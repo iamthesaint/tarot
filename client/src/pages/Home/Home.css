@@ -1,0 +1,25 @@
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    list-style: none;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(234, 255, 170, 0.5);
+    font-family: 'Cinzel Decorative', serif;
+    color: #ffffff !important;
+    text-decoration: none;
+  }
+  
+  .nav-links a:hover {
+    color: #ffbe86;
+  }
+  
+  h2 {
+    display: flex;
+    color: #ffbe86 !important;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(234, 255, 170, 0.5);
+    font-family: 'Cinzel Decorative', serif;
+  }
