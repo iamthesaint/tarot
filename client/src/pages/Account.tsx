@@ -3,7 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
 import { useQuery } from "@apollo/client";
 import { GET_SAVED_READINGS } from "../utils/queries";
 import { Reading } from "../utils/types";
@@ -42,7 +41,6 @@ const Account = () => {
     <Container>
     <Row>
       <Col>
-        <Header />
         {username && <h1>Welcome, {username}!</h1>}
         <Link to="/reading">Get a new reading</Link>
         <h2>Your Saved Tarot Readings</h2>
