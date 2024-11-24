@@ -8,24 +8,6 @@ import { GET_TAROT_CARDS } from "../utils/queries";
 import { DrawnCard, TarotCard } from "../utils/types";
 import "./TarotReading.css";
 
-// tarot card type
-// export interface TarotCard {
-//   _id: string;
-//   name: string;
-//   description: string;
-//   suit: string;
-//   uprightMeaning: string;
-//   reversedMeaning: string;
-//   image: string;
-// }
-
-// drawn card type
-// export interface DrawnCard {
-//   card: TarotCard;
-//   isUpright: boolean;
-//   position: "past" | "present" | "future";
-// }
-
 // flippable card component
 const FlippableCard: React.FC<{
   card: TarotCard;
@@ -238,18 +220,11 @@ const TarotReading: React.FC = () => {
 
   return (
     <>
-      <div className="nav-links">
-        <a href="/">Return Home</a>
-        <a href="account">My Account</a>
-      </div>
-
-      <div className="topbar">
       <h2 className="reading-title">Draw Your Tarot Cards</h2>
       <p className="reading-instructions">
         click on or drag your chosen cards from the deck - once you have drawn
         three cards, your tarot reading will be revealed.
       </p>
-      </div>
 
       <div className="reading-container">
         <div className="tarot-board">
