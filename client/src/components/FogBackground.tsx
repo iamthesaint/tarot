@@ -18,16 +18,16 @@ const FogBackground: React.FC = () => {
       speedY: number;
       opacity: number;
     }[] = [];
-    const numParticles = 50;
+    const numParticles = 70;
 
     for (let i = 0; i < numParticles; i++) {
       fogParticles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 150 + 80,
-        speedX: Math.random() * 0.3 - 0.4,
-        speedY: Math.random() * 0.3 - 0.2,
-        opacity: Math.random() * 0.15 + 0.05,
+        speedX: Math.random() * 0.4 - 0.8,
+        speedY: Math.random() * 0.2 - 0.5,
+        opacity: Math.random() * 0.20 + 0.05,
       });
     }
 
@@ -67,7 +67,7 @@ const FogBackground: React.FC = () => {
         if (p.y < 0) p.y = canvas.height;
       });
 
-      const buffer = 100;
+      const buffer = 200;
       fogParticles.forEach((p) => {
         if (p.x > canvas.width + buffer) p.x = -buffer;
         if (p.x < -buffer) p.x = canvas.width + buffer;
