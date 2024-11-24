@@ -24,10 +24,11 @@
   padding: 10px;
   font-size: 14px;
   font-family: 'Cinzel Decorative', serif;
-  color: #cc1010;
+  color: #BDDEEE;
   background: rgba(255, 255, 255, 0); /* Semi-transparent background */
   border: 1px solid #cccccc00;
   border-radius: 5px;
+  resize: none;
 
 }
 
