@@ -1,8 +1,5 @@
-// client/src/main.tsx
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ApolloProvider } from "@apollo/client";
-import client from "./apolloClient";
 import App from "./App";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login";
@@ -11,6 +8,8 @@ import TarotReading from "./pages/TarotReading";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import Account from "./pages/Account";
+import { ApolloProvider } from "@apollo/client";
+import client from "./apolloClient";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +46,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
- /* <ApolloProvider client={client}> */
+  <ApolloProvider client={client}>
     <RouterProvider router={router} />
- /* </ApolloProvider>  */
+  </ApolloProvider>
 );

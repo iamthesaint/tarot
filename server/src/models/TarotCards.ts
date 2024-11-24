@@ -6,7 +6,7 @@ interface ITarotCard extends Document {
   suit: string;
   uprightMeaning: string;
   reversedMeaning: string;
-  image?: string;
+  image: string;
 }
 
 const tarotCardSchema: Schema = new Schema({

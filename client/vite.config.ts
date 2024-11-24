@@ -4,6 +4,11 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      external: ['./node_modules/bootstrap/dist/css/bootstrap.min.css'],
+    },
+  },
   server: {
     port: 3000,
     open: true,

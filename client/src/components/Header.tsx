@@ -4,15 +4,15 @@ import { Nav, NavLink } from "react-bootstrap";
 const Header = () => {
   return (
     <header className="topbar">
-      <NavLink href="/">Divine Deck</NavLink>
-      <Nav>
+      <Nav className="nav-links">
+        <NavLink href="/" className="nav-item">Home</NavLink>
         {auth.loggedIn() ? (
           <>
-            <Nav.Link href="/account">Account</Nav.Link>
-            <Nav.Link onClick={auth.logout}>Logout</Nav.Link>
+            <Nav.Link href="/account" className="nav-item">My Account</Nav.Link>
+            <Nav.Link onClick={auth.logout} className="nav-item">Logout</Nav.Link>
           </>
         ) : (
-          <Nav.Link href="/login">Login/Sign Up</Nav.Link>
+          <Nav.Link href="/login" className="nav-item">Login/Sign-Up</Nav.Link>
         )}
       </Nav>
     </header>
