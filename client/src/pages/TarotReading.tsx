@@ -175,7 +175,7 @@ const TarotReading: React.FC = () => {
   useEffect(() => {
     if (selectedCards.length === 3) {
       setAllCardsDrawn(true);
-      setIsModalOpen(true);
+      setTimeout(() => setIsModalOpen(true), 600);
     }
   }, [selectedCards]);
 
@@ -197,10 +197,10 @@ const TarotReading: React.FC = () => {
       setFlippedCards({ ...flippedCards, [card._id]: true });
       if (selectedCards.length === 3) {
         setAllCardsDrawn(true);
-        setIsModalOpen(true);
-      }
+        setTimeout(() => setIsModalOpen(true), 600);
     }
-  };
+  }
+};
 
   const resetReading = () => {
     setSelectedCards([]);
