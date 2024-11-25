@@ -10,6 +10,7 @@ const Header = () => {
           <>
             <Nav.Link href="/account" className="nav-item">My Account</Nav.Link>
             <Nav.Link onClick={auth.logout} className="nav-item">Logout</Nav.Link>
+            <NavLink href="/reading" className="nav-item">Draw Your Cards</NavLink>
           </>
         ) : (
           <Nav.Link href="/login" className="nav-item">Login/Sign-Up</Nav.Link>
