@@ -134,10 +134,11 @@
     margin-bottom: 0.5rem;
   }
   
-  .reflections p {
-    font-size: 1rem;
+  .readings p {
+    font-size: 1.5rem;
     margin: 0.5rem 0;
-    font-style: italic;
+    text-shadow: none;
+    font-family: 'Unna', serif;
   }
   
   a.btn {
