@@ -71,3 +71,24 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// mutation for deleting a reading
+export const DELETE_READING = gql`
+  mutation deleteReading($readingId: ID!) {
+    deleteReading(readingId: $readingId) {
+      _id
+      date
+      reflections {
+        thoughts
+      }
+      cards {
+        card {
+          name
+          description
+        }
+        isUpright
+        position
+      }
+    }
+  }
+  `;

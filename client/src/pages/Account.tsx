@@ -2,11 +2,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_SAVED_READINGS } from "../utils/queries";
 import { Reading, DrawnCard } from "../utils/types";
+import { DELETE_READING } from "../utils/mutations";
 import "./Account.css";
 
 interface UserData {
@@ -34,10 +34,27 @@ const Account = () => {
     GET_SAVED_READINGS
   );
 
+  const [deleteReading] = useMutation(DELETE_READING, {
+  });
+
   if (loading) return <p>Loading your saved readings...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   const readings = data?.getSavedReadings || [];
+
+  const handleDeleteReading = async (readingId: string) => {
+    console.log("Deleting reading with ID:", readingId);
+    try {
+      const response = await deleteReading({
+        variables: { readingId },
+        refetchQueries: [{ query: GET_SAVED_READINGS }],
+      });
+      console.log("Deleted reading response:", response);
+    } catch (error) {
+      console.error("Failed to delete reading:", error);
+    }
+  };
+  
 
   const formatDate = (timestamp: string | number): string => {
     const date = new Date(Number(timestamp));
@@ -86,9 +103,6 @@ const Account = () => {
       <Row>
         <Col>
           {username && <h1>Welcome, {username}!</h1>}
-          {/* <Link to="/reading" className="btn btn-primary mb-4">
-            Get a new reading
-          </Link> */}
           <h2>Your Saved Tarot Readings</h2>
           <div className="readings">
             {readings.length > 0 ? (
@@ -109,17 +123,23 @@ const Account = () => {
                     </Row>
                     {reading.reflections?.length > 0 && (
                       <div className="mt-3">
-                        <h5>Reflections:</h5>
+                        <h5>Personal Reflections:</h5>
                         {reading.reflections.map((reflection, idx) => (
-                          <p key={idx}>"{reflection.thoughts}"</p>
+                          <p key={idx}><i>{reflection.thoughts}</i></p>
                         ))}
                       </div>
                     )}
+                      <button
+                    className="delete-button"
+                    onClick={() => handleDeleteReading(reading._id)}
+                  >
+                    Delete Reading
+                  </button>
                   </Card.Body>
                 </Card>
               ))
             ) : (
-              <p>No readings saved yet! To begin, draw your first card...</p>
+              <p>No readings saved yet! To begin, draw your first card... 🔮</p>
             )}
           </div>
         </Col>
@@ -129,3 +149,5 @@ const Account = () => {
 };
 
 export default Account;
+
+

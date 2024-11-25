@@ -48,7 +48,6 @@ const typeDefs = gql`
     getSavedReadings: [Reading]
     tarotCards: [TarotCard]
     user(userId: ID!): User
-    # readings: [Reading]
   }
 
   type Mutation {
@@ -57,6 +56,7 @@ const typeDefs = gql`
     saveCard(cardId: ID!): User
     removeCard(cardId: ID!): User
     saveReading(readingData: ReadingInput!): Reading
+    deleteReading(readingId: ID!) : Reading
   }
 
   input ReflectionInput {
