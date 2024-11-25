@@ -37,9 +37,9 @@ const typeDefs = gql`
 
   type Reading {
     _id: ID
+    date: String
     cards: [DrawnCard]
     reflections: [Reflection]
-    date: String
     user: User
   }
 
@@ -80,9 +80,9 @@ const typeDefs = gql`
   }
 
   input ReadingInput {
+    date: String
     cards: [DrawnCardInput]
     reflections: [ReflectionInput]
-    date: String
     userId: ID
   }
 `;
