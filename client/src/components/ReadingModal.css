@@ -41,7 +41,7 @@ body.modal-open {
   border-radius: 8px;
   border: 2px solid #f0df81;
   width: 90%;
-  max-width: 85%;
+  max-width: 80%;
   max-height: 90vh;
   box-shadow: 0 0 15px 3px #f0df81;
   text-align: center;
@@ -56,7 +56,7 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding-left: 25%;
+  padding-left: 30%;
 }
 
 textarea {
@@ -96,7 +96,7 @@ p {
 
 .drawn-cards-modal {
   position: absolute;
-  left: 9%;
+  left: 11%;
   top: 13%;
   transform: rotate(0deg) !important;
   transition: transform 0.5s ease-in-out;
@@ -140,6 +140,7 @@ p {
     display: flex;
     font-size: 2rem;
     justify-content: center;
+    padding-left: 30%;
   }
 
   @media (max-width: 900px) {

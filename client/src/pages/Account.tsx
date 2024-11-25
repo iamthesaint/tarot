@@ -7,6 +7,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { GET_SAVED_READINGS } from "../utils/queries";
 import { Reading, DrawnCard } from "../utils/types";
 import { DELETE_READING } from "../utils/mutations";
+import { Link } from "react-router-dom";
 import "./Account.css";
 
 interface UserData {
@@ -34,8 +35,7 @@ const Account = () => {
     GET_SAVED_READINGS
   );
 
-  const [deleteReading] = useMutation(DELETE_READING, {
-  });
+  const [deleteReading] = useMutation(DELETE_READING, {});
 
   if (loading) return <p>Loading your saved readings...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -54,7 +54,6 @@ const Account = () => {
       console.error("Failed to delete reading:", error);
     }
   };
-  
 
   const formatDate = (timestamp: string | number): string => {
     const date = new Date(Number(timestamp));
@@ -68,7 +67,9 @@ const Account = () => {
     return date.toLocaleDateString(undefined, options);
   };
 
-  const RenderDrawnCard: React.FC<{ drawnCard: DrawnCard }> = ({ drawnCard }) => {
+  const RenderDrawnCard: React.FC<{ drawnCard: DrawnCard }> = ({
+    drawnCard,
+  }) => {
     if (!drawnCard?.card)
       return (
         <Card.Text>
@@ -83,7 +84,9 @@ const Account = () => {
             {drawnCard.position?.toUpperCase() || "Position"}:{" "}
             {drawnCard.card.name || "Unknown Card"}
           </Card.Title>
-          <Card.Text>{drawnCard.card.description || "Description unavailable"}</Card.Text>
+          <Card.Text>
+            {drawnCard.card.description || "Description unavailable"}
+          </Card.Text>
           <Card.Text>
             <strong>Meaning:</strong>{" "}
             {drawnCard.isUpright
@@ -125,21 +128,26 @@ const Account = () => {
                       <div className="mt-3">
                         <h5>Personal Reflections:</h5>
                         {reading.reflections.map((reflection, idx) => (
-                          <p key={idx}><i>{reflection.thoughts}</i></p>
+                          <p key={idx}>
+                            <i>{reflection.thoughts}</i>
+                          </p>
                         ))}
                       </div>
                     )}
-                      <button
-                    className="delete-button"
-                    onClick={() => handleDeleteReading(reading._id)}
-                  >
-                    Delete Reading
-                  </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDeleteReading(reading._id)}
+                    >
+                      Remove This Reading
+                    </button>
                   </Card.Body>
                 </Card>
               ))
             ) : (
-              <p>No readings saved yet! To begin, draw your first card... 🔮</p>
+              <p>
+                No readings saved yet! To begin, <Link to="/reading" className="reading-link">draw</Link>{" "}
+                your first card...
+              </p>
             )}
           </div>
         </Col>
@@ -149,5 +157,3 @@ const Account = () => {
 };
 
 export default Account;
-
-
