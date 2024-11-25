@@ -293,6 +293,7 @@ const TarotReading: React.FC = () => {
                   />
                 ))}
               </div>
+              <div className="reading-results-text">
               {selectedCards.map((drawnCard, index) => (
                 <div key={`${drawnCard.card._id}-${index}`}>
                     <h3>{drawnCard.position.toUpperCase()}: {drawnCard.card.name} {drawnCard.isUpright ? "Upright" : "Reversed"}</h3>
@@ -316,6 +317,7 @@ const TarotReading: React.FC = () => {
                 }}
               />
             </div>
+          </div>
           </ReadingModal>
         )}
       </div>
