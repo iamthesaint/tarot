@@ -1,28 +1,131 @@
-.reading-card {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
+/* General container styling */
+.container {
+    padding: 2rem;
+  }
+  
+  /* Header section */
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .readings p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  /* Card styling */
+  .reading-card {
+    border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: #fff;
+  }
+  
+  .reading-card .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .reading-card h5 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
   }
   
   .card-details {
-    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+    flex: 1 1 calc(33% - 1rem);
+    max-width: calc(33% - 1rem);
+    text-align: center;
   }
   
-  .reading-reflections {
-    margin-top: 15px;
-  }
-  
-  h3 {
-    color: #4a4a4a;
-  }
-  
-  h4 {
-    color: #6a6a6a;
-  }
-  
-  p {
+  .card-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
     color: #333;
+  }
+  
+  .card-details p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Reflections section */
+  .reflections {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+  }
+  
+  .reflections h5 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .reflections p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-style: italic;
+  }
+  
+  /* Button styling */
+  a.btn {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  a.btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card-details {
+      flex: 1 1 calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card-details {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  
+    .reading-card .card-header h5 {
+      font-size: 1.2rem;
+    }
   }
   

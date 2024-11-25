@@ -1,11 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_SAVED_READINGS } from "../utils/queries";
 import { Reading, DrawnCard } from "../utils/types";
+import "./Account.css";
 
 interface UserData {
   user: {
@@ -37,7 +39,6 @@ const Account = () => {
 
   const readings = data?.getSavedReadings || [];
 
-
   const formatDate = (timestamp: string | number): string => {
     const date = new Date(Number(timestamp));
     const options: Intl.DateTimeFormatOptions = {
@@ -46,30 +47,37 @@ const Account = () => {
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
     };
     return date.toLocaleDateString(undefined, options);
   };
 
-
-  const renderDrawnCard = (drawnCard: DrawnCard, index: number) => {
-    if (!drawnCard?.card) return <p key={index}>Card data unavailable.</p>;
+  const RenderDrawnCard: React.FC<{ drawnCard: DrawnCard }> = ({ drawnCard }) => {
+    if (!drawnCard?.card)
+      return (
+        <Card.Text>
+          <i>Card data unavailable.</i>
+        </Card.Text>
+      );
 
     return (
-      <div key={index} className="card-details">
-        <h4>
-          {drawnCard.position?.toUpperCase() || "Position"}:{" "}
-          {drawnCard.card.name || "Unknown Card"}
-        </h4>
-        <p>{drawnCard.card.description || "Description unavailable"}</p>
-        <p>
-          Meaning:{" "}
-          {drawnCard.isUpright
-            ? drawnCard.card.uprightMeaning || "No upright meaning"
-            : drawnCard.card.reversedMeaning || "No reversed meaning"}
-        </p>
-        <p>Suit: {drawnCard.card.suit || "No suit"}</p>
-      </div>
+      <Card className="mb-3">
+        <Card.Body>
+          <Card.Title>
+            {drawnCard.position?.toUpperCase() || "Position"}:{" "}
+            {drawnCard.card.name || "Unknown Card"}
+          </Card.Title>
+          <Card.Text>{drawnCard.card.description || "Description unavailable"}</Card.Text>
+          <Card.Text>
+            <strong>Meaning:</strong>{" "}
+            {drawnCard.isUpright
+              ? drawnCard.card.uprightMeaning || "No upright meaning"
+              : drawnCard.card.reversedMeaning || "No reversed meaning"}
+          </Card.Text>
+          <Card.Text>
+            <strong>Suit:</strong> {drawnCard.card.suit || "No suit"}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     );
   };
 
@@ -78,28 +86,37 @@ const Account = () => {
       <Row>
         <Col>
           {username && <h1>Welcome, {username}!</h1>}
-          <Link to="/reading">Get a new reading</Link>
+          {/* <Link to="/reading" className="btn btn-primary mb-4">
+            Get a new reading
+          </Link> */}
           <h2>Your Saved Tarot Readings</h2>
           <div className="readings">
             {readings.length > 0 ? (
               readings.map((reading) => (
-                <div key={reading._id} className="reading-card">
-                  <p>{formatDate(reading?.date)}</p>
-
-                  <div className="cards">
-                    {reading.cards?.length > 0
-                      ? reading.cards.map(renderDrawnCard)
-                      : "No cards for this reading."}
-                  </div>
-                  {reading.reflections?.length > 0 && (
-                    <div className="reflections">
-                      <h4>Reflections:</h4>
-                      {reading.reflections.map((reflection, idx) => (
-                        <p key={idx}>{reflection.thoughts}</p>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Card key={reading._id} className="mb-4 shadow">
+                  <Card.Header>
+                    <h5>Date: {formatDate(reading.date)}</h5>
+                  </Card.Header>
+                  <Card.Body>
+                    <Row>
+                      {reading.cards?.length > 0
+                        ? reading.cards.map((drawnCard, index) => (
+                            <Col key={index} md={4}>
+                              <RenderDrawnCard drawnCard={drawnCard} />
+                            </Col>
+                          ))
+                        : "No cards for this reading."}
+                    </Row>
+                    {reading.reflections?.length > 0 && (
+                      <div className="mt-3">
+                        <h5>Reflections:</h5>
+                        {reading.reflections.map((reflection, idx) => (
+                          <p key={idx}>"{reflection.thoughts}"</p>
+                        ))}
+                      </div>
+                    )}
+                  </Card.Body>
+                </Card>
               ))
             ) : (
               <p>No readings saved yet! To begin, draw your first card...</p>
