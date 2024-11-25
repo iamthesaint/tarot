@@ -48,6 +48,7 @@ interface GetReadingArgs {
   userId?: string;
 }
 
+
 const resolvers = {
   Query: {
     //get user
@@ -66,14 +67,6 @@ const resolvers = {
       // steph added this
       return await TarotCard.find();
     },
-
-    // get all readings
-    // readings: async (_parents: any, _args: any, context: any) => {
-    //   if (context.user) {
-    //     return Reading.find({ user: context.user._id });
-    //   }
-    //   throw new Error("You need to be logged in!");
-    // },
 
     //get saved readings
     getSavedReadings: async (
@@ -177,6 +170,21 @@ const resolvers = {
         console.error(err);
         throw new Error("Failed to save reading");
       }
+    },
+
+    deleteReading: async (
+      _parent: any,
+      { readingId }: { readingId: string },
+      context: any
+    ) => {
+      if (!context.user) {
+        throw new Error("You need to be logged in!");
+      }
+
+      return await Reading.findOneAndDelete({
+        _id: readingId,
+        user: context.user._id,
+      });      
     },
   },
 };
