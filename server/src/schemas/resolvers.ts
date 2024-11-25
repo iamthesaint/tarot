@@ -155,7 +155,8 @@ const resolvers = {
 
       try {
         const newReading = await Reading.create({
-          date: readingData.date || new Date().toISOString(),
+          // record the date and time of the reading when it was saved
+          date: new Date().toISOString(),
           cards: readingData.cards.map((card) => ({
             card: card.card._id,
             isUpright: card.isUpright,
