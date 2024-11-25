@@ -37,6 +37,7 @@ const Account = () => {
 
   const readings = data?.getSavedReadings || [];
 
+
   const formatDate = (timestamp: string | number): string => {
     const date = new Date(Number(timestamp));
     const options: Intl.DateTimeFormatOptions = {
@@ -49,6 +50,7 @@ const Account = () => {
     };
     return date.toLocaleDateString(undefined, options);
   };
+
 
   const renderDrawnCard = (drawnCard: DrawnCard, index: number) => {
     if (!drawnCard?.card) return <p key={index}>Card data unavailable.</p>;
@@ -83,6 +85,7 @@ const Account = () => {
               readings.map((reading) => (
                 <div key={reading._id} className="reading-card">
                   <p>{formatDate(reading?.date)}</p>
+
                   <div className="cards">
                     {reading.cards?.length > 0
                       ? reading.cards.map(renderDrawnCard)

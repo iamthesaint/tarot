@@ -13,7 +13,6 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    savedCards: [TarotCard]
   }
 
   type TarotCard {
@@ -38,10 +37,26 @@ const typeDefs = gql`
 
   type Reading {
     _id: ID
+    date: String
     cards: [DrawnCard]
     reflections: [Reflection]
-    date: String
     user: User
+  }
+
+  type Query {
+    me: User
+    getSavedReadings: [Reading]
+    tarotCards: [TarotCard]
+    user(userId: ID!): User
+    # readings: [Reading]
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveCard(cardId: ID!): User
+    removeCard(cardId: ID!): User
+    saveReading(readingData: ReadingInput!): Reading
   }
 
   input ReflectionInput {
@@ -65,24 +80,10 @@ const typeDefs = gql`
   }
 
   input ReadingInput {
+    date: String
     cards: [DrawnCardInput]
     reflections: [ReflectionInput]
-    date: String
-  }
-
-  type Query {
-    me: User
-    tarotCards: [TarotCard]
-    user(userId: ID!): User
-    readings: [Reading]
-  }
-
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    saveCard(cardId: ID!): User
-    removeCard(cardId: ID!): User
-    saveReading(readingData: ReadingInput!): Reading
+    userId: ID
   }
 `;
 
