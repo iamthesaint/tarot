@@ -1,11 +1,21 @@
 
 .tarot-board {
-  width: 80%;
+  position: relative;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 400px;
+  align-items: flex-start;
+  height: auto;
   overflow: visible;
+}
+
+.drawn-cards {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  width: 1%;
 }
 
 
@@ -28,6 +38,8 @@
   border: 2px solid gold;
   box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.5);
   border-radius: 8px;
+  left: 10%;
+  top: 30%;
 }
 
 .card-image.reversed {
@@ -35,9 +47,6 @@
 }
 
 .card-back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
   background-image: url('../assets/back.png');
@@ -49,9 +58,6 @@
 }
 
 .card-front {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 8px;
   width: 100%;
   height: 100%;
@@ -104,20 +110,73 @@ img {
 }
 
 .reading-title {
-  display: flex;
-  font-size: 3rem;
-  justify-content: center;
-  color: #bddeee !important;
-  text-shadow: 2px 2px 4px rgba(234, 255, 170, 0.5);
+  font-size: 2.5rem;
+  color: #203657;
+  text-shadow: 2px 2px 4px #383838;
   font-family: 'Cinzel Decorative', serif;
 }
 
-.reading-instructions {
-  display: flex;
-  font-size: 1.5rem;
-  color: #ffbe86 !important;
-  text-shadow: 1px 1px 4px rgba(234, 255, 170, 0.5);
+.reading-instructions-container {
+  position: absolute;
+  top: 100px;
+  left: 75%;
+  padding: 10px;
+  background-color: #efebd4;
+  opacity: 0.9;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  text-shadow: 1px 1px 4px rgba(22, 22, 20, 0.5);
   font-family:'Unna', serif;
-  font-style: italic;
 }
 
+.reading-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.deck-and-selected-cards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .tarot-board {
+    height: auto;
+    padding: 20px 0;
+    flex-wrap: wrap;
+  }
+
+  .tarot-card {
+    width: 120px;
+    height: 200px;
+    left: 50%;
+    top: auto;
+  }
+
+  .reading-instructions-container {
+    left: 10px;
+    top: 80%;
+    width: auto;
+    height: auto;
+
+  }
+}
+
+@media (max-width: 480px) {
+  .tarot-card {
+    width: 100px;
+    height: 180px;
+  }
+
+  .tarot-board {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

@@ -5,6 +5,7 @@ import { useDrag } from "react-use-gesture";
 import ReadingModal from "../components/ReadingModal";
 import { SAVE_READING } from "../utils/mutations";
 import { GET_TAROT_CARDS } from "../utils/queries";
+import { useNavigate } from "react-router-dom";
 import { DrawnCard, TarotCard } from "../utils/types";
 import "./TarotReading.css";
 
@@ -63,8 +64,6 @@ const FlippableCard: React.FC<{
     }
   }, [flipped, canFlip]);
 
-
-
   return (
     <animated.div
       {...(!selected ? bind() : {})}
@@ -73,9 +72,7 @@ const FlippableCard: React.FC<{
       style={{
         x: selected ? undefined : x,
         y: selected ? undefined : y,
-        transform: transform.to((t) => `${t} rotate(${index * 10 - 4}deg)`),
-        left: "50%",
-        top: "25%",
+        transform: transform.to((t) => `${t} rotate(${index * 16 - 8}deg)`),
         transformOrigin: "bottom center",
         touchAction: "none",
       }}
@@ -120,6 +117,7 @@ const TarotReading: React.FC = () => {
 
   // save reading mutation
   const [saveReading] = useMutation(SAVE_READING);
+  const navigate = useNavigate();
 
   const handleSaveReading = () => {
     const readingData = {
@@ -145,6 +143,7 @@ const TarotReading: React.FC = () => {
     saveReading({ variables: { readingData } })
       .then((response) => {
         console.log("Saved reading:", response.data.saveReading);
+        navigate("/account");
       })
       .catch((err) => {
         console.error("Error saving reading:", err);
@@ -181,9 +180,9 @@ const TarotReading: React.FC = () => {
       if (selectedCards.length === 3) {
         setAllCardsDrawn(true);
         setTimeout(() => setIsModalOpen(true), 600);
+      }
     }
-  }
-};
+  };
 
   const resetReading = () => {
     setSelectedCards([]);
@@ -220,89 +219,107 @@ const TarotReading: React.FC = () => {
 
   return (
     <>
-      <h2 className="reading-title">Draw Your Tarot Cards</h2>
-      <p className="reading-instructions">
-        click on or drag your chosen cards from the deck - once you have drawn
-        three cards, your tarot reading will be revealed.
-      </p>
+      <div className="reading-instructions-container">
+        <h2 className="reading-title">Draw Your Tarot Cards</h2>
+        <p className="reading-instructions">
+          Click on or drag your chosen cards from the deck - once you have drawn
+          three cards, your tarot reading will be revealed.
+        </p>
+      </div>
 
       <div className="reading-container">
-        <div className="tarot-board">
-          {deck.map((card, index) => {
-            const isDrawn = selectedCards.some(
-              (drawnCard) => drawnCard.card._id === card._id
-            );
-            return (
-              !isDrawn && (
-                <FlippableCard
-                  key={`${card._id}-${index}`}
-                  card={card}
-                  index={index}
-                  onClick={() => handleCardClick(card)}
-                  selected={false}
-                  flipped={false}
-                  canFlip={!allCardsDrawn}
-                />
-              )
-            );
-          })}
-        </div>
-
-        {selectedCards.length > 0 && (
-          <div className="drawn-cards">
-            {/* display the drawn cards */}
-            {selectedCards.map((drawnCard, index) => (
-              <FlippableCard
-                key={`${drawnCard.card._id}-${index}`}
-                card={drawnCard.card}
-                index={index}
-                onClick={() => {}}
-                selected
-                flipped
-                canFlip
-                isUpright={drawnCard.isUpright}
-                position={drawnCard.position}
-              />
-            ))}
-          </div>
-        )}
-
-        {selectedCards.length === 3 && (
-          <ReadingModal
-            isOpen={isModalOpen}
-            onClose={resetReading}
-            onSave={handleSaveReading}
-          >
-            {/* text reading section */}
-            <h2 className="modal-title"><strong>Your Deck's Wisdom Revealed</strong></h2>
-            <div className="reading-results">
-              {/* cards display */}
-              <div className="drawn-cards-modal">
-                {selectedCards.map((drawnCard, index) => (
+        <div className="deck-and-selected-cards">
+          {/* deck */}
+          <div className="tarot-board">
+            {deck.map((card, index) => {
+              const isDrawn = selectedCards.some(
+                (drawnCard) => drawnCard.card._id === card._id
+              );
+              return (
+                !isDrawn && (
                   <FlippableCard
-                    key={`${drawnCard.card._id}-${index}`}
-                    card={drawnCard.card}
+                    key={`${card._id}-${index}`}
+                    card={card}
                     index={index}
-                    onClick={() => {}}
-                    selected
-                    flipped
-                    canFlip
-                    isUpright={drawnCard.isUpright}
-                    className="modal-card"
-                    position={drawnCard.position}
+                    onClick={() => handleCardClick(card)}
+                    selected={false}
+                    flipped={false}
+                    canFlip={!allCardsDrawn}
                   />
-                ))}
-              </div>
-              <div className="reading-results-text">
+                )
+              );
+            })}
+          </div>
+
+          {/* selected Cards */}
+          <div className="drawn-cards">
+            {selectedCards.length > 0 &&
+              selectedCards.map((drawnCard, index) => (
+                <FlippableCard
+                  key={`${drawnCard.card._id}-${index}`}
+                  card={drawnCard.card}
+                  index={index}
+                  onClick={() => {}}
+                  selected
+                  flipped
+                  canFlip
+                  isUpright={drawnCard.isUpright}
+                  position={drawnCard.position}
+                />
+              ))}
+          </div>
+        </div>
+      </div>
+
+      {selectedCards.length === 3 && (
+        <ReadingModal
+          isOpen={isModalOpen}
+          onClose={resetReading}
+          onSave={handleSaveReading}
+        >
+          {/* text reading section */}
+          <h2 className="modal-title">Your Deck's Wisdom Revealed</h2>
+          <div className="reading-results">
+            {/* cards display */}
+            <div className="drawn-cards-modal">
+              {selectedCards.map((drawnCard, index) => (
+                <FlippableCard
+                  key={`${drawnCard.card._id}-${index}`}
+                  card={drawnCard.card}
+                  index={index}
+                  onClick={() => {}}
+                  selected
+                  flipped
+                  canFlip
+                  isUpright={drawnCard.isUpright}
+                  className="modal-card"
+                  position={drawnCard.position}
+                />
+              ))}
+            </div>
+            
+            <div className="reading-results-text">
               {selectedCards.map((drawnCard, index) => (
                 <div key={`${drawnCard.card._id}-${index}`}>
-                    <h3>{drawnCard.position.toUpperCase()}: {drawnCard.card.name} {drawnCard.isUpright ? "Upright" : "Reversed"}</h3>
-                    <a href={`/cards/${drawnCard.card._id}`} style={{ fontFamily: "Unna, serif" }} target="_blank" rel="noopener noreferrer">
+                  <h3>
+                    {drawnCard.position.toUpperCase()}: {drawnCard.card.name}{" "}
+                    {drawnCard.isUpright ? "Upright" : "Reversed"}
+                  </h3>
+                  <a
+                    href={`/cards/${drawnCard.card._id}`}
+                    style={{ fontFamily: "Unna, serif" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Learn more about {drawnCard.card.name}
                   </a>
-                    <h6><i>Suit: {drawnCard.card.suit.toLowerCase()}</i></h6>
-                    <p style={{ fontFamily: "Unna, serif" }}>{getPositionDescription(drawnCard).toLowerCase()}</p>
-                    {index < selectedCards.length - 1 && <hr />} 
+                  <h6>
+                    <i>Suit: {drawnCard.card.suit.toLowerCase()}</i>
+                  </h6>
+                  <p style={{ fontFamily: "Unna, serif" }}>
+                    {getPositionDescription(drawnCard).toLowerCase()}
+                  </p>
+                  {index < selectedCards.length - 1 && <hr />}
                 </div>
               ))}
             </div>
@@ -318,9 +335,8 @@ const TarotReading: React.FC = () => {
               />
             </div>
           </div>
-          </ReadingModal>
-        )}
-      </div>
+        </ReadingModal>
+      )}
     </>
   );
 };
