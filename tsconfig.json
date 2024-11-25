@@ -38,5 +38,5 @@
       {
         "path": "./cypress"
       }],
-    "exclude": ["client/dist", "client/dist/assets"]
+    "exclude": ["client/dist", "client/dist/assets", "client/node_modules", "server/node_modules", "cypress/node_modules", "cypress/**/*.js", "cypress/**/*.jsx", "cypress/**/*.ts", "cypress/**/*.tsx"]
 }
