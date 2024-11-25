@@ -99,7 +99,7 @@ p {
 }
 
 .drawn-cards-modal .tarot-card:nth-child(2) {
-  transform: rotate(12deg) translateX(50px) !important;
+  transform: rotate(8deg) translateX(50px) !important;
   margin-top: 80px;
   
 }
@@ -109,6 +109,10 @@ p {
   margin-top: 190px;
 }
 
+.drawn-cards-modal .tarot-card:hover {
+  z-index: 1003;
+  transform: scale(1.1);
+}
 textarea {
   font-family: "Unna", serif !important;
   font-size: 18px !important;
@@ -129,3 +133,15 @@ textarea {
     justify-content: center;
   }
 
+
+  @media (max-width: 768px) {
+    .drawn-cards-modal {
+      display: none;
+    }
+    
+    .reading-modal-content,
+    .reading-results {
+      justify-content: center;
+      padding-left: 10px;
+    }
+  }
