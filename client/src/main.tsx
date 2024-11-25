@@ -10,12 +10,13 @@ import ProtectedRoute from "./utils/ProtectedRoutes";
 import Account from "./pages/Account";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apolloClient";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <h1 className="display-2">Wrong page!</h1>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
