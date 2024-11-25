@@ -8,6 +8,7 @@ import { GET_TAROT_CARDS } from "../utils/queries";
 import { useNavigate } from "react-router-dom";
 import { DrawnCard, TarotCard } from "../utils/types";
 import "./TarotReading.css";
+import { toast } from "react-toastify";
 
 // flippable card component
 const FlippableCard: React.FC<{
@@ -141,12 +142,13 @@ const TarotReading: React.FC = () => {
     };
 
     saveReading({ variables: { readingData } })
-      .then((response) => {
+      .then((response) => { 
         console.log("Saved reading:", response.data.saveReading);
+        toast.success("Your reading has been saved successfully!");
         navigate("/account");
       })
       .catch((err) => {
-        console.error("Error saving reading:", err);
+        console.error("Error saving your reading:", err);
       });
 
     resetReading();
