@@ -7,7 +7,8 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
-import FogBackground from "./components/FogBackground.tsx"
+import FogBackground from "./components/FogBackground.tsx";
+import Header from "./components/Header.tsx";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,7 +38,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <>
-      <FogBackground />
+        <FogBackground />
+        <Header />
         <Outlet />
       </>
     </ApolloProvider>

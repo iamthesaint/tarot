@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
@@ -18,11 +18,10 @@ body.modal-open {
 
 .reading-modal-content {
   position: relative;
-  color: #333;
-  background-color: white;
+  color: #203657;
+  background-color: #faf7e6;
   padding: 20px;
   z-index: 1001;
-  background: #fff;
   padding: 20px;
   border-radius: 8px;
   border: 2px solid #f0df81;
@@ -37,21 +36,26 @@ body.modal-open {
 
 .reading-results {
   font-family: 'Cinzel Decorative', cursive;
-  font-size: 16px;
+  font-size: 17px;
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   padding-left: 25%;
-}
-
-h2 {
-  font-family: 'Cinzel Decorative', cursive;
-  font-size: 2rem;
+  align-items: center;
 }
 
 textarea {
-  width: 100%;
-  resize: none;
+  width: 85%;
+  height: 75px;
+  font-family: 'Unna', serif !important;
+  font-size: 18px !important;
+  font-style: italic;
+
+}
+
+p {
+  font-size: 1.2rem;
 }
 
 .modal-button {
@@ -72,30 +76,56 @@ textarea {
 }
 
 .reflection-input {
-  width: 100%;
-  margin-top: 20px;
+  margin-top: 18px;
   font-family: 'Cinzel Decorative', cursive;
-  font-size: 16px;
 }
 
 .drawn-cards-modal {
   position: absolute;
-  left: 10%;
-  top: -50px;
-  transform: translateX(-50%);
+  left: 9%;
+  top: 13%;
+  transform: rotate(0deg) !important;
+  transition: transform 0.5s ease-in-out;
+  justify-content: center;
+  margin-top: 20px;
   display: flex;
   gap: 15px;
   z-index: 1002;
 }
+/* fan out cards in drawing results so user can easily see images */
+.drawn-cards-modal .tarot-card:nth-child(1) {
+  transform: rotate(-8deg) translateX(-50px) !important;
+  margin-top: -90px;  
+}
+
+.drawn-cards-modal .tarot-card:nth-child(2) {
+  transform: rotate(12deg) translateX(50px) !important;
+  margin-top: 80px;
+  
+}
+
+.drawn-cards-modal .tarot-card:nth-child(3) {
+  transform: rotate(-15deg) translateX(-50px) !important;
+  margin-top: 190px;
+}
+
+textarea {
+  font-family: "Unna", serif !important;
+  font-size: 18px !important;
+  font-style: italic;
+}
 
 .modal-card {
-    border: 2px solid f0df81;
+    border: 2px solid #f0df81;
     box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.5);
     border-radius: 8px;
   }
 
   .modal-title {
-    color: #333 !important;
+    color: #203657 !important;
+    font-family: 'Cinzel Decorative', cursive;
     display: flex;
+    font-size: 2rem;
     justify-content: center;
   }
+
