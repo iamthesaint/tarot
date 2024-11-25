@@ -145,7 +145,10 @@ const Account = () => {
               ))
             ) : (
               <p>
-                No readings saved yet! To begin, <Link to="/reading" className="reading-link">draw</Link>{" "}
+                No readings saved yet! To begin,{" "}
+                <Link to="/reading" className="reading-link">
+                  draw
+                </Link>{" "}
                 your first card...
               </p>
             )}

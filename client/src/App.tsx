@@ -8,6 +8,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import FogBackground from "./components/FogBackground.tsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header.tsx";
 
 // Construct our main GraphQL API endpoint
@@ -39,7 +41,8 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <FogBackground />
-        <Header />
+        <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
+                <Header />
         <Outlet />
       </>
     </ApolloProvider>
