@@ -1,6 +1,6 @@
 import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
-import tarotCardSchema from './TarotCards';
+// import tarotCardSchema from './TarotCards.js';
 
 export interface IUser extends Document {
     _id: string;
@@ -8,14 +8,14 @@ export interface IUser extends Document {
     email: string;
     password: string;
     isCorrectPassword: (password: string) => Promise<boolean>;
-    savedCards: string[];
+    readings: string[];
 }
 
 const userSchema = new Schema<IUser>({
     username: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    savedCards: [tarotCardSchema],
+    // savedCards: [tarotCardSchema],
 },
 {   //set to virtuals to true to include virtuals when calling toJSON
     toJSON: {
