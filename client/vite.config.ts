@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['./node_modules/bootstrap/dist/css/bootstrap.min.css', 'dom-helpers/css']
+      external: ['./node_modules/bootstrap/dist/css/bootstrap.min.css', './node_modules/react-toastify/dist/ReactToastify.css', 'dom-helpers/css']
     },
   },
   server: {
