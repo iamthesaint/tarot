@@ -5,12 +5,12 @@ describe("<ReadingModal />", () => {
   it("renders", () => {
     const props = {
       isOpen: true,
-      onClose: () => {},
-      onSave: () => {},
+      onClose: () => {},  
+      onSave: () => {}, 
       children: <div>Test Modal</div>
     };
 
     cy.mount(<ReadingModal {...props} />);
     cy.get('div').contains('Test Modal');
   });
-});
+}) ;
