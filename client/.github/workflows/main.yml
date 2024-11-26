@@ -1,5 +1,5 @@
 # Name of workflow
-name: Lint and Test workflow
+name: Test
 
 # Trigger workflow on all pull requests
 on:
