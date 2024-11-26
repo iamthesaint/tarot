@@ -4,10 +4,10 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  height: auto;
+  justify-content: space-around;
+  height: 100vh;
   overflow: visible;
+  padding: 100px;
 }
 
 .drawn-cards {
@@ -15,7 +15,7 @@
   align-items: center;
   flex-direction: column;
   gap: 15px;
-  width: 1%;
+  width: auto;
 }
 
 
@@ -111,6 +111,8 @@ img {
 
 .reading-title {
   font-size: 2.5rem;
+  margin-bottom: 5px;
+  margin-top: 15px;
   color: #203657;
   text-shadow: 2px 2px 4px #383838;
   font-family: 'Cinzel Decorative', serif;
@@ -119,8 +121,8 @@ img {
 .reading-instructions-container {
   position: absolute;
   top: 100px;
-  left: 75%;
-  padding: 10px;
+  left: 70%;
+  padding: 15px;
   background-color: #efebd4;
   opacity: 0.9;
   text-align: center;
@@ -129,6 +131,7 @@ img {
   z-index: 100;
   text-shadow: 1px 1px 4px rgba(22, 22, 20, 0.5);
   font-family:'Unna', serif;
+  margin: 20px;
 }
 
 .reading-container {
@@ -138,13 +141,9 @@ img {
   gap: 20px;
   width: 100%;
   max-width: 1200px;
+  margin: 0px;
 }
 
-.deck-and-selected-cards {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
 
 @media (max-width: 768px) {
   .tarot-board {
