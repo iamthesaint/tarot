@@ -1,10 +1,10 @@
-# Divine Deck - Interactive Tarot Reading
+# Ancient Arcana - Interactive Tarot Reading
 
 Enhance your spiritual journey and self-discovery through virtual tarot readings.
 
 ## Description
 
-Divine Deck is a modern web application that offers users an interactive experience with tarot card readings and exploration. Users can draw cards, receive insightful readings, and save their reflections on readings for future reference. Designed with passion, this includes tangible card animation, responsive design, and secure user authentication.
+Ancient Arcana is a modern web application that offers users an interactive experience with tarot card readings and exploration. Users can draw cards, receive insightful readings, and save their reflections on readings for future reference. Designed with passion, this includes tangible card animation, responsive design, and secure user authentication.
 
 ## Table of Contents
 - [Features](#features)
