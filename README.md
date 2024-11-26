@@ -20,11 +20,17 @@ Ancient Arcana is a modern web application that offers users an interactive expe
 ## Features
 
 _Interactive Tarot Card Deck:_ The deck shuffles and regenerates with each render/draw ensuring your tarot experience is similar to reality. Cards are drawn with smooth animations.
-_Personalized Readings:_ Gain insights from past, present, and future card interpretations, a dynamic 3-card draw for each reading.
+_Personalized Readings:_ Gain insights from past, present, and future card interpretations, a dynamic 3-card draw for each reading, including a different reading for each card when in the reversed or upright position.
 _User Reflections:_ Save your thoughts and reflections associated with each reading.
 _User Authentication:_ Secure signup and login functionality using JSON Web Tokens.
 _Saved Readings:_ Access all your saved readings on your profile page, organized by date for easy access.
 _Responsive Design:_ Optimized for both desktop and mobile devices.
+
+## _Tarot Deck_
+<img width="1439" alt="Screenshot 2024-11-26 at 12 14 49 AM" src="https://github.com/user-attachments/assets/3f13db41-e117-4428-8e00-c8ff54f87813">
+
+## _Tarot Reading Results_
+<img width="1031" alt="aascreenshot" src="https://github.com/user-attachments/assets/d2e9a6ba-05e3-4e30-99c4-e4df84fadb29">
 
 ## Technologies Used
 
