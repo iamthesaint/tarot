@@ -27,7 +27,7 @@ const FogBackground: React.FC = () => {
         radius: Math.random() * 150 + 80,
         speedX: Math.random() * 0.4 - 0.8,
         speedY: Math.random() * 0.2 - 0.5,
-        opacity: Math.random() * 0.20 + 0.05,
+        opacity: Math.random() * 0.2 + 0.05,
       });
     }
 
@@ -42,16 +42,24 @@ const FogBackground: React.FC = () => {
           canvas.height - p.y
         );
         const edgeFadeBuffer = 150;
-      
+
         const opacity = Math.max(
           p.opacity * Math.min(distanceFromEdge / edgeFadeBuffer, 1),
           0
         );
-      
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
-        gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
-      
+
+        const gradient = ctx.createRadialGradient(
+          p.x,
+          p.y,
+          0,
+          p.x,
+          p.y,
+          p.radius
+        );
+        gradient.addColorStop(0, `rgba(173, 216, 230, ${opacity})`); // Light blue
+        gradient.addColorStop(0.5, `rgba(224, 255, 255, ${opacity * 0.7})`); // Light cyan
+        gradient.addColorStop(1, `rgba(255, 255, 255, 0)`); // Transparent white
+    
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.closePath();
