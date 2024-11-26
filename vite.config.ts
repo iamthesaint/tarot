@@ -6,8 +6,8 @@ export default defineConfig({
     plugins: [react()],
     test: {
         globals: true,
-        environment: 'jsdom',
-        setupFiles: './src/_tests_/setup.ts'
+        environment: 'happy-dom',
+        setupFiles: './src/tests/setup.ts'
     },
     server: {
         port: 3000,
