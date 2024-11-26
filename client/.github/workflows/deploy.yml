@@ -1,5 +1,5 @@
 # Name of workflow
-name: Test
+name: deploy
 
 # Trigger the workflow on push and pull request events to the main branch
 on:
@@ -38,9 +38,10 @@ jobs:
       - name: Deploy
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/main'
-        # Set an environment variable with the deployment URL from secrets
+        # Set an environment variable with the deployment URL from secrets and the MongoDB URI
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         # Run the deployment command
         run: |
           curl "$DEPLOY_URL"
