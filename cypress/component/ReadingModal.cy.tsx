@@ -13,4 +13,4 @@ describe("<ReadingModal />", () => {
     cy.mount(<ReadingModal {...props} />);
     cy.get('div').contains('Test Modal');
   });
-});
+}) ;
