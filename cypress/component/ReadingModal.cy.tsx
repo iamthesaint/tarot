@@ -5,7 +5,7 @@ describe("<ReadingModal />", () => {
   it("renders", () => {
     const props = {
       isOpen: true,
-      onClose: () => {},
+      onClose: () => {},  
       onSave: () => {}, 
       children: <div>Test Modal</div>
     };
