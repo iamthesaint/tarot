@@ -89,6 +89,8 @@ _Draw Cards:_ Visit the reading page and interact with the tarot deck.
 _Save Readings:_ Add personal reflections for each reading, and save both reflections and readings to your account.
 _View Saved Readings:_ Access your saved readings on the account page.
 
+[Watch a Tarot Drawing!](https://youtu.be/HTg4uNZ0Dzs)
+
 ## Testing
 
 Install Cypress using ```npm install cypress``` and open for testing ```npx cypress open``` to run component tests in the Cypress testing file.
