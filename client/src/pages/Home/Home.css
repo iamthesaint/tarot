@@ -1,5 +1,3 @@
-
-
 /* Ensure the overall container fills the screen */
 .home {
   display: flex;
@@ -25,40 +23,47 @@
   font-size: 14px;
   font-family: 'Cinzel Decorative', serif;
   color: #BDDEEE;
-  background: rgba(255, 255, 255, 0); /* Semi-transparent background */
+  background: rgba(255, 255, 255, 0);
+  /* Semi-transparent background */
   border: 1px solid #cccccc00;
   border-radius: 5px;
   resize: none;
-
+  transition: all 0.3s ease-in-out; /* Smooth transition for resizing */
 }
 
 /* Style for the image above the title */
 .logo {
   width: 300px;
   height: auto;
+  transition: all 0.3s ease-in-out; /* Smooth transition for resizing */
 }
-
-
 
 /* Style for the container that holds the card */
 .home-container {
   width: 100%;
-  height: 70vh; /* Adjust the height to occupy 70% of the viewport height */
-  margin: 20px;
-  padding: 20px;
+  height: 70vh;
+  /* Adjust the height to occupy 70% of the viewport height */
+  margin: 5%;
+  padding: 30%;
   text-align: center;
 
   /* Background Image */
   background-image: url('../../assets/tarotHero.png');
-  background-size: cover; /* Ensures the image covers the entire container */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent tiling */
+  background-size: cover;
+  /* Ensures the image covers the entire container */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Prevent tiling */
 
   /* Other styles */
-  color: #AED8C8; /* Ensure text is readable on the background */
+  color: #AED8C8;
+  /* Ensure text is readable on the background */
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px); /* Mystical blur effect */
+  backdrop-filter: blur(10px);
+  /* Mystical blur effect */
 }
+
 
 .home-card {
   margin: 0 auto;
@@ -75,20 +80,69 @@
 
 .btn-primary {
   display: inline-block;
-  margin-top: 400px;
+  padding: 5% 10%; /* Use percentage-based padding */
+  font-size: 1.2rem; /* Larger text size */
   font-family: 'Cinzel Decorative', serif;
   font-weight: 500;
-  padding: 12px 24px;
-  font-size: 1rem;
   color: #292929;
   background: #aed8c8;
   border-radius: 7px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+
+  /* Ensure the button adapts */
+  max-width: 90%; /* Adjust width limit for responsiveness */
+  text-align: center;
 }
 
 .btn-primary:hover {
   background: #4b8376;
   color: #ffffff;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    height: 50vh;
+  }
+
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 8% 12%; /* Adjust percentage-based padding */
+  }
+
+  .what-is-tarot {
+    top: auto;
+    right: auto;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+
+  .logo {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    height: 40vh;
+  }
+
+  .btn-primary {
+    font-size: 0.8rem;
+    padding: 10% 15%; /* Adjust percentage-based padding for very small screens */
+  }
+
+  .what-is-tarot {
+    font-size: 1rem;
+    width: 90%;
+  }
+
+  .logo {
+    width: 60%;
+  }
 }
