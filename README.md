@@ -73,6 +73,10 @@ JWT_SECRET=your-secret-key
 1. In the project folder, open the terminal and run:
 
 ```
+npm run seed
+```
+
+```
 npm start
 ```
 
