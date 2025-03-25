@@ -24,6 +24,7 @@ const startApolloServer = async () => {
     await server.start();
 
     await db();
+    console.log('Successfully connected to the database!');
 
     const PORT = process.env.PORT || 3001;
     const app = express();
