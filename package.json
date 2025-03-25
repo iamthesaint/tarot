@@ -20,7 +20,8 @@
     "develop": "\"cd server && npm run watch\" \"cd client && npm run dev\"",
     "seed": "cd server && npm run seed",
     "cypress": "npx cypress open",
-    "test": "npx cypress run --browser electron --headless",
+    "test": "npm run test:component",
+    "test:component": "cypress run --component",
     "crypress:component": "cypress run --component",
     "set-up": "npm install && npm run build && npm run seed && npm run start:dev"
   },

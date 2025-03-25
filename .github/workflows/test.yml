@@ -1,0 +1,31 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - staging
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 21.x
+
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build App
+        run: npm run build
+
+      - name: Cypress run
+        uses: npm run test
+        with:
+          component: true

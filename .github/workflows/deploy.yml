@@ -1,0 +1,33 @@
+# Name of workflow
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    # Define the steps to be executed
+    steps:
+      # Checkout the code from the repository
+      - uses: actions/checkout@v1
+
+      # Run component tests
+      - name: Run component tests
+        run: npm install
+             npm run test
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        # Set an environment variable with the deployment URL from secrets and the MongoDB URI
+        env:
+          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        # Run the deployment command
+        run: |
+          curl "$DEPLOY_URL"
