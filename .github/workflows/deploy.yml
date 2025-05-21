@@ -1,7 +1,6 @@
 # Name of workflow
 name: deploy
 
-# Trigger the workflow on push and pull request events to the main branch
 on:
   push:
     branches: [main]
@@ -10,9 +9,7 @@ on:
       - main
 
 jobs:
-  # Define a job named "ci"
   ci:
-    # Specify the operating system to run the job on
     runs-on: ubuntu-latest
 
     # Define the steps to be executed
@@ -25,9 +22,7 @@ jobs:
         run: npm install
              npm run test
 
-      # Define a step named "Deploy"
       - name: Deploy
-        # Only run this step if the branch is main
         if: github.ref == 'refs/heads/main'
         # Set an environment variable with the deployment URL from secrets and the MongoDB URI
         env:

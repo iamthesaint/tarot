@@ -11,7 +11,7 @@
     "render-build": "npm install && npm run build",
     "start:server": "cd server && npm start",
     "start:client": "cd client && npm start",
-    "start": "npm run start:server & wait-on http://localhost:3001 && npm run start:client",
+    "start": "npm run start:server & npm run start:client",
     "start:dev": "npm run build:server && npm run build:client && npm run start:server",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
